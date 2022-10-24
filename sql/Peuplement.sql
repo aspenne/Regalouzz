@@ -50,14 +50,6 @@ insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (1,
 insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (1,'rue 3','ville 3','12345','pays 3',3);
 insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (1,'rue 4','ville 4','12345','pays 4',1);
 
---Peuplement de la table _ImageProduit
-insert into Alizon._ImagesProduit(ID_Produit,chemin) values (1,'../img/produit/img1-1.jpg');
-insert into Alizon._ImagesProduit(ID_Produit,chemin) values (1,'../img/produit/img1-2.jpg');
-insert into Alizon._ImagesProduit(ID_Produit,chemin) values (1,'../img/produit/img1-3.jpg');
-insert into Alizon._ImagesProduit(ID_Produit,chemin) values (2,'../img/produit/img2-1.jpg');
-insert into Alizon._ImagesProduit(ID_Produit,chemin) values (2,'../img/produit/img2-2.jpg');
-insert into Alizon._ImagesProduit(ID_Produit,chemin) values (3,'../img/produit/img3-1.jpg');
-
 --Peuplement de la table _ListeDeSouhait
 insert into Alizon._ListeDeSouhait(ID_Client,ID_Produit) values (1,1);
 insert into Alizon._ListeDeSouhait(ID_Client,ID_Produit) values (1,2);

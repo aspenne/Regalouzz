@@ -69,18 +69,6 @@ CREATE TABLE Alizon._Avis(
   commentaire varchar(1000) not null
 );
 
-CREATE TABLE Alizon._ImagesAvis(
-  ID_Avis int           not null,
-  chemin  varchar(100)  not null,
-  constraint images_avis_pk primary key (ID_Avis, chemin)
-);
-
-CREATE TABLE Alizon._ImagesProduit(
-  ID_Produit  int           not null,
-  chemin      varchar(100)  not null,
-  constraint images_produit_pk primary key (ID_Produit, chemin)
-);
-
 CREATE TABLE Alizon._Categorie(
   ID_Categorie  serial        constraint categorie_pk primary key,
   libelle       varchar(100)  not null
@@ -103,19 +91,6 @@ CREATE TABLE Alizon._DetailCommande(
   prix_TTC     float   not null,
   constraint detail_commande_pk primary key (ID_Commande, ID_Produit)
 );
-
-
--- Contraintes ImagesProduit
-  ALTER TABLE Alizon._ImagesProduit 
-    ADD CONSTRAINT ImagesProduit_fk_Produit
-    FOREIGN KEY (ID_Produit) 
-    REFERENCES Alizon._Produit(ID_Produit);
-
--- Contraintes ImagesAvis
-  ALTER TABLE Alizon._ImagesAvis 
-    ADD CONSTRAINT ImagesAvis_fk_Avis
-    FOREIGN KEY (ID_Avis) 
-    REFERENCES Alizon._Avis(ID_Avis);
 
 -- Contraintes Avis
   ALTER TABLE Alizon._Avis 
@@ -204,3 +179,8 @@ CREATE TABLE Alizon._DetailCommande(
     ADD CONSTRAINT DetailCommande_fk_Produit
     FOREIGN KEY (ID_Produit) 
     REFERENCES Alizon._Produit(ID_Produit);
+
+--Creation des vues
+
+CREATE OR REPLACE VIEW Alizon.Produit AS
+  Select id_produit,id_categorie,libelle,descr,sponsorise,masquer,quantite_stock,prix_ht,prix_ht+prix_ht*taux/100 as prix_ttc from (Alizon._Produit as P natural join Alizon._taxe as T);
