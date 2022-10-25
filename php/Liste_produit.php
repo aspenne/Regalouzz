@@ -32,7 +32,7 @@ try {
     echo '<div class="container-fluid col-md-8 col-10">';
         echo '<div class="row">';
             echo '<article >';
-                echo '<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">';
+                echo '<div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">';
                     echo '<div class="carousel-indicators">';
                         echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
                         echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>';
@@ -41,28 +41,31 @@ try {
                     echo '<div class="carousel-inner">';
                         echo '<div class="carousel-item active">';
                             echo'<figure id="carrou">';
-                                echo '<h3 class="container col-md-5 col-md-5  row align-items-center h-100">';
-                                    echo '<strong>Des glaces gourmandes à vôtre goût</strong>';
+                                echo '<h3 class="container ">';
+                                    echo '<strong>Petit biscuit</strong></br>';
+                                    echo '<strong>25€</strong>';
                                 echo '</h3>';
-                                echo '<img src="../img/produit/1/1.jpg" class="d-block w-100" height="400" width="600">';
+                                echo '<img src="../img/produit/1/1.jpg" class="d-block w-100" >';
                             echo '</figure>';
                         echo '</div>';
 
                         echo '<div class="carousel-item">';
                             echo'<figure id="carrou">';
-                                echo '<h3 class="container col-md-5 col-md-5  row align-items-center h-100">';
-                                    echo '<strong>Des glaces gourmandes à vôtre goût</strong>';
+                                echo '<h3 class="container ">';
+                                    echo '<strong>Kouign ammann</strong></br>';
+                                    echo '<strong>35€</strong>';
                                 echo '</h3>';
-                                echo '<img src="../img/produit/2/1.jpg" class="d-block w-100" height="400" width="600">';
+                                echo '<img src="../img/produit/2/1.jpg" class="d-block w-100" >';
                             echo '</figure>';
                         echo '</div>';
 
                         echo '<div class="carousel-item">';
                             echo'<figure id="carrou">';
-                                echo '<h3 class="container col-md-5 col-md-5  row align-items-center h-100">';
-                                    echo '<strong>Des glaces gourmandes à vôtre goût</strong>';
+                                echo '<h3 class="container">';
+                                    echo '<strong>Crêpes</strong></br>';
+                                    echo '<strong>5€</strong>';
                                 echo '</h3>';
-                                echo '<img src="../img/produit/3/1.jpg" class="d-block w-100" height="400" width="600">';
+                                echo '<img src="../img/produit/3/1.jpg" class="d-block w-100" >';
                             echo '</figure>';
                         echo '</div>';
 
