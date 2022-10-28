@@ -6,7 +6,7 @@
 <html lang="en">
 <header>
     <nav>
-        <img src="../img/site/logo.png" alt="logo" class="logo">
+        <img src="../img/site/logo.png" onclick="window.location.href='./Liste_produit.php'" alt="logo" class="logo" style="cursor: pointer;">
 
         <div class = "search_box">
             <select>

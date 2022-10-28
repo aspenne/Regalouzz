@@ -6,11 +6,16 @@
         <script src="../Bootstrap/js/bootstrap.min.js"></script> 
 
     </head>
+
+    <header>
+    <div class="container">
+        <div class="row justify-content-center">
+            <img src="../img/site/logo.png" style="width:50%;height:auto;cursor:pointer;" onclick="window.location.href='./Liste_produit.php'">
+        </div>
+    </div>
+    </header>
     <body>  
         <div class="inscription_box text-center container" style="width:80%;height:90%">
-            <div class="row justify-content-center">
-                <img src="../img/site/logo.png" style="width:50%;height:auto;cursor:pointer;" onclick="window.location.href='./Liste_produit.php'">
-            </div>
             <div class="row justify-content-center mt-2">
                 <h3>Inscrivez-vous:</h3>
             </div>
@@ -100,7 +105,7 @@
                         </div>
                         <div class="row justify-content-center mt-3">
                             <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                                <button type="submit" class="btn">Valider</button>
+                                <button type="submit">Valider</button>
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">
@@ -114,7 +119,7 @@
                     </div>
                     <div class="row justify-content-center mt-3">
                         <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                            <a href="./connexion.php" class="button">Identifiez-vous</a>
+                            <a id="ident" href="./connexion.php" class="button">Identifiez-vous</a>
                         </div>
                     </div>
         </div>
