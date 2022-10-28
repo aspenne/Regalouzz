@@ -4,7 +4,7 @@
     <script src="../bootstrap/js/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style_prod.css">
+    <link rel="stylesheet" href="../css/style_prod.css">
 
     <link rel="stylesheet" href="../bootstrap/js/bootstrap.js"/>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
