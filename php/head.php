@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +37,19 @@
         </div>
 
         <div class ="boutons">
-            <a href="#" class="button">Compte <i class="fa-solid fa-user"></i> </a>
-            <a href="./panier.php" class="button">Panier <i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="#" class="button">Souhait <i class="fa-solid fa-heart-circle-plus"></i></a>
+            <?php 
+                if(isset($_SESSION['id_client'])){
+                    echo'<a href="#" class="button">Compte <i class="fa-solid fa-user"></i> </a>';
+                    echo'<a href="./panier.php" class="button">Panier <i class="fa-solid fa-cart-shopping"></i></a>';
+                    echo'<a href="#" class="button">Souhait <i class="fa-solid fa-heart-circle-plus"></i></a>';
+                    echo'<a href="./deconnexion.php" class="button">Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
+                }else{
+                    echo '<a href="#" class="button">Inscription <i class="fa-solid fa-user-plus"></i> </a>';
+                    echo '<a href="./connexion.php" class="button">Connexion <i class="fa-solid fa-user"></i></a>';
+                    echo'<a href="./panier.php" class="button">Panier <i class="fa-solid fa-cart-shopping"></i></a>';
+
+                }
+            ?>
         </div>
 
     </nav>
