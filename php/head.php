@@ -4,18 +4,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="https://kit.fontawesome.com/67c66657c7.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../Bootstrap/js/jquery-3.5.1.min.js"></script>
-    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
-    <script src="../Bootstrap/js/bootstrap.min.js"></script>
-</head>
 <header>
     <nav>
         <img src="../img/site/logo.png" alt="logo" class="logo">
@@ -36,10 +24,10 @@
             <span class = "fa fa-search"></span>
         </div>
 
-        <div class ="boutons">
+        <div class ="boutons" id ="btn_head">
             <?php 
                 if(isset($_SESSION['id_client'])){
-                    echo'<a href="./compte.php" class="button">Compte <i class="fa-solid fa-user"></i> </a>';
+                    echo'<a href="#" class="button">Compte <i class="fa-solid fa-user"></i> </a>';
                     echo'<a href="./panier.php" class="button">Panier <i class="fa-solid fa-cart-shopping"></i></a>';
                     echo'<a href="#" class="button">Souhait <i class="fa-solid fa-heart-circle-plus"></i></a>';
                     echo'<a href="./deconnexion.php" class="button">Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
@@ -54,14 +42,26 @@
 
     </nav>
 
-    <div class="navbar">
-        <ul class="menu">
-            <a href="./Liste_produit.php">Accueil</a>
-            <a href="#prod_phares">Produits phares</a>
-            <a href="#best_ventes">Meilleurs vente</a>
-            <a href="#multi">Multimédia</a>
-            <a href="#meubles">Meubles</a>
-            <a href="#cuisine">Cuisine</a>
-        </ul>
-    </div>
+    <div class="topnav" id="myTopnav">
+    <a href="#home" class="active">Accueil</a>
+    <a href="#news">Produits phares</a>
+    <a href="#contact">Meilleurs ventes</a>
+    <a href="#about">Multimedia</a>
+    <a href="#about">Meubles</a>
+    <a href="#about">Cuisine</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
 </header>
