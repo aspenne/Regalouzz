@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Alizon</title>
+    <script src="./Bootstrap/js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css">
+    <script src="./Bootstrap/js/bootstrap.min.js"></script>
+  </head>
+    <body>
+    <p>
+        <a href="./php/Liste_produit.php">Liste Produit</a>
+    </p>
+
+
+
+    <script>
+      function imgChange(src) {
+        document.getElementById("main").setAttribute("src",src);
+      }
+    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+              <button onclick="imgChange('../img/produit/1/1.jpg')"><img style="height:200px;width:200px;object-fit: contain;" src="../img/produit/1/1.jpg" alt="..."></button>
+              <button onclick="imgChange('../img/produit/2/1.jpg')"><img style="height:200px;width:200px;object-fit: contain;" src="../img/produit/2/1.jpg" alt="..."></button>
+              <button onclick="imgChange('../img/produit/3/1.jpg')"><img style="height:200px;width:200px;object-fit: contain;" src="../img/produit/3/1.jpg" alt="..."></button>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-9 col-xl-9">
+              <img id="main" class="centered-and-cropped" style="height:500px;width:auto;" src="../img/produit/1/1.jpg" alt="...">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    </body>

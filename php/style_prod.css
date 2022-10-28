@@ -55,20 +55,18 @@ button p {
     justify-content: center;
 }
     
-#carouselExampleCaptions{
-    background-color:#D9D9D9;
-    height: 400px;
-  
+#carrou {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#carouselExampleCaptions img {
-    height: 400px;
-    width: 600px;
+#imageresponsive, #imageresponsive2, #imageresponsive3 {
     object-fit: cover;
-}
-
-
-#carouselExampleCaptions h3 {
-    display: block;
+    object-position: left;
+    width:300px;
+    height:300px;
+    padding:20px;
+    display : block;
     text-align: center;
 }
