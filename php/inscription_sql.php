@@ -3,7 +3,7 @@ session_start();
 include('id.php');
 
 
-$valeurs = $_GET;
+$valeurs = $_POST;
 
 $nom = strval($valeurs['nom']);
 $prenom = strval($valeurs['prenom']);

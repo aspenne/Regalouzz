@@ -10,10 +10,11 @@
         <div class="inscription_box text-center container" style="width:80%;height:90%">
             <div class="row justify-content-center">
                 <img src="../img/site/logo.png" style="width:50%;height:auto;">
+            </div>
             <div class="row justify-content-center mt-2">
                 <h3>Inscrivez-vous:</h3>
             </div>
-                    <form id="Formid" action="./inscription_sql.php" method="get">
+                    <form id="Formid" action="./inscription_sql.php" method="post">
                         <div class="row justify-content-center mt-2">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-end">
                                 <label>Votre nom :</label>
@@ -72,7 +73,7 @@
                         </div>
                         <div class="row justify-content-center mt-3">
                             <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                            <a href="#" onclick='document.getElementById("Formid").submit();' class="button">Valider</a>
+                                <button type="submit" class="btn">Valider</button>
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">
