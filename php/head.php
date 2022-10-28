@@ -43,7 +43,7 @@
     </nav>
 
     <div class="topnav" id="myTopnav">
-    <a href="#home" class="active">Accueil</a>
+    <a href="./Liste_produit.php" class="active">Accueil</a>
     <a href="#news">Produits phares</a>
     <a href="#contact">Meilleurs ventes</a>
     <a href="#about">Multimedia</a>
