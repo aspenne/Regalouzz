@@ -9,7 +9,7 @@
     <body>  
         <div class="inscription_box text-center container" style="width:80%;height:90%">
             <div class="row justify-content-center">
-                <img src="../img/site/logo.png" style="width:50%;height:auto;">
+                <img src="../img/site/logo.png" style="width:50%;height:auto;cursor:pointer;" onclick="window.location.href='./Liste_produit.php'">
             </div>
             <div class="row justify-content-center mt-2">
                 <h3>Inscrivez-vous:</h3>
@@ -37,6 +37,15 @@
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-start">
                                 <input type="email" name="email" required></br>
+                                <?php
+
+                                if(isset($_POST['error'])){
+                                    if($_POST['error'] == 'mail'){
+                                        echo '<label style="color : red">Erreur : Email déjà utilisée</label>';
+                                }
+                            }
+
+                        ?>
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">
@@ -44,7 +53,7 @@
                                 <label>Téléphone :</label>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-start">
-                                <input type="tel"  name="telephone" pattern="06[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" required><br>
+                                <input type="tel"  name="telephone" pattern="0[1-9][0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" required><br>
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">
@@ -61,6 +70,15 @@
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-start">
                                 <input type="password" name="mdp" required><br>
+                                <?php
+
+                                if(isset($_POST['error'])){
+                                    if($_POST['error'] == 'mdp'){
+                                        echo '<label style="color : red">Erreur : Le mot de passe doit faire au minimum 8 caractère</label>';
+                                }
+                            }
+
+                        ?>
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">
@@ -69,6 +87,15 @@
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-start">
                                 <input type="password" name="mdp1" required><br>
+                                <?php
+
+                                if(isset($_POST['error'])){
+                                    if($_POST['error'] == 'mdp1'){
+                                        echo '<label style="color : red">Erreur : Les mots de passes ne correspondent pas</label>';
+                                }
+                            }
+
+                        ?>
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">

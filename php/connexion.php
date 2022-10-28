@@ -10,7 +10,7 @@
 <body>
     <div class="inscription_box text-center container" style="width:80%;height:90%">
         <div class="row justify-content-center">
-            <img src="../img/site/logo.png" style="width:50%;height:auto;">
+            <img src="../img/site/logo.png" style="width:50%;height:auto;cursor:pointer;" onclick="window.location.href='./Liste_produit.php'">
         </div>
         <div class="row justify-content-center mt-2">
                 <h3>Identifiez-vous:</h3>
