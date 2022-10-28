@@ -13,7 +13,7 @@
             <div class="row justify-content-center mt-2">
                 <h3>Inscrivez-vous:</h3>
             </div>
-                    <form action="" method="post">
+                    <form id="Formid" action="./inscription_sql.php" method="get">
                         <div class="row justify-content-center mt-2">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-end">
                                 <label>Votre nom :</label>
@@ -72,7 +72,7 @@
                         </div>
                         <div class="row justify-content-center mt-3">
                             <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                                <input class="button validate" type="submit" value="Valider"><br>
+                            <a href="#" onclick='document.getElementById("Formid").submit();' class="button">Valider</a>
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">
@@ -80,18 +80,18 @@
                             <p class="multiline">Alizon traite les données receuillies à des fins de gestion de la relation client, gestion des commande et des livraisons, pour en savoir plus, veuilez consulter nos <span class="CG">CGU/CGV </span></p>
                             </div>
                         </div>
-                        <div class="row justify-content-center mt-3">
-                            <h3> Vous avez déjà un compte ?</h3>
-                        </div>
-                        <div class="row justify-content-center mt-3">
-                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                                <input class="button log" type="submit" value="Identifiez-vous">
-                            </div>
-                        </div>
                     </form>
+                    <div class="row justify-content-center mt-3">
+                        <h3> Vous avez déjà un compte ?</h3>
+                    </div>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <a href="./connexion.php" class="button">Identifiez-vous</a>
+                        </div>
+                    </div>
         </div>
     </body>
     <footer>
-        
+
     </footer>
 </html>
