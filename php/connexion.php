@@ -2,7 +2,7 @@
     <head>
         <title>Connexion</title>
         <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/inscription_connexion.css">
         <script src="../Bootstrap/js/bootstrap.min.js"></script> 
 
     </head>
