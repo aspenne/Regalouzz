@@ -34,7 +34,7 @@
 
         <div class ="boutons">
             <a href="#" class="button">Compte <i class="fa-solid fa-user"></i> </a>
-            <a href="#" class="button">Panier <i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="./panier.php" class="button">Panier <i class="fa-solid fa-cart-shopping"></i></a>
             <a href="#" class="button">Souhait <i class="fa-solid fa-heart-circle-plus"></i></a>
         </div>
 

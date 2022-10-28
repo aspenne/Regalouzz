@@ -28,7 +28,7 @@
         <div>
             <h1> Votre panier : </h1>
             <?php
-                include('connect_params.php');
+                include('id.php');
             
                 try {
                     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);

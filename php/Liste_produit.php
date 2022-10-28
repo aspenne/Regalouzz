@@ -101,18 +101,3 @@ try {
     die();
 }
 ?>
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Regalouzz/Liste_produit.php at main · aspenne/Regalouzz
