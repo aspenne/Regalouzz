@@ -57,7 +57,7 @@
                         </div>
                         <div class="row justify-content-center mt-3">
                             <div class="col-10 col-sm-10 col-md-6 col-lg-6 col-xl-6">
-                            <p class="multiline">Alizon traite les données receuillies à des fins de gestion de la relation client, gestion des commande et des livraisons, pour en savoir plus, veuilez consulter nos <span class="CG">CGU/CGV </span></p>
+                            <p class="multiline">Alizon traite les données receuillies à des fins de gestion de la relation client, gestion des commande et des livraisons, pour en savoir plus, veuilez consulter nos <a href="ficher_cgv_cgu" id="cgu">CGU/CGV </a></p>
                             </div>
                         </div>
                     </form>
