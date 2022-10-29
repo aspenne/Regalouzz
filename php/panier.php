@@ -31,6 +31,7 @@
                 include('id.php');
             
                 try {
+                    $total = 0;
                     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
                     foreach($dbh->query('SELECT libelle, descr, prix_ttc, prix_ht, quantite_stock, id_produit, quantite from Alizon.Produit NATURAL JOIN Alizon._Panier WHERE id_client = 1', PDO::FETCH_ASSOC) as $row) {
                         // Récupération des informations du produit dans la BDD
@@ -39,7 +40,7 @@
                         echo "Il reste " .$row['quantite_stock'] ." en stock. </br>";
 
                         // Récupération de l'image
-                        echo '<image src="./img/produit/'.$row['id_produit'].'/1.jpg" class="rounded img-fluid">';
+                        echo '<image src="../img/produit/'.$row['id_produit'].'/1.jpg" class="rounded img-fluid">';
 
                         // Modifier la quantité
                         $max = $row['quantite_stock'];
