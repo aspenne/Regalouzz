@@ -27,7 +27,7 @@
         <div class ="boutons" id ="btn_head">
             <?php 
                 if(isset($_SESSION['id_client'])){
-                    echo'<a href="#" class="button">Compte <i class="fa-solid fa-user"></i> </a>';
+                    echo'<a href="./compte.php" class="button">Compte <i class="fa-solid fa-user"></i> </a>';
                     echo'<a href="./panier.php" class="button">Panier <i class="fa-solid fa-cart-shopping"></i></a>';
                     echo'<a href="#" class="button">Souhait <i class="fa-solid fa-heart-circle-plus"></i></a>';
                     echo'<a href="./deconnexion.php" class="button">Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';

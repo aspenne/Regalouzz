@@ -53,3 +53,9 @@ footer{
     background-color: #393D3F;
     
 }
+
+button:disabled, button[disabled]{
+    color: #666666;
+    background-color: #CCCCCC;
+    cursor: default;
+}

@@ -3,7 +3,7 @@
         <title>Inscription</title>
         <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/inscription_connexion.css">
-        <script src="../Bootstrap/js/bootstrap.min.js"></script> 
+        <script src="../Bootstrap/js/bootstrap.min.js"></script>
 
     </head>
 
@@ -72,7 +72,15 @@
                                 <label>Mot de passe :</label>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-start">
-                                <input type="password" name="mdp" required><br>
+                                <input id="mdp" type="password" name="mdp" required><br>
+                                <ul>
+                                    <li id="longueur">Au moins 8 caractères</li>
+                                    <li id="maj">Au moins une majuscule</li>
+                                    <li id="min">Au moins une minuscule</li>
+                                    <li id="chiffre">Au moins un chiffre</li>
+                                    <li id="special">Au moins un caractère spécial parmis : ! - / @ ? $</li>
+                                    
+                                </ul>
                                 <?php
 
                                 if(isset($_POST['error'])){
@@ -89,7 +97,10 @@
                                 <label>Confirmer mot de passe :</label>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-start">
-                                <input type="password" name="mdp1" required><br>
+                                <input id="mdp2" type="password" name="mdp1" required><br>
+                                <ul>
+                                    <li id="identique">Les mots de passe doivent être identiques</li>
+                                </ul>
                                 <?php
 
                                 if(isset($_POST['error'])){
@@ -103,7 +114,11 @@
                         </div>
                         <div class="row justify-content-center mt-3">
                             <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                                <button type="submit">Valider</button>
+                                <button type="submit" id="boutton" disabled>Valider</button>
+                                <br>
+                                <ul>
+                                    <li id="js">Vous devez activer Javascript pour vous inscrire</li>
+                                <ul>
                             </div>
                         </div>
                         <div class="row justify-content-center mt-3">
@@ -121,6 +136,7 @@
                         </div>
                     </div>
         </div>
+        <script src="../Javascript/Validation.js"></script>
     </body>
     <footer>
 
