@@ -24,7 +24,7 @@
        
         try {
             $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
-            $produit = $produit = $dbh->query("SELECT * FROM Alizon.produit WHERE id_produit =".$_GET['ID'], PDO::FETCH_ASSOC) -> fetch();
+            $produit = $dbh->query("SELECT * FROM Alizon.produit WHERE id_produit =".$_GET['ID'], PDO::FETCH_ASSOC) -> fetch();
             $nom_dossier = '../img/produit/'.$produit['id_produit'].'/';
             $dossier = opendir($nom_dossier);
                 
@@ -61,14 +61,22 @@
                         <h6>'.$produit['prix_ht'].'€ HT</h6>
                         
                     </div>';
-                    echo'<div class="align-self-center col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" style="text-align: center;">
-                        <div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
+                    echo'<div class="align-self-center col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" style="text-align: center;">';
+                    if(!isset($_SESSION['id_vendeur'])){
+                        echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
                             <p><img src="../img/site/panier.png" style="height:100px;width:100px;object-fit: contain;" alt="panier"></p>
                             <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;">Ajouter au panier</button></p>
 
                             <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;">Ajouter à la liste de souhait</button></p>
-                        </div>
-                    </div>';
+                        </div>';
+                    }
+                    elseif($_SESSION['id_vendeur']==$produit['id_vendeur']){
+                        echo'p';
+                    }
+                    else{
+                        echo'<script>window.location.replace("./Liste_produit.php");</script>';
+                    }
+                    echo'</div>';
 
                 echo'</div>';
             echo'</div>';

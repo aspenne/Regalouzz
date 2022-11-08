@@ -9,6 +9,7 @@ insert into Alizon._Client(nom,prenom,mail,mot_de_passe,tel,date_naissance) valu
 INSERT INTO Alizon._client (nom, prenom, mail, tel, date_naissance, mot_de_passe) VALUES ('$nom', '$prenom', '$ema', '$telephone', '2003-06-02', '$mdp');
 
 insert into Alizon._vendeur(nom,hash) VALUES ('Cobrec','b1802cee3f64d16df4fba4f28a4b5fdb');
+insert into Alizon._vendeur(nom,hash) Values ('Autre Vendeur','a43e190ee2adeebd832e1ef82dcf0c2a');
 
 --
 -- Peuplement de la table _Categorie
@@ -30,11 +31,11 @@ insert into Alizon._Taxe(code_taxe,taux) values ('T5',5.0);
 insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 1','Description du produit 1',true,10.0,'T10',10,false,1);
 insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 2','Description du produit 2',false,20.0,'T5',20,false,1);
 insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 3','Description du produit 3',true,30.0,'T20',30,false,1);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 4','Description du produit 4',true,30.0,'T20',30,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 4','Description du produit 4',true,30.0,'T20',30,false,2);
 insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 5','Description du produit 5',true,30.0,'T20',30,false,1);
 insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 6','Description du produit 6',true,30.0,'T20',30,false,1);
 insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 7','Description du produit 7',true,30.0,'T20',30,false,1);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 8','Description du produit 8',true,30.0,'T20',30,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 8','Description du produit 8',true,30.0,'T20',30,false,2);
 insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 9','Description du produit 9',true,30.0,'T20',30,false,1);
 
 

@@ -193,4 +193,4 @@ CREATE TABLE Alizon._DetailCommande(
 --Creation des vues
 
 CREATE OR REPLACE VIEW Alizon.Produit AS
-  Select id_produit,id_categorie,libelle,descr,sponsorise,masquer,quantite_stock,prix_ht,prix_ht+prix_ht*taux/100 as prix_ttc,nom from (Alizon._Produit as P natural join Alizon._taxe as T natural join Alizon._vendeur as V);
+  Select id_produit,id_categorie,libelle,descr,sponsorise,masquer,quantite_stock,prix_ht,prix_ht+prix_ht*taux/100 as prix_ttc,nom,id_vendeur from (Alizon._Produit as P natural join Alizon._taxe as T natural join Alizon._vendeur as V);

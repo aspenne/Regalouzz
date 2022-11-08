@@ -120,12 +120,11 @@ try {
                 header('Location: ./Liste_produit.php');
         }else{
             if(isset($_SESSION['id_vendeur'])){
-                $id['id_vendeur']= $_SESSION['id_vendeur'];
                 echo '<div class="container">';
                 echo '<h2 id="titre_corps"> Vos articles </h2>';
                 echo '<div class="row justify-content-center">';
                 echo '<form action="detail_produit.php" method="get" id="Detail"></form>';
-                foreach($dbh->query('SELECT * from Alizon.Produit order by id_produit', PDO::FETCH_ASSOC) as $row) {
+                foreach($dbh->query("SELECT * FROM Alizon.Produit WHERE id_vendeur='".$_SESSION["id_vendeur"]."'", PDO::FETCH_ASSOC) as $row) {
                     $nom_dossier = '../img/produit/'.$row['id_produit'].'/';
                     $dossier = opendir($nom_dossier);
                     $chaine=[];
