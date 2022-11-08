@@ -93,8 +93,18 @@ try {
     echo '<div class="row justify-content-center">';
     echo '<form action="detail_produit.php" method="get" id="Detail"></form>';
     foreach($dbh->query('SELECT * from Alizon.Produit order by id_produit', PDO::FETCH_ASSOC) as $row) {
-
-    echo '<div id ="article" class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3" ><button id="btn" name="ID" type="submit" form="Detail" value="'.$row['id_produit'].'" class="h-100 btn btn-outline-primary"><img id ="images" src="../img/produit/'.$row['id_produit'].'/1.jpg" class="rounded img-fluid"> <p>'.$row['libelle'].'</p> <p id="prix"> '.$row['prix_ttc'].'€</p></button></div>';
+        $nom_dossier = '../img/produit/'.$row['id_produit'].'/';
+        $dossier = opendir($nom_dossier);
+                
+        while($fichier = readdir($dossier))
+        {
+            if($fichier != '.' && $fichier != '..')
+            {
+                $chaine[]= $fichier;
+            }
+        }
+        closedir($dossier);
+        echo '<div id ="article" class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3" ><button id="btn" name="ID" type="submit" form="Detail" value="'.$row['id_produit'].'" class="h-100 btn btn-outline-primary"><img id ="images" src="'.$nom_dossier.$chaine[0].'" class="rounded img-fluid"> <p>'.$row['libelle'].'</p> <p id="prix"> '.$row['prix_ttc'].'€</p></button></div>';
 
     }
     echo '</div>';
