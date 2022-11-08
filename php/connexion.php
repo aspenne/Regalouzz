@@ -3,7 +3,8 @@
         <title>Connexion</title>
         <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/inscription_connexion.css">
-        <script src="../Bootstrap/js/bootstrap.min.js"></script> 
+        <script src="../Bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     </head>
 <header>
@@ -35,7 +36,7 @@
                                 <label>Mot de passe :</label>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-start">
-                                <input type="password" name="mdp" required><br>
+                                <input id="mdp" type="password" name="mdp" required><i id="confoeil" class="fa-sharp fa-solid fa-eye" onclick="voir()" style="cursor:pointer;padding: 0px 0px 0px 10px;"></i><br>
                             </div>
                         </div>
                         <?php
@@ -70,6 +71,7 @@
                         </div>
                     </div>
         </div>
+        <script src="../JavaScript/confoeil.js"></script>
     </body>
     <footer>
 
