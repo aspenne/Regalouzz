@@ -29,7 +29,7 @@ try {
     //     print_r($row);
     //     echo "</pre>";
     // }
-    
+    if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur'])){
 /******Carousel *******/
     echo '<div class="container-fluid col-md-8 col-10">';
         echo '<div class="row">';
@@ -95,7 +95,7 @@ try {
     foreach($dbh->query('SELECT * from Alizon.Produit order by id_produit', PDO::FETCH_ASSOC) as $row) {
         $nom_dossier = '../img/produit/'.$row['id_produit'].'/';
         $dossier = opendir($nom_dossier);
-                
+        $chaine=[];        
         while($fichier = readdir($dossier))
         {
             if($fichier != '.' && $fichier != '..')
@@ -108,7 +108,43 @@ try {
 
     }
     echo '</div>';
-    echo '</div>';
+    echo '</div>';}
+    else{
+        if(isset($_GET['vendeur'])){
+            if($dbh->query("SELECT * FROM Alizon._Vendeur WHERE hash='".$_GET["vendeur"]."'",PDO::FETCH_ASSOC)->fetch()){
+                $id = $dbh->query("SELECT * FROM Alizon._Vendeur WHERE hash='".$_GET["vendeur"]."'", PDO::FETCH_ASSOC) -> fetch();
+                $_SESSION =[];
+                $_SESSION['id_vendeur'] = $id['id_vendeur'];
+                
+            }
+                header('Location: ./Liste_produit.php');
+        }else{
+            if(isset($_SESSION['id_vendeur'])){
+                $id['id_vendeur']= $_SESSION['id_vendeur'];
+                echo '<div class="container">';
+                echo '<h2 id="titre_corps"> Vos articles </h2>';
+                echo '<div class="row justify-content-center">';
+                echo '<form action="detail_produit.php" method="get" id="Detail"></form>';
+                foreach($dbh->query('SELECT * from Alizon.Produit order by id_produit', PDO::FETCH_ASSOC) as $row) {
+                    $nom_dossier = '../img/produit/'.$row['id_produit'].'/';
+                    $dossier = opendir($nom_dossier);
+                    $chaine=[];
+                    while($fichier = readdir($dossier))
+                    {
+                        if($fichier != '.' && $fichier != '..')
+                        {
+                            $chaine[]= $fichier;
+                        }
+                    }
+                    closedir($dossier);
+                    echo '<div id ="article" class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3" ><button id="btn" name="ID" type="submit" form="Detail" value="'.$row['id_produit'].'" class="h-100 btn btn-outline-primary"><img id ="images" src="'.$nom_dossier.$chaine[0].'" class="rounded img-fluid"> <p>'.$row['libelle'].'</p> <p id="prix"> '.$row['prix_ttc'].'€</p></button></div>';
+
+                }
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+    }
     $dbh = null;
 } catch (PDOException $e) {
     print "Erreur !: " . $e->getMessage() . "<br/>";
