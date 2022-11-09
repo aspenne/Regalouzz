@@ -46,6 +46,14 @@ else{
             $dbh->exec("INSERT INTO Alizon._client(nom, prenom, mail, tel, date_naissance, mot_de_passe) VALUES ('$nom', '$prenom', '$email', '$telephone', '$date_naissance', '$mdp')");
             $id = $dbh->query("SELECT * FROM Alizon._Client WHERE mail='".$email."'", PDO::FETCH_ASSOC) -> fetch();
             $_SESSION['id_client'] = $id['id_client'];
+
+            if(isset($_COOKIE["panier"])){
+                $panier = unserialize($_COOKIE["panier"]);
+                foreach($panier as $key => $value){
+                    $dbh->exec("INSERT INTO Alizon._Panier(id_client, id_produit, quantite) VALUES (".$_SESSION['id_client'].", ".$key.", ".$value.")");
+                }
+                setcookie("panier", "", time() - 3600);
+            }
     
             header('Location: Liste_produit.php');
         }

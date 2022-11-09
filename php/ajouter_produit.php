@@ -40,9 +40,10 @@
             $req->bindParam(':produit', $id_produit);
             $req->bindParam(':quantite', $nb_quantite);
 
-            $req2 = $dbh->prepare("UPDATE alizon._panier set quantite = quantite + :quantite where id_client = :client");
+            $req2 = $dbh->prepare("UPDATE alizon._panier set quantite = quantite + :quantite where id_client = :client and id_produit = :produit");
             $req2->bindParam(':client', $id_client);
             $req2->bindParam(':quantite', $nb_quantite);
+            $req2->bindParam(':produit', $id_produit);
 
             $req3 = $dbh->prepare("SELECT COUNT(*) as res from alizon._panier where id_client = :client and id_produit = :produit");
             $req3->bindParam(':client', $id_client);
