@@ -65,12 +65,21 @@
                     if(!isset($_SESSION['id_vendeur'])){
                         echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
                             <p><img src="../img/site/panier.png" style="height:100px;width:100px;object-fit: contain;" alt="panier"></p>
-                            <form method="get" action="Ajout_panier.php" id="panier">
+                            <form method="post" action="ajouter_produit.php" id="panier">
                                 <label for="quantite">Quantité :</label>
                                 <input type="number" id="quantite" name="quantite" min="1" max="100" value="1">
                                 <input type="text" id="id_produit" name="id_produit" value="'.$produit['id_produit'].'" hidden>
                             </form>
-                            <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="document.getElementById(\'panier\').submit();"><i class="fa-solid fa-cart-shopping"></i><br>Ajouter au panier</button></p>';
+                            <p><button id="BoutonPanier" type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="document.getElementById(\'panier\').submit();"><i class="fa-solid fa-cart-shopping"></i><br>Ajouter au panier</button></p>';
+                            if(isset($_GET["Panier"])){
+                                echo'<script>document.getElementById("BoutonPanier").style.backgroundColor="green";
+                                document.getElementById("BoutonPanier").style.borderColor="green";
+                                setTimeout(afterClick, 3000);
+                                function afterClick(){
+                                    document.getElementById("BoutonPanier").style.backgroundColor="#007bff";
+                                    document.getElementById("BoutonPanier").style.borderColor="#007bff";
+                                }</script>';
+                            }
                             if(isset($_SESSION['id_client'])){
                                 echo'<p><button type="button" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-heart-circle-plus"></i><br>Ajouter à la liste de souhait</button></p>';
                             }
