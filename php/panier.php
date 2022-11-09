@@ -17,9 +17,25 @@
 </head>
 <body>
     <?php 
-        echo"<pre>";
-        print_r(unserialize($_COOKIE["panier"]));
-        echo"</pre>";
+        if(isset($_COOKIE["panier"])){
+            echo"<pre>";
+            print_r(unserialize($_COOKIE["panier"]));
+            echo"</pre>";
+        }
     ?>
+    <form action="./supprimer.php" method="get">
+        <input type="integer" name="idproduit" id="id" value=1 hidden></input>
+        <button type="submit">Supprimer du panier le produit 1</button>
+    </form>
+
+    <form action="./vider_panier.php" method="post">
+        <button type="submit">Vider le panier</button>
+    </form>
+
+    <form action="./modifierQuantite.php" method="get">
+        <input type="integer" name="idproduit" id="id" value=2 hidden></input>
+        <input type="integer" name="quantite" id="quantite"></input>
+        <button type="submit">Modifier la quantité du produit 2</button>
+    </form>
 </body>
 </html>
