@@ -7,21 +7,23 @@
 <header>
     <nav>
         <img src="../img/site/logo.png" onclick="window.location.href='./Liste_produit.php'" alt="logo" class="logo" style="cursor: pointer;">
+        <form action="./Liste_produit.php" id="recherche" method="get">
 
+        </form>
         <div class = "search_box">
-            <select>
-                <option value="0">Categories</option>
-                <option value="1">categorie 1</option>
-                <option value="2">categorie 2</option>
-                <option value="3">categorie 3</option>
-                <option value="4">categorie 4</option>
-                <option value="5">categorie 5</option>
-                <option value="6">categorie 6</option>
+            <select name="categorie" form="recherche">
+                <?php
+                include("id.php");
+                $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
+                foreach($dbh->query('SELECT * from Alizon._Categorie order by ID_Categorie', PDO::FETCH_ASSOC) as $row) {
+                    echo'<option value="'.$row['id_categorie'].'">'.$row['libelle'].'</option>';
+                }
+                ?>
             </select>
 
             
             <input type="search" placeholder="Rechercher">
-            <span class = "fa fa-search"></span>
+            <span class = "fa fa-search" onclick="document.getElementById('recherche').submit();"></span>
         </div>
 
         <div class ="boutons" id ="btn_head">
@@ -51,9 +53,7 @@
     <a href="./Liste_produit.php" class="active">Accueil</a>
     <a href="#news">Produits phares</a>
     <a href="#contact">Meilleurs ventes</a>
-    <a href="#about">Multimedia</a>
-    <a href="#about">Meubles</a>
-    <a href="#about">Cuisine</a>
+    <a href="#about">Contact</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
