@@ -65,13 +65,25 @@
                     if(!isset($_SESSION['id_vendeur'])){
                         echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
                             <p><img src="../img/site/panier.png" style="height:100px;width:100px;object-fit: contain;" alt="panier"></p>
-                            <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;">Ajouter au panier</button></p>
-
-                            <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;">Ajouter à la liste de souhait</button></p>
-                        </div>';
+                            <form method="get" action="Ajout_panier.php" id="panier">
+                                <label for="quantite">Quantité :</label>
+                                <input type="number" id="quantite" name="quantite" min="1" max="100" value="1">
+                                <input type="text" id="id_produit" name="id_produit" value="'.$produit['id_produit'].'" hidden>
+                            </form>
+                            <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="document.getElementById(\'panier\').submit();"><i class="fa-solid fa-cart-shopping"></i><br>Ajouter au panier</button></p>';
+                            if(isset($_SESSION['id_client'])){
+                                echo'<p><button type="button" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-heart-circle-plus"></i><br>Ajouter à la liste de souhait</button></p>';
+                            }
+                            
+                        echo'</div>';
                     }
                     elseif($_SESSION['id_vendeur']==$produit['id_vendeur']){
-                        echo'p';
+                        echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
+                            <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-pen"></i> <br>Modifier Article</button></p>
+
+                            <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-eye-slash"></i><br>Masquer Article</button></p>
+                            <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-trash"></i><br>Supprimer Article</button></p>
+                            </div>';
                     }
                     else{
                         echo'<script>window.location.replace("./Liste_produit.php");</script>';

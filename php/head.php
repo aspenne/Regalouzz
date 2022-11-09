@@ -33,7 +33,9 @@
                     echo'<a href="./deconnexion.php" class="button">Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
                 }elseif(isset($_SESSION['id_vendeur'])){
                     echo'<a href="./compte.php" class="button">Compte <i class="fa-solid fa-user"></i> </a>';
+                    echo'<a href="./import.php" class="button">Importer des produits <i class="fa-solid fa-upload"></i></a>';
                     echo'<a href="./deconnexion.php" class="button">Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
+                    
                 }else{
                     echo '<a href="./inscription.php" class="button">Inscription <i class="fa-solid fa-user-plus"></i> </a>';
                     echo '<a href="./connexion.php" class="button">Connexion <i class="fa-solid fa-user"></i></a>';
