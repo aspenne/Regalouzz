@@ -16,7 +16,6 @@ insert into Alizon._vendeur(nom,hash) Values ('Autre Vendeur','a43e190ee2adeebd8
 --
 insert into Alizon._Categorie(libelle) values ('Nourriture');
 insert into Alizon._Categorie(libelle) values ('Boisson');
-insert into Alizon._Categorie(libelle) values ('Categorie 3');
 
 --
 -- Peuplement de la table _Taxe
@@ -28,15 +27,15 @@ insert into Alizon._Taxe(code_taxe,taux) values ('T5',5.0);
 --
 -- Peuplement de la table _Produit
 --
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 1','Description du produit 1',true,10.0,'T10',10,false,1);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 2','Description du produit 2',false,20.0,'T5',20,false,1);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 3','Description du produit 3',true,30.0,'T20',30,false,1);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 4','Description du produit 4',true,30.0,'T20',30,false,2);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (2,'Produit 5','Description du produit 5',true,30.0,'T20',30,false,1);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 6','Description du produit 6',true,30.0,'T20',30,false,1);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 7','Description du produit 7',true,30.0,'T20',30,false,1);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Produit 8','Description du produit 8',true,30.0,'T20',30,false,2);
-insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (2,'Produit 9','Description du produit 9',true,30.0,'T20',30,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Petit Beurre','Le petit beurre est l''un des gâteaux le plus connu des français, notamment des bretons. Il est principalement fait de beurre et de lait. Il mesure 65 mm de long, 54 mm de large et 6,5 mm d''épaisseur pour un poids unitaire de 8,33 g. Vendu par paquet de 16',true,10.0,'T10',10,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Kouign Amann','Le Kouign-amann, pur produit du Finistère, a été créée a la boulangerie des Crozon à Douarnenez, il est fait a base de sucre, beure et de pate a pain. Malgrés ses nombreuses déclinaisons, a la pistache, chocolat, aux amandes ? son gout nature reste un incontournable de nottre belle région et saura vous contenter dans votre quête de gras.',false,20.0,'T5',20,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Crêpes','Les crépes bretonnes font entiérement partie de l''histoire de la bretagne, a déguster salé ou sucré, elles restent incontournable. Elles sont faite a base de farine, oeuf, sucre et beure, et conféctionné dans un bilig.',true,30.0,'T20',30,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Glaces à la Fraise','Sorbet glacé goût fraise, parfait pour se rafraichir en été. Fabriqué à partir de fraises directement issues des fraiseraies de Plougastel. Convient aux adultes comme aux enfants, mais attention à ne pas se bruler. Contient une Barquette de 900ML de Sorbet Fraise.',true,30.0,'T20',30,false,2);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (2,'Cidre','Boisson alcolisée titrant entre 2% vol. et 8% vol. d''alcool, obtenue à partir de la fermentation de jus de pomme. Ce délicieux Cidre est frabriqué en Bretagne directement issu de la Distillerie Warenghem. Contient une Bouteille de 1L. <br> <br> ?Interdiction de vente de boissons alcooliques aux mineurs de moins de 18 ans - Code de la santé publique, Art. L.3342-1 et L.3353-3. L''abus d''alcool est dangereux pour la santé. A consommer avec modération.?',true,30.0,'T20',30,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Moule','Moules de Bouchot directement issues de la baie de Saint-Brieuc, prêtes pour la cuisson. Peuvent se déguster de plusieurs façons, comme à la Bretonne, au Curry ou encore Marinières. Contient environ 1KG de moules.',true,30.0,'T20',30,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Pomme','Un sac de pomme venant tout droit du Verger du Menez, nos pommes sont BIO et produites dans le respect de la nature et de l''environnement.',true,5,'T20',30,false,1);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (1,'Haribo','Avec leurs textures tendres, leurs couleurs vives et leur goûts uniques, les adorables bonbons ours HARIBO sont une valeur sûre. Faites-vous plaisir et partager ces savoureux bonbons avec vos proches.',true,1.5,'T20',30,false,2);
+insert into Alizon._Produit(ID_Categorie,libelle,descr,sponsorise,prix_HT,code_taxe,quantite_stock,masquer,id_vendeur) values (2,'Breizh Cola','La recette originale, créée en 2002. Son secret ? Un dosage parfait des ingrédients, lui donnant de fines bulles. Un gout plébiscité par les consommateurs depuis 20 ans !',true,30.0,'T20',30,false,1);
 
 
 --

@@ -56,7 +56,7 @@
                     echo'</div>';
                     echo'<div class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 align-self-center">';
                         echo'<h1>'.$produit['libelle'].'</h1>
-                        <p>Consequat irure ut eiusmod cillum aliquip officia eu culpa consectetur velit. Amet anim tempor aute veniam in pariatur sunt quis adipisicing exercitation. Ullamco qui ea labore fugiat Lorem veniam laboris quis minim irure deserunt magna est. Nisi cillum aliqua proident proident eiusmod exercitation enim amet ipsum.Laborum ea aliquip sint dolore incididunt dolore id proident occaecat. Eu tempor adipisicing voluptate officia dolor tempor elit qui Lorem. Consequat do ullamco anim dolor dolor mollit occaecat occaecat deserunt anim aute. Deserunt do ad id tempor. Aliqua ut proident qui id duis. Sit sunt exercitation ad cillum laboris velit.</p>
+                        <p>'.$produit['descr'].'</p>
                         <h2>'.$produit['prix_ttc'].'€ TTC</h2>
                         <h6>'.$produit['prix_ht'].'€ HT</h6>
                         

@@ -1,5 +1,5 @@
 <?php 
 session_start();
-echo $_SESSION['id_client'];
+echo'Vous êtes un vendeur';
 
 ?>

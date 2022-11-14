@@ -162,7 +162,7 @@
                         echo "</div>";
 
                         // Fonction "Passer commande"
-                            echo "<form id=\"Commande\" action=\"validerPanier.php\" method=\"get\">";
+                            echo "<form id=\"Commande\" action=\"commande.php\" method=\"get\">";
                                 echo "<input id=\"btn" . "comm\" type=\"submit\" value=\"Passer la Commande\">";
                             echo "</form>"; 
                         
