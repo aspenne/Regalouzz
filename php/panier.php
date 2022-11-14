@@ -89,43 +89,47 @@
                         $tab_cookies = unserialize($_COOKIE['panier']);
                         echo "<div class=produits_prix>";
                         echo "<div class=produits>";
+                        $prixTotal = 0;
+                        $iter = 0;
+                        $iter2 = 0;
+                        $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
+                        $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
                         foreach ($tab_cookies as $idProd => $quantite) {
-                            echo "<section>";
                             try {
-                                $prixTotal = 0;
-                                $iter = 0;
-                                $iter2 = 0;
-                                $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
-                                $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);                   
+                                
+                                
+                                                  
                                 $stmt = $dbh->prepare("SELECT libelle,prix_ttc,quantite_stock,id_produit FROM alizon.produit WHERE id_produit = ". $idProd);
                                 $stmt->execute();
-                                $res = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                                // Recupération des données du produit
-                                echo "<article>";
-                                    echo "Article : " . $res["libelle"] . "<br>";
-                                    echo "Il reste " . $res["quantite_stock"] . " produit(s) en stock<br>";
-                                    echo "Le prix : " . $res["prix_ttc"] . "<small> (toutes taxes comprises)</small><br>";
-                                
+                                $row = $stmt->fetch();
+                                echo "<section>";
                                 // Insertion de l'image
-                                    echo '<image src="./img/produit/'.$res['id_produit'].'/1.jpg" class="rounded img-fluid">';
+                                    echo '<image src="../img/produit/'.$row['id_produit'].'/1.jpg" class="rounded img-fluid" onclick="window.location.href=\'./detail_produit.php?ID='.$row['id_produit'].'\';">';
+                                    // Recupération des données du produit
+                                        echo '<article style="cursor:pointer" onclick="window.location.href=\'./detail_produit.php?ID='.$row['id_produit'].'\';">';
+                                        // onclick=\"window.location.replace(\'./detail_produit.php?ID='.$row['id_produit'].'\');\"
+                                        echo "<p>" . $row["libelle"] . "<br>" . "</p>";
+                                        echo "<p>" . $row["quantite_stock"] . " produit(s) en stock<br>". "</p>";
+                                        echo "</article>";
                                 
-                                // Fonction "Modifier la quantité" 
-                                    echo "<form id=\"$iter\" action=\"modifierQuantite.php\" method=\"get\">";
-                                        echo "<input id=\"$iter\" name=\"idproduit\" value=\"". $res["id_produit"] ."\" type=\"hidden\">";
-                                        echo "<input id=\"$iter\" type=\"number\" name=\"quantite\" value=\"" . $quantite ."\" min=\"1\" max=\"" . $res["quantite_stock"] . "\" required>";
-                                        echo "<input id=\"$iter\" type=\"submit\" value=\"Valider\">";
-                                    echo "</form>";
-                                
-                                // Fonction Supprimer article
-                                    echo "<form id=\"$iter2\" action=\"supprimer.php\" method=\"get\">";
-                                        echo "<input id=\"$iter2\" name=\"idproduit\" value=\"". $res["id_produit"] ."\" type=\"hidden\">";
-                                        echo "<input id=\"$iter2\" type=\"submit\" value=\"Supprimer\">";
-                                    echo "</form>";
-                                echo "</article><br>";
+                                    
+                                    // Fonction "Modifier la quantité" 
+                                        echo "<form id=\"$iter.add\" action=\"modifierQuantite.php\" method=\"get\">";
+                                            echo "<input id=\"$iter" . "add\" name=\"idproduit\" value=\"". $row["id_produit"] ."\" type=\"hidden\">";
+                                            echo "<input id=\"$iter" . "add\" class=\"valid\" type=\"number\" name=\"quantite\" value=\"" . $tab_cookies[$idProd] ."\" min=\"1\" max=\"" . $row["quantite_stock"] . "\" required>";
+                                            echo "<input id=\"$iter" . "add\" type=\"submit\" value=\"Modifier la quantité\">";
+                                        echo "</form>";
+                                    
+                                    // Fonction Supprimer article
+                                        echo "<form id=\"$iter2.del\" action=\"supprimer.php\" method=\"get\">";
+                                            echo "<p>" . "<span class=orange>". "Le prix : " . $row["prix_ttc"] . "€" . "</span>". "<br>". "</p>";
+                                            echo "<input id=\"$iter2" . "del\" name=\"idproduit\" value=\"". $row["id_produit"] ."\" type=\"hidden\">";
+                                            echo "<input id=\"$iter2" . "del\"  class=\"supp\" type=\"submit\" value=\"Supprimer\">";
+                                        echo "</form>";
+                                    echo "</section><br>";
                                 
                                 // Calcul du prix Total 
-                                $prixTotal += $quantite * $res["prix_ttc"];
+                                $prixTotal += $quantite * $row["prix_ttc"];
                                 
                                 array_push($_SESSION["panier"], $quantite);
                                 $iter++;
@@ -139,7 +143,10 @@
                         echo "</div>";
                     }
                     else{
-                            echo "<p>Vous n'avez pas d'article (visiteur)</p>";
+                        echo'<div style="text-align: center;">';
+                        echo '<h1> Votre panier : </h1>
+                        <p>Vous n\'avez pas d\'article</p>';
+                        echo'</div>';
                     }
                 }
             ?>
@@ -156,14 +163,11 @@
 
                         // Fonction "Passer commande"
                             echo "<form id=\"Commande\" action=\"validerPanier.php\" method=\"get\">";
-                                echo "<input id=\"btn" . "comm\" name=\"idclient\" value=\"". $row["id_client"] ."\" type=\"hidden\">";
-                                echo "<input id=\"btn" . "comm\" name=\"idproduit\" value=\"". $row["id_produit"] ."\" type=\"hidden\">";
                                 echo "<input id=\"btn" . "comm\" type=\"submit\" value=\"Passer la Commande\">";
                             echo "</form>"; 
                         
                         // Fonction "Vider le panier"
                             echo "<form id=\"VidePanier\" action=\"vider_panier.php\" method=\"get\">";
-                                echo "<input id=\"btn" . "supp\" name=\"idclient\" value=\"". $row["id_client"] ."\" type=\"hidden\">";
                                 echo "<input id=\"btn" . "supp\" type=\"submit\" value=\"Vider le panier\">";
                             echo "</form>";
                     echo "</div>";
