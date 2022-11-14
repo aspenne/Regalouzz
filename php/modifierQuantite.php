@@ -1,13 +1,13 @@
 <?php
     session_start();
 
-    if(isset($_SESSION["idclient"])){
+    if(isset($_SESSION["id_client"])){
         include('id.php');
         $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
         $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $stmt = $dbh->prepare("UPDATE alizon._panier SET quantite = ? WHERE id_client = ? AND id_produit = ?");
-        $res = $stmt->execute([$_GET['quantite'],$_GET['idclient'],$_GET['idproduit']]);
-        header("location:panierT.php");
+        $res = $stmt->execute([$_GET['quantite'],$_SESSION['idclient'],$_GET['idproduit']]);
+        header("location:panier.php");
     }
     else {
         $tab_cookies = unserialize($_COOKIE['panier']);

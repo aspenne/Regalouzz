@@ -1,0 +1,235 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*************************Body****************************/
+
+body{
+    background-color: #ECECE2;
+}
+
+
+
+  /*************************Main****************************/
+
+main {
+    background-color: #ECECE2;
+}
+
+.produits_prix{
+    display: flex;
+    gap: 30px;
+}
+
+.produits{
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+}
+
+
+main h1 {
+    font-size: 2em;
+    padding-left: 50px;
+    padding-bottom: 15px;
+}
+
+main div h1 {
+    font-size: 2em;
+    padding-left: 0px;
+    padding-bottom: 15px;
+}
+
+section {
+    padding-right: 50px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: #C0C1BA;
+    height: 200px;
+    border: solid 2px black;
+}
+
+section img {
+    flex: 2;
+    padding: 10px;
+    height: 50%;
+    width: 50px;
+    cursor:pointer;
+}
+
+section article {
+    padding-top: 20px;
+    flex : 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+section article p {
+    padding-top: 20px
+}
+
+section form .orange {
+    color: #FF9728;
+    font-weight: 800;
+}
+
+section form {
+    flex: end;
+    display: flex;
+    justify-content: space-around;
+    align-self: flex-end;
+    padding-bottom: 10px;
+    padding-right: 15px;
+}
+
+form + form{
+    flex-direction: column;
+    gap: 100px;
+}
+
+div.produits section form input{
+    border: solid 1px black;
+    border-radius: 5px;
+}
+
+input.valid{
+    background-color: #939591;
+    color: white;
+    width: 35px;
+    margin-right: 15px;
+}
+
+input.supp{
+    background-color: red;
+}
+
+.bar {
+    width: 1px;
+    height: 900px;
+    background-color: black;
+    transform: rotate(180deg);
+}
+
+.recap{ 
+    height: 200px;
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+    flex: 2;
+    background-color: #C0C1BA;
+    border: solid 2px black;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.recap form{
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
+
+
+.recap form input {
+    border: solid 2px black;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.total{
+    margin-top: 20px;
+    align-self: center;
+    background-color: #A8A8A8;
+    border: solid 2px black;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.total p{
+    text-align: center;
+    font-weight: bolder;
+}
+
+.total p .orange {
+    color: #FF9728;
+    -webkit-text-stroke: 0.5px black;
+}
+
+input#btncomm{
+    width: 50%;
+    height: 150%;
+    background-color: #393D3F;
+    color: white;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+
+input#btnsupp{
+    width: 50%;
+    height: 150%;
+    background-color: red;
+    color: black;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+
+form#Commande{
+    margin-top: 25px;
+}
+
+form#VidePanier{
+    margin-top: 25px;
+}
+
+input{
+    cursor: pointer;
+}
+

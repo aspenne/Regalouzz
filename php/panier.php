@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,33 +6,171 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_panier.css">
+    <link rel="stylesheet" href="../css/foot_head.css">
     <script src="../Bootstrap/js/jquery-3.5.1.min.js"></script>
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    
     <script src="../Bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 <body>
-    <?php 
-        if(isset($_COOKIE["panier"])){
-            echo"<pre>";
-            print_r(unserialize($_COOKIE["panier"]));
-            echo"</pre>";
-        }
+    <?php
+    include("head.php");
+    include("id.php");
+    $_SESSION["panier"] = [];
     ?>
-    <form action="./supprimer.php" method="get">
-        <input type="integer" name="idproduit" id="id" value=1 hidden></input>
-        <button type="submit">Supprimer du panier le produit 1</button>
-    </form>
+    <main>
+            <?php
+                if(isset($_SESSION["id_client"])){
+                    try {
+                        $prixTotal = 0;
+                        $iter = 0;
+                        $iter2 = 0;
+                        $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                        $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);                   
+                        $stmt = $dbh->prepare("SELECT libelle,prix_ttc,quantite_stock,quantite,id_client,id_produit FROM alizon.produit NATURAL JOIN alizon._panier WHERE id_client = ".$_SESSION["id_client"]."");
+                        $stmt->execute();
+                        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        if(!$res) {
+                            echo'<div style="text-align: center;">';
+                            echo '<h1> Votre panier : </h1>
+                            <p>Vous n\'avez pas d\'article</p>';
+                            echo'</div>';
+                        } else {
+                        echo'<h1> Votre panier : </h1>';
+                        echo "<div class=produits_prix>";
+                            echo "<div class=produits>";
+                            foreach ($res as $row) {
+                            echo "<section>";
+                            // Insertion de l'image
+                                echo '<image src="../img/produit/'.$row['id_produit'].'/1.jpg" class="rounded img-fluid" onclick="window.location.href=\'./detail_produit.php?ID='.$row['id_produit'].'\';">';
+                                // Recupération des données du produit
+                                    echo '<article style="cursor:pointer" onclick="window.location.href=\'./detail_produit.php?ID='.$row['id_produit'].'\';">';
+                                    // onclick=\"window.location.replace(\'./detail_produit.php?ID='.$row['id_produit'].'\');\"
+                                    echo "<p>" . $row["libelle"] . "<br>" . "</p>";
+                                    echo "<p>" . $row["quantite_stock"] . " produit(s) en stock<br>". "</p>";
+                                    echo "</article>";
+                            
+                                
+                                // Fonction "Modifier la quantité" 
+                                    echo "<form id=\"$iter.add\" action=\"modifierQuantite.php\" method=\"get\">";
+                                        echo "<input id=\"$iter" . "add\" name=\"idclient\" value=\"". $row["id_client"] ."\" type=\"hidden\">";
+                                        echo "<input id=\"$iter" . "add\" name=\"idproduit\" value=\"". $row["id_produit"] ."\" type=\"hidden\">";
+                                        echo "<input id=\"$iter" . "add\" class=\"valid\" type=\"number\" name=\"quantite\" value=\"" . $row["quantite"] ."\" min=\"1\" max=\"" . $row["quantite_stock"] . "\" required>";
+                                        echo "<input id=\"$iter" . "add\" type=\"submit\" value=\"Modifier la quantité\">";
+                                    echo "</form>";
+                                
+                                // Fonction Supprimer article
+                                    echo "<form id=\"$iter2.del\" action=\"supprimer.php\" method=\"get\">";
+                                        echo "<p>" . "<span class=orange>". "Le prix : " . $row["prix_ttc"] . "€" . "</span>". "<br>". "</p>";
+                                        echo "<input id=\"$iter2" . "del\" name=\"idclient\" value=\"". $row["id_client"] ."\" type=\"hidden\">";
+                                        echo "<input id=\"$iter2" . "del\" name=\"idproduit\" value=\"". $row["id_produit"] ."\" type=\"hidden\">";
+                                        echo "<input id=\"$iter2" . "del\"  class=\"supp\" type=\"submit\" value=\"Supprimer\">";
+                                    echo "</form>";
+                                echo "</section><br>";
+                                
+                                // Calcul du prix Total 
+                                $prixTotal += $row["quantite"] * $row["prix_ttc"];
+                                
+                                array_push($_SESSION["panier"], $row["quantite"]);
+                                $iter++;
+                                $iter2++;
+                            }
+                            echo "</div>";
+                        }
+                    } catch (PDOException $e) {
+                        print "Erreur !: " . $e->getMessage() . "<br>";
+                        die();
+                    }
+                }
+                else{
+                    if(isset($_COOKIE["panier"]) and $_COOKIE["panier"] != ""){
+                        $tab_cookies = unserialize($_COOKIE['panier']);
+                        echo "<div class=produits_prix>";
+                        echo "<div class=produits>";
+                        foreach ($tab_cookies as $idProd => $quantite) {
+                            echo "<section>";
+                            try {
+                                $prixTotal = 0;
+                                $iter = 0;
+                                $iter2 = 0;
+                                $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
+                                $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);                   
+                                $stmt = $dbh->prepare("SELECT libelle,prix_ttc,quantite_stock,id_produit FROM alizon.produit WHERE id_produit = ". $idProd);
+                                $stmt->execute();
+                                $res = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    <form action="./vider_panier.php" method="post">
-        <button type="submit">Vider le panier</button>
-    </form>
+                                // Recupération des données du produit
+                                echo "<article>";
+                                    echo "Article : " . $res["libelle"] . "<br>";
+                                    echo "Il reste " . $res["quantite_stock"] . " produit(s) en stock<br>";
+                                    echo "Le prix : " . $res["prix_ttc"] . "<small> (toutes taxes comprises)</small><br>";
+                                
+                                // Insertion de l'image
+                                    echo '<image src="./img/produit/'.$res['id_produit'].'/1.jpg" class="rounded img-fluid">';
+                                
+                                // Fonction "Modifier la quantité" 
+                                    echo "<form id=\"$iter\" action=\"modifierQuantite.php\" method=\"get\">";
+                                        echo "<input id=\"$iter\" name=\"idproduit\" value=\"". $res["id_produit"] ."\" type=\"hidden\">";
+                                        echo "<input id=\"$iter\" type=\"number\" name=\"quantite\" value=\"" . $quantite ."\" min=\"1\" max=\"" . $res["quantite_stock"] . "\" required>";
+                                        echo "<input id=\"$iter\" type=\"submit\" value=\"Valider\">";
+                                    echo "</form>";
+                                
+                                // Fonction Supprimer article
+                                    echo "<form id=\"$iter2\" action=\"supprimer.php\" method=\"get\">";
+                                        echo "<input id=\"$iter2\" name=\"idproduit\" value=\"". $res["id_produit"] ."\" type=\"hidden\">";
+                                        echo "<input id=\"$iter2\" type=\"submit\" value=\"Supprimer\">";
+                                    echo "</form>";
+                                echo "</article><br>";
+                                
+                                // Calcul du prix Total 
+                                $prixTotal += $quantite * $res["prix_ttc"];
+                                
+                                array_push($_SESSION["panier"], $quantite);
+                                $iter++;
+                                $iter2++;                    
+                                
+                            } catch (PDOException $e) {
+                                print "Erreur !: " . $e->getMessage() . "<br>";
+                                die();
+                            }
+                        }
+                        echo "</div>";
+                    }
+                    else{
+                            echo "<p>Vous n'avez pas d'article (visiteur)</p>";
+                    }
+                }
+            ?>
+                
+                <div class="bar"></div>
 
-    <form action="./modifierQuantite.php" method="get">
-        <input type="integer" name="idproduit" id="id" value=2 hidden></input>
-        <input type="integer" name="quantite" id="quantite"></input>
-        <button type="submit">Modifier la quantité du produit 2</button>
-    </form>
+                <?php
+                if($_SESSION["panier"]!=[]) {
+                    echo "<div class=recap>";
+                    // Affichage du prix total :
+                        echo "<div class=total>";
+                            echo "<p>Total : <span class=orange> $prixTotal </span></p>";
+                        echo "</div>";
+
+                        // Fonction "Passer commande"
+                            echo "<form id=\"Commande\" action=\"validerPanier.php\" method=\"get\">";
+                                echo "<input id=\"btn" . "comm\" name=\"idclient\" value=\"". $row["id_client"] ."\" type=\"hidden\">";
+                                echo "<input id=\"btn" . "comm\" name=\"idproduit\" value=\"". $row["id_produit"] ."\" type=\"hidden\">";
+                                echo "<input id=\"btn" . "comm\" type=\"submit\" value=\"Passer la Commande\">";
+                            echo "</form>"; 
+                        
+                        // Fonction "Vider le panier"
+                            echo "<form id=\"VidePanier\" action=\"vider_panier.php\" method=\"get\">";
+                                echo "<input id=\"btn" . "supp\" name=\"idclient\" value=\"". $row["id_client"] ."\" type=\"hidden\">";
+                                echo "<input id=\"btn" . "supp\" type=\"submit\" value=\"Vider le panier\">";
+                            echo "</form>";
+                    echo "</div>";
+                echo "</div>";
+            }
+            ?>
+    </main>
+    <?php include("./footer.php"); ?>
 </body>
 </html>
