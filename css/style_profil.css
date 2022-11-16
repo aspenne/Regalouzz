@@ -1,0 +1,196 @@
+body{
+    background-color: #ECECE2;
+}
+
+fieldset{
+    padding : 15px;
+    margin-left : 30%;
+}
+
+fieldset p{
+    background-color: gray;
+    margin : 15px;
+    padding : 15px;
+    width: 500px;
+    height: auto;
+}
+
+fieldset label{
+    text-align: center;
+    display: block;
+    padding : 5px;
+}
+
+fieldset input {
+    display : block;
+    float : center;
+    border-radius: 7px;
+    margin-left: 20%;
+}
+
+#edit {
+    background-color : orange;
+    padding: 7px 20px;
+    border-color: orange;
+    border-radius: 7px;
+    display: block;
+    margin-left : 80%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+#enr {
+    background-color : orange;
+    padding: 7px 20px;
+    border-color: orange;
+    border-radius: 7px;
+    display: block;
+    margin-left : 70%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+
+#nav_prof {
+    background-color: gray;
+    padding-right: 10px;
+    padding: 10px;
+    height: fit-content;
+    width: fit-content;
+    margin-left: 20px;
+    float : left;
+}
+
+#nav_prof a {
+    color: black;
+    text-decoration: none;
+}
+
+
+#nav_prof a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+#nav_prof ul{
+    list-style-type: '> ';
+}
+
+#nav_prof ul ul{
+    list-style-type: circle;
+}
+
+#titre {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 800px) {
+
+    fieldset{
+        padding : 15px;
+        margin-left : 0;
+        width: 100%;
+    }
+
+
+    #nav_prof {
+        background-color: gray;
+        padding-right: 10px;
+        padding: 10px;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #nav_prof li {
+        list-style:none !important; 
+        color:white;
+        padding:5px;
+        text-decoration:none;
+        }
+         
+    #nav_prof ul {
+        background-color:#393D3F;
+        padding:0;
+        margin:0;
+    }
+        
+    #nav_prof ul li {
+        list-style: none;
+        line-height:44px;
+        float:left;
+    }
+        
+    #nav_prof ul li a {
+        color:black;
+        padding:10px;
+        text-decoration:none;
+    }
+
+    #nav_prof ul li ul a {
+        color:white;
+    }
+        
+    #nav_prof li a:hover {
+        border-bottom:3px #393D3F solid;
+    }
+    
+    #nav_prof ul li ul { 
+        display:none; /* Rend le menu déroulant caché par défaut */
+    } 
+        
+    #nav_prof ul li:hover ul { /* Affiche la dropNav au survol de la souris avec la class .drop */
+        z-index:99999;
+        display:list-item !important;
+        position:absolute;
+        margin-top:5px;
+        margin-left:-10px;
+    }
+        
+    #nav_prof ul li:hover ul li {
+        float:none;
+    }
+
+    #titre {
+        text-align: left;
+        margin-left: 30px;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+
+    fieldset{
+        padding : 15px;
+        margin-left : 0;
+    }
+
+    fieldset p{
+        width:300px;
+        height: auto;
+    }
+
+    fieldset label{
+        text-align: left;
+    }
+    
+    fieldset input {
+        float : left;
+        margin-left: 0;
+    }
+    
+    #edit {
+        margin-left : 70%;
+        margin-top: 40px;
+    }
+
+    #enr {
+
+        margin-left : 55%;
+        margin-top: 40px;
+    }
+}
+

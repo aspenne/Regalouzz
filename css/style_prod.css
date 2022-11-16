@@ -1,0 +1,103 @@
+body {
+    background-color: #ECECE2;
+}
+
+#article{
+    padding : 10px;
+    
+}
+
+#btn{
+    background-color: #D9D9D9 ;
+    color: black;
+    border-color: gray;
+    
+}
+
+#titre_corps {
+    font-weight: 300;
+    display: inline-block;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+#titre_corps:before{
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    border-bottom: 3px solid red;
+}
+
+#images {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    padding : 10px;
+
+}
+
+button p {
+    font-size: 20px;
+    vertical-align: center;
+
+}
+
+#prix {
+    color : black;
+    font-weight: bold;
+}
+
+#carrou {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+#carouselExampleCaptions{
+    background-color:#D9D9D9;
+    height: 400px;
+  
+}
+
+#carouselExampleCaptions img {
+    height: 400px;
+    width: 600px;
+    object-fit: cover;
+}
+
+
+#carouselExampleCaptions h3 {
+    display: block;
+    text-align: center;
+}
+
+@media screen and (max-width: 1300px) {
+    #carouselExampleCaptions{
+        height: 200px;
+      
+    }
+    
+    #carouselExampleCaptions img {
+        height: 200px;
+        width: 400px;
+        object-fit: cover;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    #carouselExampleCaptions{
+        height: 130px;
+      
+    }
+    
+    #carouselExampleCaptions img {
+        height: 130px;
+        width: 200px;
+        object-fit: cover;
+    }
+
+}

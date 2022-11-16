@@ -2,7 +2,11 @@ drop schema if exists Alizon cascade;
 create schema Alizon;
 set schema 'Alizon';
 
-
+create table Alizon._Vendeur(
+  ID_Vendeur serial constraint vendeur_pk primary key,
+  nom varchar(20) not null,
+  hash varchar(32) not null unique
+);
 create table Alizon._Client(
   ID_Client       serial        constraint client_pk primary key,
   mot_de_passe    varchar(32)   not null,
@@ -22,7 +26,8 @@ create table Alizon._Produit(
   prix_HT         float           not null,
   code_taxe       varchar(3)      not null,
   quantite_stock  int             not null,
-  masquer         boolean         not null
+  masquer         boolean         not null,
+  id_vendeur         int             not null
 );
 
 CREATE TABLE Alizon._Taxe(
@@ -152,6 +157,11 @@ CREATE TABLE Alizon._DetailCommande(
     ADD CONSTRAINT Produit_fk_Taxe
     FOREIGN KEY (code_taxe) 
     REFERENCES Alizon._Taxe(code_taxe);
+   
+  Alter table Alizon._Produit
+    Add constraint Produit_fk_vendeur
+    foreign key (id_vendeur)
+    references Alizon._vendeur(id_vendeur);
 
 -- Contraintes Commande
  ALTER TABLE Alizon._Commande 
@@ -183,4 +193,4 @@ CREATE TABLE Alizon._DetailCommande(
 --Creation des vues
 
 CREATE OR REPLACE VIEW Alizon.Produit AS
-  Select id_produit,id_categorie,libelle,descr,sponsorise,masquer,quantite_stock,prix_ht,prix_ht+prix_ht*taux/100 as prix_ttc from (Alizon._Produit as P natural join Alizon._taxe as T);
+  Select id_produit,id_categorie,libelle,descr,sponsorise,masquer,quantite_stock,prix_ht,prix_ht+prix_ht*taux/100 as prix_ttc,nom,id_vendeur from (Alizon._Produit as P natural join Alizon._taxe as T natural join Alizon._vendeur as V);
