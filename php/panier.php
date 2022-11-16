@@ -97,7 +97,7 @@
                         foreach ($tab_cookies as $idProd => $quantite) {
                             try {
                                 
-                                
+                                //PB Panier quand supression dernier article
                                                   
                                 $stmt = $dbh->prepare("SELECT libelle,prix_ttc,quantite_stock,id_produit FROM alizon.produit WHERE id_produit = ". $idProd);
                                 $stmt->execute();
