@@ -1,0 +1,6 @@
+Nom_Produit;Description;Prix_HT;Code_taxe;id_categorie;quantite stock;lien image
+Beignet de Homard;Beignet de Calamar fris;13;T5;1;20;https://img.cuisineaz.com/660x660/2013/12/20/i7023-beignets-de-calamars.jpg
+Crabe;Crabe a la chaire tendre;16;T5;1;10;https://static.750g.com/images/1200-630/b512ad15dc3a7ba464dfb88198b1ec80/thinkstockphotos-530660641.jpg
+Crevette;Des Crevette fraichement recuperer.;19;T5;1;9;https://images-ca-1-0-1-eu.s3-eu-west-1.amazonaws.com/photos/original/1337/crevettes-produit-AdobeStock_216971214.jpg
+Sushi;Des sushis fais mains par nos artisans avec du poisson frais.;22;T5;1;10;https://www.ptitchef.com/imgupl/recipe/sushi-maison--345147p559108.jpg
+Lait;Du lait de vache bretonne, eleve en plein air.;25;T5;1;30;https://im.qccdn.fr/node/guide-d-achat-lait-9393/inline-104332.jpg

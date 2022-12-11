@@ -1,0 +1,30 @@
+div.conteneur{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+main{
+    height: 100vh;
+}
+
+hr.separation{
+    width: 1px;
+    background-color: black;
+}
+
+li.detail_cgu_cgv {
+    display: flex;
+    position: sticky;
+    top: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ECECE2;
+    text-align: center;
+    margin-left: 25px;
+    height: 300px;
+    width: 255px;
+    padding: 2em;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}

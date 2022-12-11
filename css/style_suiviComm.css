@@ -1,0 +1,53 @@
+body{
+    margin: 0px;
+    background: rgb(160, 230, 240, .20);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+}
+
+main div.table_box{
+    width: 800px;
+    height: 400px;
+    overflow-y: scroll;
+    background-color: #fff;
+    box-shadow: 0 10px 100px rgba(0, 0, 0, 0.5);
+}
+
+main div.table_box table{
+    width: 100%;
+}
+
+main div.table_box table, th , td{
+    border: 1px solid #034561;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+main div.table_box table th{
+    background-color: rgb(8, 189, 202);
+    color: #fff;
+    box-sizing: border-box;
+}
+
+main div.table_box table tr th:nth-child(1){
+    width: 60px;
+    text-align: center;
+    background-color: rgb(0, 116, 124);
+}
+
+main div.table_box table tr td:nth-child(1){
+    background-color: rgb(8, 189, 202);
+    text-align: center;
+    color: #fff;
+}
+
+
+
+
+

@@ -1,0 +1,526 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 1.2em;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*************************Body****************************/
+
+body{
+    background: rgb(160, 230, 240, .20);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3em;
+}
+
+/*************************Main****************************/
+
+main h1 span {
+    text-decoration: underline #27A8E0;
+    text-decoration-style: solid;
+    text-decoration-thickness: 6px; 
+    text-underline-offset: 2px;
+}
+
+/*************************container****************************/
+
+div.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+}
+
+div.container hr{
+    width: 1px;
+    margin: 0px;
+    background-color: black;
+}
+
+div.container .container_1{
+    flex: 5;
+    max-width: 900px;
+}
+
+/*************************Adresses + Paiement*************/
+
+main section.adresses{
+    display: flex;
+    flex-direction: column;
+    background-color: #ECECE2;
+    margin-left: 50px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+main h1 {
+    font-weight: 500;
+    font-size: 2em;
+    margin-left: 20%;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+main h2 {
+    font-size: 1.4em;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+main section.adresses article{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+}
+
+main section.adresses article form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+main section.adresses article form input{
+    border-radius: 5px;
+    border: 0px;
+    font-size: 1em;
+}
+
+main section.adresses article form input#adrLivr_cdp{
+    width: 100px;
+}
+
+main section.adresses article form input#adrLivr_ndr{
+    width: 50px;
+}
+
+main section.adresses article form input#adrLivr_v,
+main section.adresses article form input#numCa,
+main section.adresses article form input#adrLivr_p{
+    width: 150px;
+    margin-top: 10px;
+}
+
+main section.adresses article form input#numCa,
+main section.adresses article form input#code_promo{
+    margin-top: 10px;
+    width: 200px;
+}
+
+main section.adresses article form p.promo_text{
+    padding-top: 10px;
+}
+
+
+main section#modePaiement{
+    margin-top: 50px;
+}
+
+main section.adresses article form input#crypto{
+    width: 150px;
+    height: 26px;
+    margin-top: 10px;
+}
+
+
+main section.adresses article form div.ligne1{
+    display: flex;
+    gap: 40px;
+}
+
+main section.adresses article form div.ligne2{
+    display: flex;
+    justify-content: space-between;
+}
+
+main section.adresses article form div.ligne2_2{
+    display: flex;
+    gap: 10px;
+}
+
+main section.adresses article form div.ligne3{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+main section.adresses article form input#MM , input#AA{
+    width: 100px;
+    margin-top: 10px;
+}
+
+main section.adresses article form .valid_btn{
+    cursor: pointer;
+    background-color: rgb(39, 168, 224);
+    align-self: flex-end;
+    width: 150px;
+    height: 60px;
+    border-radius: 25px;
+    font-size: 1.4em;
+}
+
+main section.adresses article form .valid_btn:hover{
+    background-color: rgb(30, 140, 255);
+}
+
+main section.adresses hr{ 
+    height: 0.5px;
+    width: 93%;
+    margin: 0px;
+    margin-left: 25px;
+    margin-right: 25px;
+    background-color: black; 
+}
+
+main section.mode_paiement{
+    display: flex;
+    flex-direction: column;
+    background-color: #ECECE2;
+    margin-left: 50px;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+main article.paiement{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    gap: 20px;
+}
+
+main article.paiement form ul{
+    list-style: disc;
+}
+
+main article.paiement form {
+    display: flex;
+}
+
+main article.paiement form li + li{
+    padding-top: 10px;
+}
+
+main article.paiement .paiement_btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}   
+
+main article.paiement input#code_promo{
+    font-size: 1em;   
+    width: 250px;
+}
+
+main article .valid_btn{
+    cursor: pointer;
+    background-color: rgb(39, 168, 224);
+    align-self: flex-end;
+    width: 150px;
+    height: 60px;
+    border: 0px;
+    border-radius: 25px;
+    font-size: 1.4em;
+}   
+
+main article .valid_btn:hover{
+    background-color: rgb(30, 140, 255);
+}
+
+
+
+/*************************Recap produit*********************/
+
+main .produits{
+    display: flex;
+    flex-direction: column;
+    background-color: #ECECE2;
+    margin-left: 50px;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+main .produits section {
+    display: flex;
+    flex-direction: row;
+    padding-right: 50px;
+}
+
+main .produits section img {
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    object-fit: contain;
+}
+
+main .produits section article{
+    flex: 2;
+}
+
+main .produits section article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+main .produits section article + article{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+main .produits section article p{
+    margin-left: 50px;
+}
+
+main .produits section article p + p {
+    color: #00747C;
+    font-weight: bold;
+}
+
+main .produits section article + article p{
+    color: #00747C;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+main .produits section article + article p + p{
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: rgb(0, 116, 124, 50%);
+}
+
+main .produits hr{ 
+    height: 0.5px;
+    width: 90%;
+    margin: 0px;
+    margin-left: 10px;
+    background-color: black; 
+}
+
+/*************************Recap commande********************/
+
+main section.recap{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ECECE2;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-right: 30px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+main  section.recap ul{ 
+    margin-top: 20px;
+    margin-left: 50px;
+    list-style: disc;
+}
+
+main section.recap ul li + li{ 
+    padding-top: 10px;  
+}
+
+main section.recap hr{
+    margin: 10px;
+    height: 0.5px;
+    width: 90%;
+    background-color: black; 
+}
+
+main section.recap .blue1{
+    color: #00747C;
+    font-weight: bold;
+}
+
+main section.recap .blue2{
+    color: #00747C;
+    text-decoration: underline #00747C;
+    text-decoration-thickness: 2px; 
+    text-underline-offset: 2px;
+}
+
+main section.recap .total{
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 25px;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+main section.recap button{
+    background-color: #393D3F;
+    color: white;
+    border-radius: 20px;
+    border: 0px;
+    height: 20px;
+    width: 80%;
+    height: 100px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+main section.recap div.button_center{
+    text-align: center;
+    margin: 20px;
+}
+
+main section.recap div.button_center button{
+    cursor: pointer;
+}
+
+main section.recap p{
+    text-align: center;
+}
+
+/*************************Media queries********************/
+
+@media screen and (max-width: 990px) {
+    div.container {
+        flex-direction: column;
+    }
+
+    div.container .container_1{
+        margin-right: 50px;
+    }
+
+    div.container .container_2{
+        align-self: center;
+    }
+
+    div.container hr{
+        width: 90%;
+        height: 1px;
+        margin: 1px;
+        margin-left: 50px;
+        background-color: black;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    main .produits section{
+        padding-right: 0px;
+    }
+    
+    main .produits section article + article{
+        align-items: flex-start;
+    }
+
+    main .produits section article p{
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    main .produits section{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    main .produits section article{
+        flex-direction: row;
+    }
+
+    main .produits section article + article{
+        flex-direction: column;
+    }
+
+    main .produits section article + article p{
+        margin-top: 10px;
+    }
+
+    main .produits section article + article{
+        margin-bottom: 20px;
+    }
+
+    div.container hr{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    main section.adresses article form div.ligne1{
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    main section.adresses article form div.ligne2{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main section.adresses article form .valid_btn{
+        align-self: flex-start;
+        margin-top: 10px;
+        align-self: center;
+    }
+
+    main section.adresses hr{
+        width: 80%;
+    }
+
+    main section.adresses article form div.ligne3{
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    main article.paiement .paiement_btn{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main article.paiement input.valid_btn{
+        align-self: start;
+    }
+}
+    

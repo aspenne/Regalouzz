@@ -1,0 +1,440 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*************************Body****************************/
+
+body{
+    background: rgb(160, 230, 240, .20);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*************************Main****************************/
+
+main h2 {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 2em;
+    margin-left: 20%;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+main h2.vide{
+    margin-left: 0%;
+}
+
+main .produits_prix{
+    font-size: 1.2em;
+}
+
+main h2::before{
+    content: "";
+    width: 25%;
+    position: absolute;
+    bottom: -3px;
+    left: 0px;
+    border-bottom: 3px solid red;
+}
+
+main h2:hover::before{
+    width: 100%;
+    transition: width 1s ease-in-out;
+}
+
+main .produits_prix { 
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+}
+
+main .produits_prix .produits {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    max-width: 900px;
+}
+
+main .produits_prix .produits section {
+    padding-right: 50px;
+    margin-top: 25px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ECECE2;
+    height: 290px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+main .produits_prix .produits section .section_1part{
+    display: flex;
+    flex-direction: row;  
+}
+
+main .produits_prix .produits .prix_ttc2{
+    display: none;
+    font-size: 1em;
+    color: #00747C;
+    margin-left: 20px;
+}
+
+main .produits_prix .produits .prix_ht2{
+    display: none;
+    font-size: 0.8em;
+    color: rgb(0, 116, 124, 50%);
+}
+
+main .produits_prix .produits section .section_1part .prix_ttc{
+    font-size: 1em;
+    color: #00747C;
+}
+
+main .produits_prix .produits section .section_1part .prix_ht{
+    font-size: 0.8em;
+    display: block;
+    padding-top: 10px;
+    color: rgb(0, 116, 124, 50%);
+}
+
+main .produits_prix .produits section .section_1part article + article{
+    align-items: end;
+}
+
+main .produits section img {
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    object-fit: contain;
+}
+
+main img {
+    cursor: pointer;
+}
+
+
+main .produits_prix .produits section article {
+    padding-top: 20px;
+    flex : 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+main .produits_prix .produits article.detail2{
+    margin-left: 20px;
+    display: none;
+}
+
+main .produits_prix .produits section article p {
+    padding-top: 15px
+}
+
+main .produits_prix .produits section .section_2part{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+main .produits_prix .produits section .section_2part form .form_button {
+    margin-left: 20px;
+}
+
+main .produits_prix .produits section .section_2part  input{
+    font-size: 1em;
+    height: 60px;
+    width: 175px;
+    margin-left: 20px;
+    border: 0px;
+    border-radius: 20px;
+}
+
+main .produits_prix .produits section .section_2part .modif_button {
+    font-weight: bold;
+    height: 60px;
+    width: 200px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 3px solid rgb(39, 168, 224);;
+    background-color: lightblue;
+}
+
+main .produits_prix .produits section .section_2part .modif_button:hover{
+    cursor: pointer;
+    background-color: rgb(87, 205, 255);
+}
+
+main .produits_prix .produits section .section_2part .delete_button {
+    font-weight: bold;
+    height: 60px;
+    width: 200px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 3px solid red;
+    background-color: lightcoral;
+}
+
+main .produits_prix .produits section .section_2part .delete_button:hover {
+    cursor: pointer;
+    background-color: rgb(255, 85, 85);
+}
+
+main .produits_prix .produits section .section_2part .modif_quantity {
+    padding-left: 10px;
+    background-color: #939591;
+    width: 40px;
+}
+
+main .produits_prix .separation{
+	height: 100%;
+	width : 1px;
+	background: black;
+}
+
+main .produits_prix .recap{ 
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+    flex: 3;
+    background-color: #ECECE2;
+    height: 255px;
+    width: 300px;
+    border-radius: 20px;
+    margin-top: 25px;
+    margin-right: 20px;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+main .produits_prix .recap ul{ 
+    margin-top: 20px;
+    margin-left: 50px;
+    list-style: disc;
+}
+
+main .produits_prix .recap ul li + li{ 
+    padding-top: 10px;  
+}
+
+main .produits_prix .recap .separation{ 
+    height: 1px;
+    width: 90%;
+    background-color: black; 
+}
+
+main .produits_prix .recap section #VidePanier {
+    text-align: center;
+}
+
+main .produits_prix .recap section #VidePanier #btnsupp{
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: lightcoral;
+    border: 3px solid red;
+    border-radius: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    height: 40px;
+    width: 200px;
+}
+
+main .produits_prix .recap section #VidePanier #btnsupp:hover {
+    cursor: pointer;
+    background-color: rgb(255, 85, 85);
+}
+
+main .produits_prix .right_side #Commande #btncomm{
+    font-size: 1.3em;
+    cursor: pointer;
+    border: 0px; 
+    background-color: #393D3F;
+    color: white;
+    border-radius: 20px;
+    margin-top: 25px;
+    height: 50px;
+    width: 300px;
+}
+
+
+main .produits_prix .right_side #Commande {
+    text-align: center;
+}
+
+main .produits_prix .recap section .blue1{
+    color: rgb(0, 116, 124, 50%);
+}
+
+main .produits_prix .recap section .blue2{
+    color: #00747C;
+    text-decoration: underline #00747C;
+    text-decoration-thickness: 2px; 
+    text-underline-offset: 2px;
+}
+
+main .produits_prix .recap section .total{
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 25px;
+    font-size: 1.4em;
+}
+
+main .produits_prix .recap section p{
+    text-align: center;
+}
+
+main .produits_prix .produits section.souhait_section{
+    margin-left: 20%;
+}
+
+
+
+  /*************************media queries**************************/
+
+@media screen and (max-width: 915px) {
+    main .produits_prix { 
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    main .produits_prix .produits section{
+        margin-right: 50px;
+    }
+
+    main .produits_prix .produits {
+        display: flex;
+        flex-direction: column;
+        flex: 3;
+        max-width: 900px;
+    }
+
+    main .produits_prix .separation{
+        height: 1px;
+        width: 100%;
+        background: black;
+    }
+
+    main .produits_prix .recap{
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    main .produits_prix .produits section{
+        height: 365px;
+    }
+
+    main .produits_prix .produits section .section_2part{
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    main .produits_prix .produits section{
+        height: 365px;
+    }
+
+    main .produits_prix .produits section .section_2part{
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    main .produits_prix .produits section{
+        height: 520px;
+        padding-right: 0px;
+    }
+
+    main .produits_prix .produits article.detail{
+        display: none;
+    }
+
+    main .produits_prix .produits .section_2part{
+        margin-top: 10px;
+    }
+
+    main .produits_prix .produits section .section_1part article + article{
+        display: none;
+    }
+
+    main .produits_prix .produits .prix_ht2{
+        display: inline-block;
+    }
+    
+    main .produits_prix .produits .prix_ttc2{
+        display: inline-block;
+    }
+
+    main .produits_prix .produits article.detail2{
+        display: inline-block;
+    }
+
+    main .produits_prix .produits .delete_button{
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    main .produits_prix .produits .modif_button{
+        margin-top: 10px;
+    }
+    main .produits_prix .produits section{
+        height: 580px;
+    }
+    main .produits_prix .produits section p{
+        margin-top: 10px;
+    }
+}
