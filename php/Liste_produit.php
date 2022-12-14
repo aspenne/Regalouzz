@@ -123,7 +123,7 @@ try {
                 $_SESSION['id_vendeur'] = $id['id_vendeur'];
                 
             }
-                header('Location: ./Liste_produit.php');
+                header('Location: ./Liste_produit_vendeur.php');
         }else{
             if(isset($_SESSION['id_vendeur'])){
                 echo '<form id="filtre">';
