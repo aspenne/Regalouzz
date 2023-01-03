@@ -75,7 +75,7 @@
                     echo'<a href="./import.php" class="button">Importer des produits <i class="fa-solid fa-upload"></i></a>';
                     echo'<a href="./commande_vendeur.php" class="button">Les Commandes <i class="fa-solid fa-receipt"></i></a>';
                     echo'<a href="./historique_reassort.php" class="button">Historique <i class="fa-solid fa-clipboard-list"></i></a>';
-                    echo'<a href="./deconnexion.php" class="button">Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
+                    echo'<a href="./deconnexion.php" class="button">Deconnexion id="button_panier_cli"<i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
                 }else{
                     if (isset($_COOKIE["panier"])){
                         $tab = unserialize($_COOKIE["panier"]);
@@ -84,7 +84,7 @@
                     else $nb_panier = 0;
                     echo '<a href="./inscription.php" class="button">Inscription <i class="fa-solid fa-user-plus"></i> </a>';
                     echo '<a href="./connexion.php" class="button">Connexion <i class="fa-solid fa-user"></i></a>';
-                    echo '<a href="./panier.php" class="button" id="button_panier" >Panier<i class="fa-solid fa-cart-shopping"></i><div class=notifications> ' . $nb_panier . ' </div></a>';
+                    echo '<a href="./panier.php" class="button" id="button_panier_visiteur" >Panier<i class="fa-solid fa-cart-shopping"></i><span class=notification> ' . $nb_panier . ' </span></a>';
 
                 }
             ?>
