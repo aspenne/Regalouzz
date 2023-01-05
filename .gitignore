@@ -23,7 +23,6 @@
 # Logs and databases #
 ######################
 *.log
-php/id.php
 
 # OS generated files #
 ######################
@@ -34,3 +33,6 @@ php/id.php
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+id.php
+index.html
