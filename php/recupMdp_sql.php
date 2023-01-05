@@ -30,11 +30,15 @@
                                 {
                                     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
                                     if (isset($_GET['email'])) {
-                                        $password = uniqid();
-                                        $hashedPassword = md5($password);
-                                    
+                                       
+                                        // On récupère l'id du client ainsi que le mail afin de pouvoir connecter le client lorsqu'il clique sur le lien.
+                                        $recup = $dbh->prepare("SELECT id_client, mot_de_passe FROM alizon._client WHERE mail = ?");
+                                        $recup->execute([$_GET['email']]);
+                                        $res = $recup->fetch();
+                                        $id = md5($res['id_client']);
+                                        $lien = 'http://'.$_SERVER['HTTP_HOST'].'/php/page_recupMdp.php?id='.$id."&mdp=".$res["mot_de_passe"]."&mail=".$_GET['email'];
                                         $subject = 'Mot de passe oublié';
-                                        $message = "Bonjour, voici votre nouveau mot de passe : $password \n Vous devriez le modifier dans votre profil dès votre prochaine connexion.\nCordialement, l'équipe Alizon.";
+                                        $message = "Bonjour, voici un lien pour modifier votre mot de passe : $lien \nCordialement, l'équipe Alizon.";
                                         $headers = 'Content-Type: text/plain; charset="UTF-8"';
                                         $stmt2 = $dbh->prepare("SELECT count(*) FROM alizon._client WHERE mail = ?");
                                         $stmt2->execute([$_GET['email']]);
@@ -42,10 +46,9 @@
                                         $res = $res['count'];
                                         if ($res != 0){  
                                             if (mail($_GET['email'], $subject, $message, $headers)) {
-                                            $stmt = $dbh->prepare("UPDATE alizon._client SET mot_de_passe = ? WHERE mail = ?");
-                                            $stmt->execute([$hashedPassword, $_GET['email']]);
+                                                echo "";
                                             }else {
-                                                echo "Une erreur est survenue";
+                                                echo "Une erreur est survenue ! </br>";
                                             }
                                         }
                                         echo "Si votre adresse mail est présente de notre base de données, nous vous avons envoyé un mail.";
