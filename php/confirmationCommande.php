@@ -8,7 +8,7 @@
         echo '<script type="text/javascript">
             alert("Votre réassort a été pris en compte");
             </script>';
-        header("location:Liste_produit.php");
+        header('location:detail_produit.php?ID='.$_GET['id_produit']);
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
