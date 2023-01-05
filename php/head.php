@@ -75,7 +75,7 @@
                     echo'<a href="./import.php" class="button">Importer des produits <i class="fa-solid fa-upload"></i></a>';
                     echo'<a href="./commande_vendeur.php" class="button">Les Commandes <i class="fa-solid fa-receipt"></i></a>';
                     echo'<a href="./historique_reassort.php" class="button">Historique <i class="fa-solid fa-clipboard-list"></i></a>';
-                    echo'<a href="./deconnexion.php" class="button">Deconnexion id="button_panier_cli"<i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
+                    echo'<a href="./deconnexion.php" class="button" id="button_panier_cli"> Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
                 }else{
                     if (isset($_COOKIE["panier"])){
                         $tab = unserialize($_COOKIE["panier"]);
@@ -93,7 +93,13 @@
     </nav>
 
     <div class="topnav" id="myTopnav">
-    <a href="./Liste_produit.php" class="active">Accueil</a>
+    <?php
+    if(!isset($_SESSION['id_vendeur'])) {
+        echo '<a href="./Liste_produit.php" class="active">Accueil</a>';
+    }else{
+        echo '<a href="./Liste_produit_vendeur.php" class="active">Accueil</a>';
+    }
+    ?>
     <a href="#news">Produits phares</a>
     <a href="#contact">Meilleurs ventes</a>
     <a href="#about">Contact</a>
