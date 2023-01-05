@@ -58,13 +58,22 @@
                         echo'<h1>'.$produit['libelle'].'</h1>
                         <p>'.$produit['descr'].'</p>
                         <h2>'.$produit['prix_ttc'].'€ TTC</h2>
-                        <h6>'.$produit['prix_ht'].'€ HT</h6>
-                        
-                    </div>';
+                        <h6>'.$produit['prix_ht'].'€ HT</h6>';
+                        // Partie surveillance des stocks côté client et visiteur (quilèle)
+                        echo '<p>' . $produit['seuil_alerte'] . '</p>';
+                        if($produit['quantite_stock'] == 0) {
+                            echo '<p id="plus_de_stock">Plus en stock</p>';
+                        } else if($produit['quantite_stock'] <= $produit['seuil_alerte']) {
+                            echo '<p id="peu_de_stock">Il reste peu d\'exemplaires</p>';
+                        } else if($produit['quantite_stock'] > $produit['seuil_alerte']) {
+                            echo '<p id="en_stock">En stock</p>';
+                        }
+                    echo '</div>';
+                    //fin (quilèle)
                     echo'<div class="align-self-center col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" style="text-align: center;">';
                     if(!isset($_SESSION['id_vendeur'])){
                         echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
-                            <p><img src="../img/site/panier.png" style="height:100px;width:100px;object-fit : contain;" alt="panier"></p>
+                            <p><img src="../img/site/panier.png" style="height:100px;width:100px;object-fit: contain;" alt="panier"></p>
                             <form method="post" action="ajouter_produit.php" id="panier">
                                 <label for="quantite">Quantité :</label>
                                 <input type="number" id="quantite" name="quantite" min="1" max="100" value="1">
@@ -81,19 +90,18 @@
                                 }</script>';
                             }
                             if(isset($_SESSION['id_client'])){
-                                echo '
-                                <form method="post" action="ajouter_souhait.php" id="souhait">
-                                    <input type="text" id="id_produit" name="id_produit" value="'.$produit['id_produit'].'" hidden>
-                                </form>
-                                <p><button id="BoutonSouhait" type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="document.getElementById(\'souhait\').submit();"><i class="fa-solid fa-heart-circle-plus"></i><br>Ajouter à la liste souhait</button></p>';
+                                echo'<p><button type="button" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-heart-circle-plus"></i><br>Ajouter à la liste de souhait</button></p>';
                             }
                             
                         echo'</div>';
                     }
                     elseif($_SESSION['id_vendeur']==$produit['id_vendeur']){
                         echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
-                            <p><button type="button" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-pen"></i> <br>Modifier Article</button></p>';
-
+                            <form action="modifier_produit.php" method="get">
+                                <input type=hidden name="id_produit" value="'.$_GET['ID'].'">
+                                <p><button type="submit" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-pen"></i> <br>Modifier Article</button></p>
+                            </form>';
+                            // modifier Produit en submit pour pouvoir acceder à l'ID produit
                             if($produit['masquer']){
                                 echo('<p><button type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="window.location.replace(\'./afficher.php?ID='.$_GET['ID'].'\')"><i class="fa-solid fa-eye"></i><br>Afficher Article');
                             }else{
@@ -101,8 +109,8 @@
                             }
                             echo'</button></p><p><button type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="window.location.replace(\'./delarticle.php?ID='.$_GET['ID'].'\')"><i class="fa-solid fa-trash"></i><br>Supprimer Article</button></p>
                             <form action="reassort.php" method="get">
-                            <input type=hidden name="id_produit" value="'.$_GET['ID'].'">
-                            <p><button type="submit" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-truck"></i><br>Commander Réassort</button></p>
+                                <input type=hidden name="id_produit" value="'.$_GET['ID'].'">
+                                <p><button type="submit" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-truck"></i><br>Commander Réassort</button></p>
                             </form>
                             </div>';
                     }
