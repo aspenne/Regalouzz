@@ -232,7 +232,7 @@ main .produits_prix .produits section .section_2part .delete_button:hover {
 main .produits_prix .produits section .section_2part .modif_quantity {
     padding-left: 10px;
     background-color: #939591;
-    width: 40px;
+    width: 60px;
 }
 
 main .produits_prix .separation{
@@ -340,7 +340,7 @@ main .produits_prix .produits section.souhait_section{
 
   /*************************media queries**************************/
 
-@media screen and (max-width: 915px) {
+@media screen and (max-width: 1030px) {
     main .produits_prix { 
         display: flex;
         justify-content: center;
