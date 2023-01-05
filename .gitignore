@@ -23,7 +23,7 @@
 # Logs and databases #
 ######################
 *.log
-id.php
+php/id.php
 
 # OS generated files #
 ######################
