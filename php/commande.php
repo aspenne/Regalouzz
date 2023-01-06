@@ -82,7 +82,6 @@
                                     echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_SESSION["codePost"] . "\" name=\"codePost\"required></label> ";
                                 echo "</div>";
                                 echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr"] . "\" name=\"adr\"required></label> ";
-                                echo "<div class=ligne2>";
                                 echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $_SESSION["ville"] . "\" name=\"ville\"required></label> ";
                                 echo "<div class=ligne2>";
                                     echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays"] . "\" name=\"pays\"required></label> ";
@@ -98,7 +97,6 @@
                                     echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $row2["code_postal"] . "\" name=\"codePost\"></label> ";
                                 echo "</div>";
                                 echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $row2["rue"] . "\" name=\"adr\"></label> ";
-                                echo "<div class=ligne2>";
                                 echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $row2["ville"] . "\" name=\"ville\"></label> ";
                                 echo "<div class=ligne2>";
                                     echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $row2["pays"] . "\" name=\"pays\"></label> ";
@@ -253,7 +251,6 @@
                                     echo "</div>";
 
                                     echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr"] . "\" name=\"adr\"required></label> ";
-                                    echo "<div class=ligne2>";
                                     echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $_SESSION["ville"] . "\" name=\"ville\"required></label> ";
                                     echo "<div class=ligne2>";
                                         echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays"] . "\" name=\"pays\"required></label> ";
