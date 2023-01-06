@@ -4,8 +4,6 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="../css/foot_head.css">
-
     <link rel="stylesheet" href="../bootstrap/js/bootstrap.js"/>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -15,6 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="../css/foot_head.css">
+    <link rel="stylesheet" href="../css/style_body.css">
   </head>
 
 <?php include('./head.php'); ?>
@@ -40,7 +40,7 @@
             echo'
             <script>
                 function imgChange(src) {
-                    document.getElementById("main").setAttribute("src",src);
+                    document.getElementById("main_image").setAttribute("src",src);
                 }
             </script>
             <div class="container-fluid">
@@ -48,11 +48,11 @@
                     <div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">';
                         foreach($chaine as $image)
                         {
-                            echo '<button type="button" onclick="imgChange(\''.$nom_dossier.$image.'\')"><img style="height:150px;width:150px;object-fit: contain;" src="'.$nom_dossier.$image.'" alt="..."></button>';
+                            echo '<button type="button" onclick="imgChange(\''.$nom_dossier.$image.'\');"><img class="image_on_left" onload="ChangeSize();" style="height:150px;width:150px;object-fit: contain;" src="'.$nom_dossier.$image.'" alt="..."></button>';
                         }
                     echo'</div>';
                     echo'<div class="col-12 col-sm-12 col-md-9 col-lg-4 col-xl-4">';
-                          echo'<img id="main" class="img-fluid" style="max-height:500px;height : auto;width:auto;" src="'.$nom_dossier.$chaine[0].'" alt="...">';
+                          echo'<img id="main_image" class="img-fluid" style="max-height:500px;height : auto;width:auto;border: black solid 1px;" src="'.$nom_dossier.$chaine[0].'" alt="...">';
                     echo'</div>';
                     echo'<div class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 align-self-center">';
                         echo'<h1>'.$produit['libelle'].'</h1>
@@ -60,7 +60,6 @@
                         <h2>'.$produit['prix_ttc'].'€ TTC</h2>
                         <h6>'.$produit['prix_ht'].'€ HT</h6>';
                         // Partie surveillance des stocks côté client et visiteur (quilèle)
-                        echo '<p>' . $produit['seuil_alerte'] . '</p>';
                         if($produit['quantite_stock'] == 0) {
                             echo '<p id="plus_de_stock">Plus en stock</p>';
                         } else if($produit['quantite_stock'] <= $produit['seuil_alerte']) {
@@ -98,7 +97,7 @@
                     elseif($_SESSION['id_vendeur']==$produit['id_vendeur']){
                         echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
                             <form action="modifier_produit.php" method="get">
-                                <input type=hidden name="id_produit" value="'.$_GET['ID'].'">
+                                <input type=hidden name="ID" value="'.$_GET['ID'].'">
                                 <p><button type="submit" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-pen"></i> <br>Modifier Article</button></p>
                             </form>';
                             // modifier Produit en submit pour pouvoir acceder à l'ID produit
@@ -131,4 +130,5 @@
         }
     ?>
     <script src="../Javascript/ding.js"></script>
+    <script src="../Javascript/ChangeImageSize.js"></script>
   </body>

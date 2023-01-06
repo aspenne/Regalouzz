@@ -8,8 +8,8 @@ insert into Alizon._Client(nom,prenom,mail,mot_de_passe,tel,date_naissance) valu
 insert into Alizon._Client(nom,prenom,mail,mot_de_passe,tel,date_naissance) values ('Doe','Jack','DoeJack@gmail.com','123456','0123456787','1990-03-01');
 INSERT INTO Alizon._client (nom, prenom, mail, tel, date_naissance, mot_de_passe) VALUES ('$nom', '$prenom', '$ema', '$telephone', '2003-06-02', '$mdp');
 
-insert into Alizon._vendeur(nom_vendeur,hash) VALUES ('Cobrec','b1802cee3f64d16df4fba4f28a4b5fdb');
-insert into Alizon._vendeur(nom_vendeur,hash) Values ('Autre Vendeur','a43e190ee2adeebd832e1ef82dcf0c2a');
+insert into Alizon._Vendeur(nom_vendeur,hash) VALUES ('Cobrec','b1802cee3f64d16df4fba4f28a4b5fdb');
+insert into Alizon._Vendeur(nom_vendeur,hash) Values ('Autre Vendeur','a43e190ee2adeebd832e1ef82dcf0c2a');
 
 --
 -- Peuplement de la table _Categorie

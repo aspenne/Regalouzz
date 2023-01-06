@@ -28,11 +28,6 @@ echo '<div class=conteneur>';
 
 try {
     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
-    // foreach($dbh->query('SELECT * from Alizon._Produit', PDO::FETCH_ASSOC) as $row) {
-    //     echo "<pre>";
-    //     print_r($row);
-    //     echo "</pre>";
-    // }
     if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur']) and !isset($_GET["categorie"])){
 /******Carousel *******/
     echo '<div class="container-fluid col-md-8 col-10">';

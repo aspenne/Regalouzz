@@ -22,6 +22,7 @@ body {
     display: inline-block;
     padding-bottom: 5px;
     position: relative;
+    margin-left: 50px;
 }
 
 #titre_corps:before{
