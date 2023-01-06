@@ -68,3 +68,4 @@ insert into Alizon._Panier(ID_Client,ID_Produit,quantite) values (1,2,2);
 insert into Alizon._Panier(ID_Client,ID_Produit,quantite) values (1,3,3);
 insert into Alizon._Panier(ID_Client,ID_Produit,quantite) values (2,1,1);
 insert into Alizon._Panier(ID_Client,ID_Produit,quantite) values (3,3,3);
+
