@@ -57,11 +57,28 @@ body{
 
 /*************************Main****************************/
 
-main h1 span {
-    text-decoration: underline #27A8E0;
-    text-decoration-style: solid;
-    text-decoration-thickness: 6px; 
-    text-underline-offset: 2px;
+main h1 {
+    position: relative;
+    font-size: 2em;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    width: 360px;
+}
+
+main h1::before {
+    content: "";
+    width: 25%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border-bottom: 3px solid rgb(39, 168, 224);
+}
+
+main h1:hover::before{
+    width: 100%;
+    transition: width 1s ease-in-out;
 }
 
 /*************************container****************************/
@@ -94,15 +111,6 @@ main section.adresses{
     margin-left: 50px;
     border-radius: 20px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
-}
-
-main h1 {
-    font-weight: 500;
-    font-size: 2em;
-    margin-left: 20%;
-    margin-top: 50px;
-    margin-bottom: 25px;
-    font-weight: bold;
 }
 
 main h2 {
@@ -175,6 +183,7 @@ main section.adresses article form div.ligne1{
 main section.adresses article form div.ligne2{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 main section.adresses article form div.ligne2_2{
@@ -185,6 +194,7 @@ main section.adresses article form div.ligne2_2{
 main section.adresses article form div.ligne3{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 10px;
 }
 
@@ -494,6 +504,7 @@ main section.recap p{
     
     main section.adresses article form div.ligne2{
         flex-direction: column;
+        align-items: start;
         gap: 10px;
     }
 

@@ -82,7 +82,7 @@ main h2::before{
     position: absolute;
     bottom: -3px;
     left: 0px;
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid rgb(39, 168, 224);
 }
 
 main h2:hover::before{
