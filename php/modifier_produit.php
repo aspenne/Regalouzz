@@ -41,25 +41,17 @@
                     </div>
                     <div class="d-flex flex-row flex-wrap justify-content-between">
                         <div class="form-group col-auto mt-2">
-                            <label for="prixProduit">Prix ( TTC )</label>
+                            <label for="prixProduit">Prix</label>
                             <input type="number" class="form-control" name="prixProduit" min="0" value="' . $produit['prix_ht'] . '" required>
                         </div>
                         <div class="form-group col-auto mt-2">
-                            <label for="seuilProduit">Seuil d\'alerte</label>
+                            <label for="seuilProduit">seuil d\'alerte</label>
                             <input type="number" class="form-control" name="seuilProduit" min="1" value="' . $produit['seuil_alerte'] . '" required>
                         </div>
                     </div>
                     <div class="form-group mt-2 mb-2">
-                        <label for="imgProduit">Image principale</label>
-                        <input type="file" class="form-control" name="imgProduit1" accept="image/jpeg, image/jpg">
-                    </div>
-                    <div class="form-group mt-2 mb-2">
-                        <label for="imgProduit">Seconde image</label>
-                        <input type="file" class="form-control" name="imgProduit2" accept="image/jpeg, image/jpg">
-                    </div>
-                    <div class="form-group mt-2 mb-2">
-                        <label for="imgProduit">Troisième image</label>
-                        <input type="file" class="form-control" name="imgProduit3" accept="image/jpeg, image/jpg">
+                        <label for="imgProduit">Images</label>
+                        <input type="file" class="form-control" name="imgProduit[]" accept="image/jpeg, image/jpg" multiple>
                     </div>
                     <div class="form-group mt-2 mb-2">
                         <input type="checkbox" name="suppFichier" class="form-check-input" value="oui">
