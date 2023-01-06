@@ -35,4 +35,13 @@ ehthumbs.db
 Thumbs.db
 
 id.php
-index.html
+
+# image files #
+
+/produit
+
+*.jpg
+*.jpeg
+*.png
+*.gif
+
