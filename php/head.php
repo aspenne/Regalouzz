@@ -58,7 +58,6 @@
             <?php 
                 if(isset($_SESSION['id_client'])){
                     $nb_panier = $res;
-                    $nb_souhait = $res2;
                     echo'<a href="./profil.php" class="button">Compte <i class="fa-solid fa-user"></i></a>';
                     echo'<a href="./panier.php" class="button" id="button_panier">
                             Panier 
