@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="UTF-8">
 <header>
     <nav>
         <img src="../img/site/logo.png" onclick="window.location.href='./Liste_produit.php'" alt="logo" class="logo" style="cursor: pointer;">
@@ -19,17 +20,10 @@
 
                 $nb_panier = 0;
 
-                
                 if(isset($_SESSION["id_client"])){
-                    // compte le nombre d'article dans le panier
                     $stmt = $dbh->prepare("SELECT count(*)  FROM alizon._panier WHERE id_client = ".$_SESSION["id_client"]."");
                     $stmt->execute();
                     $res = $stmt->fetchColumn();
-
-                    // compte le nombre d'article dans la liste de souhait
-                    $stmt = $dbh->prepare("SELECT count(*)  FROM alizon._listedesouhait WHERE id_client = ".$_SESSION["id_client"]."");
-                    $stmt->execute();
-                    $res2 = $stmt->fetchColumn();
                 }
                 ?>
             </select>
@@ -75,6 +69,9 @@
                     echo'<a href="./commande_vendeur.php" class="button">Les Commandes <i class="fa-solid fa-receipt"></i></a>';
                     echo'<a href="./historique_reassort.php" class="button">Historique <i class="fa-solid fa-clipboard-list"></i></a>';
                     echo'<a href="./deconnexion.php" class="button" id="button_panier_cli"> Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
+                }elseif(isset($_SESSION['admin'])){
+                    echo'<a href="./panel_admin.php" class="button">Panneau Admin <i class="fa-solid fa-screwdriver-wrench"></i></a>';
+                    echo'<a href="./deconnexion.php" class="button">Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
                 }else{
                     if (isset($_COOKIE["panier"])){
                         $tab = unserialize($_COOKIE["panier"]);
@@ -84,7 +81,6 @@
                     echo '<a href="./inscription.php" class="button">Inscription <i class="fa-solid fa-user-plus"></i> </a>';
                     echo '<a href="./connexion.php" class="button">Connexion <i class="fa-solid fa-user"></i></a>';
                     echo '<a href="./panier.php" class="button" id="button_panier_visiteur" >Panier<i class="fa-solid fa-cart-shopping"></i><span class=notification> ' . $nb_panier . ' </span></a>';
-
                 }
             ?>
         </div>

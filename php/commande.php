@@ -24,6 +24,8 @@
             header('location:./inscription.php');
         }
         $idclient = $_SESSION['id_client'];
+        
+
 	?>
     <main>
     <?php
@@ -65,7 +67,7 @@
         $res2 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
         }
-        echo'<h1><span>Votre</span> commande : </h1>';
+        echo'<h1> Votre commande : </h1>';
 
         echo "<div class='container'>";
         
@@ -82,7 +84,9 @@
                                     echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_SESSION["codePost"] . "\" name=\"codePost\"required></label> ";
                                 echo "</div>";
                                 echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr"] . "\" name=\"adr\"required></label> ";
+                                echo "<div class=ligne2>";
                                 echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $_SESSION["ville"] . "\" name=\"ville\"required></label> ";
+                                echo "</div>";
                                 echo "<div class=ligne2>";
                                     echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays"] . "\" name=\"pays\"required></label> ";
                                     echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
@@ -93,13 +97,14 @@
                         foreach ($res2 as $row2) {
                             echo "<form id=\"adr_livr\" action=\"\" method=\"get\">";
                                 echo "<div class=ligne1>";
-                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"" . $row2["num"] . "\"></label> ";
-                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $row2["code_postal"] . "\" name=\"codePost\"></label> ";
+                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"" . $row2["num"] . "\"required></label> ";
+                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $row2["code_postal"] . "\" name=\"codePost\"required></label> ";
                                 echo "</div>";
-                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $row2["rue"] . "\" name=\"adr\"></label> ";
-                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $row2["ville"] . "\" name=\"ville\"></label> ";
+                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $row2["rue"] . "\" name=\"adr\"required></label> ";
                                 echo "<div class=ligne2>";
-                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $row2["pays"] . "\" name=\"pays\"></label> ";
+                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $row2["ville"] . "\" name=\"ville\"required></label> ";
+                                echo "</div>";
+                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $row2["pays"] . "\" name=\"pays\"required></label> ";
                                     echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                 echo "</div>";
                             echo "</form>"; 
@@ -108,13 +113,13 @@
                         else{
                             echo "<form id=\"adr_livr\" action=\"\" method=\"get\">";
                                 echo "<div class=ligne1>";
-                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"\"></label> ";
-                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"\" name=\"codePost\"></label> ";
+                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"\"required></label> ";
+                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"\" name=\"codePost\"required></label> ";
                                 echo "</div>";
-                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"\" name=\"adr\"></label> ";
-                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"\" name=\"ville\"></label> ";
+                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"\" name=\"adr\"required></label> ";
+                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"\" name=\"ville\"required></label> ";
                                 echo "<div class=ligne2>";
-                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"\" name=\"pays\"></label> ";
+                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"\" name=\"pays\"required></label> ";
                                     echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                 echo "</div>";
                             echo "</form>";
@@ -128,13 +133,13 @@
                             echo "<article class=champs>";
                             echo "<form id=\"adr_fact\" action=\"\" method=\"get\">";
                                 echo "<div class=ligne1>";
-                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"". $_SESSION['numRue2'] ."\"></label> ";
-                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"text\" value=\"". $_SESSION['codePost2'] ."\" name=\"codePost2\"></label> ";
+                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"". $_SESSION['numRue2'] ."\"required></label> ";
+                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"text\" value=\"". $_SESSION['codePost2'] ."\" name=\"codePost2\"required></label> ";
                                 echo "</div>";
-                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"". $_SESSION['adr2'] ."\" name=\"adr2\"></label> ";
-                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"". $_SESSION['ville2'] . "\" name=\"ville2\"></label> ";                            
+                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"". $_SESSION['adr2'] ."\" name=\"adr2\"required></label> ";
+                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"". $_SESSION['ville2'] . "\" name=\"ville2\"required></label> ";                            
                                 echo "<div class=ligne2>";
-                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"". $_SESSION['pays2'] ."\" name=\"pays2\"></label> ";
+                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"". $_SESSION['pays2'] ."\" name=\"pays2\"required></label> ";
                                     echo "<input class=\"valid_btn\" id=\"adrFact\" type=\"submit\" value=\"Valider\"\">";
                                 echo "</div>";
                             echo "</form>";
@@ -143,13 +148,13 @@
                             echo "<article class=champs>";
                             echo "<form id=\"adr_fact\" action=\"\" method=\"get\">";
                                 echo "<div class=ligne1>";
-                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"\"></label> ";
-                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"text\" value=\"\" name=\"codePost2\"></label> ";
+                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"\"required></label> ";
+                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"text\" value=\"\" name=\"codePost2\"required></label> ";
                                 echo "</div>";
-                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"\" name=\"adr2\"></label> ";
-                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"\" name=\"ville2\"></label> ";                            
+                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"\" name=\"adr2\"required></label> ";
+                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"\" name=\"ville2\"required></label> ";                            
                                 echo "<div class=ligne2>";
-                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"\" name=\"pays2\"></label> ";
+                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"\" name=\"pays2\"required></label> ";
                                     echo "<input class=\"valid_btn\" id=\"adrFact\" type=\"submit\" value=\"Valider\"\">";
                                 echo "</div>";
                             echo "</form>";
@@ -166,35 +171,32 @@
                                         echo "<div class=ligne1>";
                                             echo "<label>";
                                             echo "<p>Code carte bleu</p>";
-                                            echo "<input pattern='[0-9]{16}' id=\"numCa\" type=\"text\" name=\"numCa\" value=\"". $_SESSION['numeCarte'] ."\"> ";
+                                            echo "<input pattern='[0-9]{16}'  class = 'numCa' id=\"numCa\" type=\"text\" name=\"numCa\"  value=\"". $_SESSION['numCa'] ."\"required> ";
+                                            echo "<ul>";
+                                                echo "<li id = 'tailleCrypto'>Erreur : Donnez un numéro de carte de 16 chiffres</li>";
+                                                echo "<li id = 'valiCarte'>Erreur : donnez un numéro de carte valide </li>";
+                                            echo "</ul>";
+                                            
                                             echo "</label>";
                                         echo "</div>";
                                         echo "<div class = ligne2_2>";
                                         echo "<label>";
                                             echo "<p> Mois </p>";
-                                            echo "<input id=\"MM\" pattern='[0-1][0-9]' placeholder='MM' type=\"text\" name=\"MM\" value=\"". $_SESSION['mois'] ."\">";
+                                            echo "<input id=\"MM\" pattern='[0-9][0-9]' placeholder='MM' type=\"text\" name=\"MM\" value=\"". $_SESSION['mois'] ."\"required>";
                                         echo "</label>";
                                         echo "<label>";
                                             echo "<p> Année </p>";
-                                            echo "<input id=\"AA\" pattern='[0-1][0-9]' placeholder='AA' type=\"text\" name=\"AA\" value=\"". $_SESSION['année'] ."\">";
+                                            echo "<input id=\"AA\" pattern='[0-9][0-9]' placeholder='AA' type=\"text\" name=\"AA\" value=\"". $_SESSION['année'] ."\"required>";
                                         echo "</label>";
                                         echo "</div>";
                                         echo "<label>";
                                             echo "<p> Cryptograme </p>";
-                                            echo "<input id=\"crypto\" pattern='[0-9]{3}' placeholder='101' type=\"text\" name=\"crypto\" value=\"". $_SESSION['crypt'] ."\">";
-                                        echo "<label>";
-                                        echo "<div class = ligne3>";
-                                        echo "<label>";
-                                            echo "<p class=promo_text > Inserer code promo </p>";
-                                            echo "<input id=code_promo type=text name=promo placeholder=E54D21F457>"; 
-                                            /*echo "<ul>";
-                                                echo "<li class = 'valiCode' id='valiCode'>Code promo invalide</li>";
-                                            echo "</ul>";
-                                            */
+                                            echo "<div class=ligne2>";
+                                                echo "<input id=\"crypto\" pattern='[0-9]{3}' placeholder='101' type=\"text\" name=\"crypto\" value=\"". $_SESSION['crypt'] ."\"required>";
+                                                echo "<input class=\"valid_btn\" id='btnvaliCode' type='submit' value = 'Valider'>";
+                                            echo "</div>";    
                                         echo "</label>";
-                                        echo "<input class=\"valid_btn\" id='valiPay' type='submit' value = '". $_SESSION['totalprix_ttc']." €'>";
-                                    echo "</div>";
-                                    echo "</form>";
+                                        echo "</form>";
                                 echo "</article>";
                         echo "</section>";
                     }
@@ -206,35 +208,31 @@
                                         echo "<div class=ligne1>";
                                             echo "<label>";
                                             echo "<p>Code carte bleu</p>";
-                                            echo "<input pattern='[0-9]{16}' id=\"numCa\" type=\"text\" name=\"numCa\" value=\"\"> ";
+                                            echo "<input pattern='[0-9]{16}' class = 'numCa' id=\"numCa\" type=\"text\" name=\"numCa\" value=\"\"required> ";
+                                            echo "<ul>";
+                                                echo "<li id = 'tailleCrypto'>Erreur : Donnez un numéro de carte de 16 chiffres</li>";
+                                                echo "<li id = 'valiCarte'>Erreur : donnez un numéro de carte valide </li>";
+                                            echo "</ul>";
                                             echo "</label>";
                                         echo "</div>";
                                         echo "<div class = ligne2_2>";
                                         echo "<label>";
                                             echo "<p> Mois </p>";
-                                            echo "<input id=\"MM\" pattern='[0-1][0-9]' placeholder='MM' type=\"text\" name=\"MM\" value=\"\">";
+                                            echo "<input id=\"MM\" pattern='[0-9][0-9]' placeholder='MM' type=\"text\" name=\"MM\" value=\"\"required>";
                                         echo "</label>";
                                         echo "<label>";
                                             echo "<p> Année </p>";
-                                            echo "<input id=\"AA\" pattern='[0-1][0-9]' placeholder='AA' type=\"text\" name=\"AA\" value=\"\">";
+                                            echo "<input id=\"AA\" pattern='[0-9][0-9]' placeholder='AA' type=\"text\" name=\"AA\" value=\"\"required>";
                                         echo "</label>";
                                         echo "</div>";
                                         echo "<label>";
                                             echo "<p> Cryptograme </p>";
-                                            echo "<input id=\"crypto\" pattern='[0-9]{3}' placeholder='101' type=\"text\" name=\"crypto\" value=\"\">";
-                                        echo "<label>";
-                                        echo "<div class = ligne3>";
-                                        echo "<label>";
-                                            echo "<p class=promo_text > Inserer code promo </p>";
-                                            echo "<input id=code_promo type=text name=promo placeholder=E54D21F457>"; 
-                                            /*echo "<ul>";
-                                                echo "<li class = 'valiCode' id='valiCode'>Code promo invalide</li>";
-                                            echo "</ul>";
-                                            */
+                                            echo "<div class=ligne2>";
+                                                echo "<input id=\"crypto\" pattern='[0-9]{3}' placeholder='101' type=\"text\" name=\"crypto\" value=\"\"required>";
+                                                echo "<input class=\"valid_btn\" id='btnvaliCode' type='submit' value = 'Valider'>";
+                                            echo "</div>";
                                         echo "</label>";
-                                        echo "<input class=\"valid_btn\" id='valiPay' type='submit' value = '". $_SESSION['totalprix_ttc']." €'>";
-                                    echo "</div>";
-                                    echo "</form>";
+                                        echo "</form>";
                                 echo "</article>";
                         echo "</section>";
                     }
@@ -251,6 +249,8 @@
                                     echo "</div>";
 
                                     echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr"] . "\" name=\"adr\"required></label> ";
+                                    echo "<div class=ligne2>";
+                                    echo "</div>";
                                     echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $_SESSION["ville"] . "\" name=\"ville\"required></label> ";
                                     echo "<div class=ligne2>";
                                         echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays"] . "\" name=\"pays\"required></label> ";
@@ -262,13 +262,13 @@
                             foreach ($res2 as $row2) {
                                 echo "<form id=\"adr_livr\" action=\"\" method=\"get\">";
                                     echo "<div class=ligne1>";
-                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"" . $row2["num"] . "\"></label> ";
-                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $row2["code_postal"] . "\" name=\"codePost\"></label> ";
+                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"" . $row2["num"] . "\"required></label> ";
+                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $row2["code_postal"] . "\" name=\"codePost\"required></label> ";
                                     echo "</div>";
-                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $row2["rue"] . "\" name=\"adr\"></label> ";
-                                    echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $row2["ville"] . "\" name=\"ville\"></label> ";
+                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $row2["rue"] . "\" name=\"adr\"required></label> ";
+                                    echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $row2["ville"] . "\" name=\"ville\"required></label> ";
                                     echo "<div class=ligne2>";
-                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $row2["pays"] . "\" name=\"pays\"></label> ";
+                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $row2["pays"] . "\" name=\"pays\"required></label> ";
                                         echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                     echo "</div>";
                                 echo "</form>";
@@ -277,13 +277,13 @@
                             else{
                                 echo "<form id=\"adr_livr\" action=\"\" method=\"get\">";
                                     echo "<div class=ligne1>";
-                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"\"></label> ";
-                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"\" name=\"codePost\"></label> ";
+                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"\"required></label> ";
+                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"\" name=\"codePost\"required></label> ";
                                     echo "</div>";
-                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"\" name=\"adr\"></label> ";
-                                    echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"\" name=\"ville\"></label> ";
+                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"\" name=\"adr\"required></label> ";
+                                    echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"\" name=\"ville\"required></label> ";
                                     echo "<div class=ligne2>";
-                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"\" name=\"pays\"></label> ";
+                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"\" name=\"pays\"required></label> ";
                                         echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                     echo "</div>";                            
                                 echo "</form>";
@@ -297,14 +297,13 @@
                                 echo "<article class=champs>";
                                 echo "<form id=\"adr_livr\" action=\"commande.php\" method=\"get\">";
                                     echo "<div class=ligne1>";
-                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"" . $_SESSION["numRue2"] . "\"></label> ";
-                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_SESSION["codePost2"] . "\" name=\"codePost2\"></label> ";
-                                        echo "ddddd";
+                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"" . $_SESSION["numRue2"] . "\"required></label> ";
+                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_SESSION["codePost2"] . "\" name=\"codePost2\"required></label> ";
                                     echo "</div>";
-                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr2"] . "\" name=\"adr2\"></label> ";
-                                    echo "<label>Ville&nbsp; : <input id=\"adrFact\" type=\"text\" value=\"" . $_SESSION["ville2"] . "\" name=\"ville2\"></label> ";
+                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr2"] . "\" name=\"adr2\"required></label> ";
+                                    echo "<label>Ville&nbsp; : <input id=\"adrFact\" type=\"text\" value=\"" . $_SESSION["ville2"] . "\" name=\"ville2\"required></label> ";
                                     echo "<div class=ligne2>";
-                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays2"] . "\" name=\"pays2\"></label> ";
+                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays2"] . "\" name=\"pays2\"required></label> ";
                                         echo "<input class=\"valid_btn\" id=\"adrFact\" type=\"submit\" value=\"Valider\"\">";
                                     echo "</div>";
                                 echo "</form>"; 
@@ -315,13 +314,13 @@
                                     echo "<article class=champs>";
                                         echo "<form id=\"adr_fact\" action=\"\" method=\"get\">";
                                             echo "<div class=ligne1>";
-                                                echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"" . $row["num"] . "\"></label> ";
-                                                echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"text\" value=\"" . $row["code_postal"] . "\" name=\"codePost2\"></label> ";
+                                                echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"" . $row["num"] . "\"required></label> ";
+                                                echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"text\" value=\"" . $row["code_postal"] . "\" name=\"codePost2\"required></label> ";
                                                 echo "</div>";
-                                            echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $row["rue"] . "\" name=\"adr2\"></label> ";
-                                            echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $row["ville"] . "\" name=\"ville2\"></label> ";
+                                            echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $row["rue"] . "\" name=\"adr2\"required></label> ";
+                                            echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $row["ville"] . "\" name=\"ville2\"required></label> ";
                                             echo "<div class=ligne2>";
-                                                echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $row["pays"] . "\" name=\"pays2\"></label> ";
+                                                echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $row["pays"] . "\" name=\"pays2\"required></label> ";
                                                 echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                             echo "</div>";
                                         echo "</form>";
@@ -339,35 +338,33 @@
                                             echo "<div class=ligne1>";
                                                 echo "<label>";
                                                 echo "<p>Code carte bleu</p>";
-                                                echo "<input pattern='[0-9]{16}' id=\"numCa\" type=\"text\" name=\"numCa\" value=\"". $_SESSION['numeCarte'] ."\"> ";
+                                                echo "<input pattern='[0-9]{16}' class = 'numCa' id=\"numCa\" type=\"text\" name=\"numCa\"  value=\"". $_SESSION['numCa'] ."\"required> ";
+                                                echo "<ul>";
+                                                    echo "<li id = 'tailleCrypto'>Erreur : Donnez un numéro de carte de 16 chiffres</li>";
+                                                    echo "<li id = 'valiCarte'>Erreur : donnez un numéro de carte valide </li>";
+                                                echo "</ul>";
                                                 echo "</label>";
                                             echo "</div>";
                                             echo "<div class = ligne2_2>";
                                             echo "<label>";
                                                 echo "<p> Mois </p>";
-                                                echo "<input id=\"MM\" pattern='[0-1][0-9]' placeholder='MM' type=\"text\" name=\"MM\" value=\"". $_SESSION['mois'] ."\">";
+                                                echo "<input id=\"MM\" pattern='[0-9][0-9]' placeholder='MM' type=\"text\" name=\"MM\" value=\"". $_SESSION['mois'] ."\"required>";
                                             echo "</label>";
                                             echo "<label>";
                                                 echo "<p> Année </p>";
-                                                echo "<input id=\"AA\" pattern='[0-1][0-9]' placeholder='AA' type=\"text\" name=\"AA\" value=\"". $_SESSION['année'] ."\">";
+                                                echo "<input id=\"AA\" pattern='[0-9][0-9]' placeholder='AA' type=\"text\" name=\"AA\" value=\"". $_SESSION['année'] ."\"required>";
                                             echo "</label>";
                                             echo "</div>";
                                             echo "<label>";
-                                                echo "<p> Cryptograme </p>";
-                                                echo "<input id=\"crypto\" pattern='[0-9]{3}' placeholder='101' type=\"text\" name=\"crypto\" value=\"". $_SESSION['crypt'] ."\">";
+                                                echo "<div class=ligne2>";
+                                                    echo "<p> Cryptograme </p>";
+                                                    echo "<input id=\"crypto\" pattern='[0-9]{3}' placeholder='101' type=\"text\" name=\"crypto\" value=\"". $_SESSION['crypt'] ."\"required>";
+                                                echo "</div>";
                                             echo "<label>";
                                             echo "<div class = ligne3>";
-                                            echo "<label>";
-                                                echo "<p class=promo_text > Inserer code promo </p>";
-                                                echo "<input id=code_promo type=text name=promo placeholder=E54D21F457>"; 
-                                                /*echo "<ul>";
-                                                echo "<li class = 'valiCode' id='valiCode'>Code promo invalide</li>";
-                                            echo "</ul>";
-                                            */
-                                                
-                                                echo "</label>";
-                                            echo "<input class=\"valid_btn\" id='valiPay' type='submit' value = '". $_SESSION['totalprix_ttc']." €'>";
-                                        echo "</div>";
+                                                echo "<label>";
+                                                echo "<input class=\"valid_btn\" id='btnvaliCode' type='submit' value = 'Valider'>";
+                                            echo "</div>";
                                         echo "</form>";
                                     echo "</article>";
                             echo "</section>";
@@ -376,76 +373,109 @@
                             echo "<section id=modePaiement class=adresses>";
                             echo'<h2><span>Paiement</span> par carte bancaire </h2>';
                                 echo "<article class=paiement>";
-                                    echo "<form id=\"pay\" action=\"finaliserCommande.php\" method=\"post\">";
+                                    echo "<form id=\"pay\" action=\"commande.php\" method=\"post\">";
                                         echo "<div class=ligne1>";
                                             echo "<label>";
                                             echo "<p>Code carte bleu</p>";
-                                            echo "<input pattern='[0-9]{16}' id=\"numCa\" type=\"text\" name=\"numCa\" value=\"\"> ";
+                                            echo "<input pattern='[0-9]{16}' class = 'numCa' id=\"numCa\" type=\"text\" name=\"numCa\" value=\"\"required> ";
+                                            echo "<ul>";
+                                                echo "<li id = 'tailleCrypto'>Erreur : Donnez un numéro de carte de 16 chiffres</li>";
+                                                echo "<li id = 'valiCarte'>Erreur : donnez un numéro de carte valide </li>";
+                                            echo "</ul>";
                                             echo "</label>";
                                         echo "</div>";
                                         echo "<div class = ligne2_2>";
                                         echo "<label>";
                                             echo "<p> Mois </p>";
-                                            echo "<input id=\"MM\" pattern='[0-1][0-9]' placeholder='MM' type=\"text\" name=\"MM\" value=\"\">";
+                                            echo "<input id=\"MM\" pattern='[0-9][0-9]' placeholder='MM' type=\"text\" name=\"MM\" value=\"\"required>";
                                         echo "</label>";
                                         echo "<label>";
                                             echo "<p> Année </p>";
-                                            echo "<input id=\"AA\" pattern='[0-1][0-9]' placeholder='AA' type=\"text\" name=\"AA\" value=\"\">";
+                                            echo "<input id=\"AA\" pattern='[0-9][0-9]' placeholder='AA' type=\"text\" name=\"AA\" value=\"\"required>";
                                         echo "</label>";
                                         echo "</div>";
+                                        echo "<div class=ligne2>";
                                         echo "<label>";
                                             echo "<p> Cryptograme </p>";
-                                            echo "<input id=\"crypto\" pattern='[0-9]{3}' placeholder='101' type=\"text\" name=\"crypto\" value=\"\">";
+                                            echo "<input id=\"crypto\" pattern='[0-9]{3}' placeholder='101' type=\"text\" name=\"crypto\" value=\"\"required>";
                                         echo "<label>";
-                                        echo "<div class = ligne3>";
-                                        echo "<label>";
-                                            echo "<p class=promo_text > Inserer code promo </p>";
-                                            echo "<input id=code_promo type=text name=promo placeholder=E54D21F457>"; 
-                                            /*echo "<ul>";
-                                                echo "<li class = 'valiCode' id='valiCode'>Code promo invalide</li>";
-                                            echo "</ul>";
-                                            */
-                                        echo "</label>";
-                                        echo "<input class=\"valid_btn\" id='valiPay' type='submit' value = '". $_SESSION['totalprix_ttc']." €'>";
-                                    echo "</div>";
+                                        echo "</div>";
+                                        echo "<input class=\"valid_btn\" id='btnvaliCode' type='submit' value = 'Valider'>";
                                     echo "</form>";
                                 echo "</article>";
                         echo "</section>";
-                        }
-                        
+                    }
             }
+            // Posibilité d'entrer le code de retour
+            
+
+            if(isset($_SESSION['reduction'])){ 
+                echo "<section id=modePaiement class=adresses>";
+                    echo'<h1><span>Réduction appliqué de '. $_SESSION['reduction'] . ' €</h1></br>';
+                echo "</section>";
+            }
+            else{
+                echo "<section id=modePaiement class=adresses>";
+                echo'<h2><span>Inserer</span> code de retour</h2>';
+                    echo "<article>";
+                        echo "<form id=\"code\" action=\"commande.php\" method=\"post\">";
+                            echo "<label>";
+                                echo "<div class = ligne3>";
+                                echo "<input id=code_promo type=text name=promo placeholder=E54D21F457>"; 
+                                echo "<ul>";
+                                    echo "<li class = 'valiCode' id='errCode'>Code promo invalide</li>";
+                                    
+                                echo "</ul>";
+                            echo "</label>";
+                            echo "<input class=\"valid_btn\" id='btnvaliCode' type='submit' value = 'Valider'>";
+                            echo "</div>";
+                        echo "</form>";
+                    echo "</article>";
+                echo "</section>";
+            }
+            
+
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br>";
             die();
         }
 
-        $_SESSION['numRue'] = $_GET['numRue'];
-        $_SESSION["codePost"] = $_GET['codePost'];
-        $_SESSION['adr'] = $_GET['adr'];
-        $_SESSION['ville'] = $_GET['ville'];
-        $_SESSION['pays'] = $_GET['pays'];
+        // Verification Code de promo
+        $valiCode = -1;
 
-        $_SESSION['numRue2'] = $_GET['numRue2'];
-        $_SESSION['codePost2'] = $_GET['codePost2'];
-        $_SESSION['adr2'] = $_GET['adr2'];
-        $_SESSION['ville2'] = $_GET['ville2'];
-        $_SESSION['pays2'] = $_GET['pays2'];
 
-        $_SESSION['numCa'] = $_GET['numeCarte'];
-        $_SESSION['MM'] = $_GET['mois'];
-        $_SESSION['AA'] = $_GET['année'];
-        $_SESSION['crypto'] = $_GET['crypt'];
+        
 
-        if(strcmp($_GET['promo'], '')){
-            $_SESSION['promo'] = 0;
+        if(isset($_GET['numRue'])){
+            $_SESSION['numRue'] = $_GET['numRue'];
+            $_SESSION["codePost"] = $_GET['codePost'];
+            $_SESSION['adr'] = $_GET['adr'];
+            $_SESSION['ville'] = $_GET['ville'];
+            $_SESSION['pays'] = $_GET['pays'];
         }
-        else if(strcmp($_GET['promo'], $codePromo)){
-            $_SESSION['promo'] = 1;
-            $prixTotalTTC = $prixTotalTTC * 0.80;
+
+
+
+        if(isset($_GET['numRue2'])){
+            $_SESSION['numRue2'] = $_GET['numRue2'];
+            $_SESSION['codePost2'] = $_GET['codePost2'];
+            $_SESSION['adr2'] = $_GET['adr2'];
+            $_SESSION['ville2'] = $_GET['ville2'];
+            $_SESSION['pays2'] = $_GET['pays2'];
         }
-        else{
-            $_SESSION['promo'] = -1;
+
+
+        if(isset($_POST['numCa'])){
+            $_SESSION['numCa'] = $_POST['numCa'];
+            $_SESSION['mois'] = $_POST['MM'];
+            $_SESSION['année'] = $_POST['AA'];
+            $_SESSION['crypt'] = $_POST['crypto'];
         }
+
+        
+                
+
+        
 
 
         if(isset($_SESSION['numRue'])){
@@ -498,6 +528,7 @@
                                     $prixTotalTTC += $row["quantite"] * $row["prix_ttc"];
                                     $prixTotalHT += $row["quantite"] * $row["prix_ht"];
                                     $prixTVA = $prixTotalTTC - $prixTotalHT;
+                                    $_SESSION['prixtot'] = $prixTotalTTC;
                                     
                                     array_push($_SESSION["panier"], $row["quantite"]);
                                     $iter++;
@@ -536,8 +567,8 @@
                                 
                                 // Fonction "Finaliser commande"
                                     echo "<div class=button_center>";
-                                        echo '<button id = btnVali onclick=finaliserCommande.php form=adr_livr type=submit>Finaliser la commande et payer</button>';
-                                    echo "</div>";
+                                        echo '<button type="button" id="btnVali" onClick="javascript:document.location.href=\'commande_sql.php\'" >Finaliser la commande et payer</button>';
+                                        echo "</div>";
                                     echo "<ul>";
                                         echo "<li id='valillivre'>Vous devez remplire le champ Adresse de Livraison</li>";
                                         echo "<li id='valilfact'>Vous devez remplire le champ Adresse de Facturation</li>";
@@ -548,29 +579,92 @@
                                 // Texte
                                     echo '<p>En passant votre commande, vous acceptez les Conditions générales de vente d’Alizon.</p>';
                                 
-                                // Barre 
+                                // Barre                             $stmt3 = $dbh->prepare("SELECT libelle,prix_ttc,prix_ht,quantite_stock,quantite,id_client,id_produit FROM alizon.produit NATURAL JOIN alizon._panier WHERE id_client = $idclient");
+
                                     echo "<hr class=separation>";
 
                                 // Affichage du prix total :
                                 echo "<div class=total>";
-                                    echo "<p>Total : <span class=blue2> $prixTotalTTC € </span> TTC </p>";
+                                    if((isset($_SESSION['reduction'])) && ($_SESSION['reduction'] != 0)){
+                                        $nouv = $prixTotalTTC - $_SESSION['reduction'];
+                                        echo "<p>Total : <span class=blue2>". $nouv." € </span> TTC </p>";
+                                    }
+                                    else{
+                                        echo "<p>Total : <span class=blue2> $prixTotalTTC € </span> TTC </p>";
+                                    }
+                                    
                                 echo "</div>";
 
-                                echo "</section>"; 
-                            echo "</div>";        
-                        echo "</div>";                    
+                                echo "</section>";
+                            echo "</div>";
+                        echo "</div>";
+                        $_SESSION['total'] = $prixTotalTTC;
+
+
+                        if(isset($_POST['promo'])){             //Permet la gestion des bons
+                            $tempCode = $_POST['promo'];
+                            $stmt4 = $dbh->prepare("SELECT valeur FROM alizon._bon WHERE id_client = 7 AND code = '$tempCode' AND valeur != 0 FETCH FIRST 1 ROWS ONLY;"); // récupération du bon entrée dans le formulaire appartenant au client
+                            $stmt4->execute();
+                            $valPromo = $stmt4->fetchAll();
+                            
+                            if(count($valPromo) == 1){  // s'il y en a un code de promo valide
+                                foreach($valPromo as $ligne){     // On récupre la valeur  
+                                    if($_SESSION['prixtot'] < $ligne['valeur']){
+                                        $temp1 = $ligne['valeur'] - $_SESSION['prixtot'];
+                                        $_SESSION['reduction'] = $ligne['valeur'] - $temp1;  //$_SESSION['reduction'] correspond a la valeur réduite au prix
+                                    }
+                                    else{
+                                        $_SESSION['prixtot'] = $_SESSION['prixtot'] - $ligne['valeur'];
+                                        $_SESSION['reduction'] = $ligne['valeur'];
+                                    }
+                                    
+                                    $valiCode = 1;      //valicode est égale a 1 si c'est le bon code
+                                    if($prixTotalHT < $_SESSION['reduction']){ // si le bon est plus grand que le prix a payer, on vas modifier la valeur du bon
+                                        $rest = $temp1;
+                                        try {
+                                            $dbh = new PDO("$driver:host=$server;dbname=$dbname",$user, $pass);
+                                            $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                  
+                                            $sth = $dbh->prepare(
+                                                "UPDATE alizon._bon SET valeur = '$rest' WHERE id_client = '$idclient' AND code = '$tempCode'"
+                                            );
+                                            $sth->execute();
+                                            $result = $sth->fetchall();
+                                            
+                                            $dbh = null;
+                                        
+                                            
+                                            
+                                        } catch (PDOException $e) {
+                                            print "Erreur !: " . $e->getMessage() . "<br/>";
+                                            die();
+                                        }
+                                    }
+                                    header("Refresh:0");
+                                }
+                            }
+                            else{
+                                $valiCode = 0; //valicode est égale a 0 si ce n'est pas le bon code
+                            }
+                        }
+                        else{
+                            $valiCode = -1;      //vali code est égale a -1 pour n'afficher rien
+                        }
+
         ?>
     </main>
     <?php
     include("./footer.php");
     ?>
+    
     <script>
+//                                  -------------Validation des champs livraison, facturation et payement-------------------
+        document.getElementById("code_promo").addEventListener("keyup", validerTailleCode); //écouteur pour que chaque fois que l'utilisateur tape dans le code promo, il regarde si il fait 10 charac
 
-
-        var verifLivr = <?php echo(json_encode($_SESSION['verifLivr']));  ?>;
-        var verifFact = <?php echo(json_encode($_SESSION['verifFact'])); ?>;
-        var verifPay = <?php echo(json_encode($_SESSION['verifPay'])); ?>; 
-        var verPromo = <?php echo(json_encode($_SESSION['promo'])); ?>; 
+        var verifLivr = <?php echo(json_encode($_SESSION['verifLivr']));?>;
+        var verifFact = <?php echo(json_encode($_SESSION['verifFact']));?>;
+        var verifPay = <?php echo(json_encode($_SESSION['verifPay']));?>; 
+        var verPromo = <?php echo(json_encode($valiCode))?>;
 
 
         var tabtn = document.getElementsByClassName("valid_btn");
@@ -581,42 +675,19 @@
             btn.addEventListener('click', valider());
         }
 
-        document.getElementById("btnVali").disabled = true;
-        
+        document.getElementById("valiCode").hidden = true;
+        document.getElementById("errCode").hidden = true;
+        document.getElementById("btnvaliCode").disabled = true;
 
 
         //document.getElementById("valiCode").hidden = true;
         
-        function validerLivr(){
+        
+
+        function valider(){ 
             if(verifLivr == 1){
                 document.getElementById("valillivre").hidden = true;
             }
-            else {
-                document.getElementById("valillivre").hidden = false;
-            }
-        }
-
-        function validerFact(){
-            if(verifLivr == 1){
-                document.getElementById("valillivre").hidden = true;
-            }
-            else {
-                document.getElementById("valillivre").hidden = false;
-            }
-        }
-
-        function validerPay(){
-            if(verifLivr == 1){
-                document.getElementById("valillivre").hidden = true;
-            }
-            else {
-                document.getElementById("valillivre").hidden = false;
-            }
-        }
-
-        function valider(){
-
-            
 
             if(verifFact == 1){
                 document.getElementById("valilfact").hidden = true;
@@ -636,21 +707,41 @@
             }
         }
 
-        
-        /*function validerCode(){
-            if(verPromo == 0){
-                document.getElementById("valilpay").hidden = true;
+        function validerTailleCode(){
+            entrée = document.getElementById("code_promo");
+            tabl = entrée.value.split('');
+            if(tabl.length == 10){
+                document.getElementById("btnvaliCode").hidden = true;
             }
-            else if(verPromo == 1){
-                document.getElementById("valilpay").hidden = true;
+            else{
+                document.getElementById("btnvaliCode").disabled = true;
             }
-            else(verPromo == -1){
-                document.getElementById("valilpay").hidden = false;
-            }
+        }    
+
+
+
+        if(verPromo == 0){
+            document.getElementById("valiCode").hidden = true;
+            document.getElementById("errCode").hidden = false;
+
         }
-        */
-        
+        else if(verPromo == 1){
+            document.getElementById("valiCode").hidden = false;
+            document.getElementById("errCode").hidden = true;
+
+        }
+        else{
+            document.getElementById("valiCode").hidden = true;
+            document.getElementById("errCode").hidden = true;
+        }
+
+    
+   //-------------Validation de la carte bleu-------------------
     </script>
+    
+
+    <script src="../Javascript/ValidationPay.js"></script>
 
 </body>
 </html>
+

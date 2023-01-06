@@ -12,12 +12,12 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    
     <link rel="stylesheet" href="../css/style_prod.css">
     <link rel="stylesheet" href="../css/foot_head.css">
     <link rel="stylesheet" href="../css/style_vendeur.css">
-
-  </head>
+  
+</head>
 <?php
 include('id.php');
 include('head.php');
@@ -34,7 +34,7 @@ try {
     //     print_r($row);
     //     echo "</pre>";
     // }
-    if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur']) and !isset($_GET["categorie"])){
+    if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur']) and !isset($_SESSION["admin"]) and !isset($_GET['admin'])){
 /******Carousel *******/
     echo '<div class="container-fluid col-md-8 col-10">';
         echo '<div class="row">';
@@ -124,8 +124,36 @@ try {
                 
             }
                 header('Location: ./Liste_produit_vendeur.php');
+        }elseif(isset($_GET['admin'])){
+            if($_GET['admin'] == 'e3afed0047b08059d0fada10f400c1e5'){
+                $_SESSION =[];
+                $_SESSION['admin'] = true;
+            }
+            header('Location: ./Liste_produit.php');
         }else{
-            if(isset($_SESSION['id_vendeur'])){
+            if(isset($_SESSION['admin'])){
+                echo '<div class="container">';
+                echo '<h2 id="titre_corps"> Tout les articles </h2>';
+                echo '<div class="row justify-content-center">';
+                echo '<form action="detail_produit.php" method="get" id="Detail"></form>';
+                foreach($dbh->query("SELECT * FROM Alizon.Produit ORDER BY id_produit", PDO::FETCH_ASSOC) as $row) {
+                    $nom_dossier = '../img/produit/'.$row['id_produit'].'/';
+                    $dossier = opendir($nom_dossier);
+                    $chaine=[];
+                    while($fichier = readdir($dossier))
+                    {
+                        if($fichier != '.' && $fichier != '..')
+                        {
+                            $chaine[]= $fichier;
+                        }
+                    }
+                    closedir($dossier);
+                        echo '<div id ="article" class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3" ><button id="btn" name="ID" type="submit" form="Detail" value="'.$row['id_produit'].'" class="h-100 btn btn-outline-primary"><img id ="images" src="'.$nom_dossier.$chaine[0].'" class="rounded img-fluid"> <p>'.$row['libelle'].'</p> <p id="prix"> '.$row['prix_ttc'].'€</p></button></div>';
+
+                }
+                echo '</div>';
+                echo '</div>';
+            }elseif(isset($_SESSION['id_vendeur'])){
                 echo '<form id="filtre">';
                 echo '<h2>Filtres</h2>';
                 echo '<button onclick="window.location.href = \'Liste_produit.php\';" type="button">Tous les produits</button>';
@@ -133,7 +161,7 @@ try {
                 echo '</form>';
                 echo "<hr class=separation>";
                 echo '<div class="container">';
-                echo '<h2 id="titre_corps"><span class=mot1>Vos</span> <span class=mot2>articles</span> </h2>';
+                echo '<h2 id="titre_corps"> Vos articles </h2>';
                 echo '<div class="row justify-content-center">';
                 echo '<form action="detail_produit.php" method="get" id="Detail"></form>';
                 foreach($dbh->query("SELECT * FROM Alizon.Produit WHERE id_vendeur='".$_SESSION["id_vendeur"]."' ORDER BY id_produit", PDO::FETCH_ASSOC) as $row) {

@@ -4,6 +4,9 @@
     if(isset($_SESSION['id_vendeur'])){
         unset($_SESSION['id_vendeur']);
     }
+    if(isset($_SESSION['admin'])){
+        unset($_SESSION['admin']);
+    }
     include('id.php');
     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     $valeurs = $_GET;
@@ -13,8 +16,11 @@
     $id = $dbh->query("Select count(id_client) from Alizon._Client WHERE mail='".$mail."' AND mot_de_passe='".$mdp."'", PDO::FETCH_ASSOC)->fetch();
     if($id['count']==1){
         $id = $dbh->query("SELECT * FROM Alizon._Client WHERE mail='".$mail."'", PDO::FETCH_ASSOC) -> fetch();
+        if($id['bloquer']){
+            header('Location: suspendu.php');
+        }else{
         $_SESSION['id_client'] = $id['id_client'];
-
+        
         if(isset($_COOKIE["panier"])){
             $panier = unserialize($_COOKIE["panier"]);
             foreach($panier as $key => $value){
@@ -34,6 +40,7 @@
         }
 
         header('Location: Liste_produit.php');
+        }
     }
     else{
         echo'<form action="./connexion.php" method="post">
