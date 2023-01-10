@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <header>
     <nav>
+    <?php
+        if(!isset($_SESSION['id_vendeur'])) {
+            echo '<img src="../img/site/logo.png" onclick="window.location.href=\'./Liste_produit.php\'" alt="logo" class="logo" style="cursor: pointer;">';
+        } else {
+            echo '<img src="../img/site/logo.png" onclick="window.location.href=\'./Liste_produit_vendeur.php\'" alt="logo" class="logo" style="cursor: pointer;">';
+        }
+        ?>
         <img src="../img/site/logo.png" onclick="window.location.href='./Liste_produit.php'" alt="logo" class="logo" style="cursor: pointer;">
         <div class = "search_box">
             <select name="categorie" id="categorie" form="autoCompletion">
@@ -29,7 +36,6 @@
             </select>
             <!--  Mise en place de la requete SQL pour récupérer le nom de l'ensemble des produits dans la BDD -->
             <?php
-                include("../php/id.php");
                 $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
                 $data = $dbh->query("SELECT * FROM Alizon.Produit", PDO::FETCH_ASSOC);
                 $dataTab = [];
