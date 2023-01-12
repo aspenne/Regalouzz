@@ -43,7 +43,7 @@ else{
             </script>';
         }
         else{
-            $dbh->exec("INSERT INTO Alizon._client(nom, prenom, mail, tel, date_naissance, mot_de_passe) VALUES ('". strip_tags($nom) . "', '". strip_tags($prenom) . "', '$email', '$telephone', '$date_naissance', '". strip_tags($prenom) . "')");
+            $dbh->exec("INSERT INTO Alizon._client(nom, prenom, mail, tel, date_naissance, mot_de_passe) VALUES ('". strip_tags($nom) . "', '". strip_tags($prenom) . "', '$email', '$telephone', '$date_naissance', '". strip_tags($mdp) . "')");
             $id = $dbh->query("SELECT * FROM Alizon._Client WHERE mail='".$email."'", PDO::FETCH_ASSOC) -> fetch();
             $_SESSION['id_client'] = $id['id_client'];
 
