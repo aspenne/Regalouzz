@@ -35,6 +35,8 @@
                             echo "<th> Date </th>";
                             echo "<th> Montant </th>";
                             echo "<th> Etat </th>";
+                            echo " <th> Détails </th>";
+                            echo "<th> A retourner </th>";
                         echo "</tr>"; 
                         foreach($data as $row){
                             $iteration++;
@@ -54,11 +56,13 @@
                             }
                             $prixTot = $row['prix_total'] + $row['frais_port'];
                             echo "<tr>";
-                                echo "<td>" . $iteration ."</td>";
+                                echo "<td>" . $row["id_commande"] ."</td>";
                                 echo "<td>" .$row['date_commande'] ."</td>";
                                 echo "<td>" .$prixTot ." € </td>";
                                 echo "<td>" .$etat   ."</td>";
-                            echo "</tr>";
+                                echo "<td><button class=\"btn_details\" onclick=\"window.location.href='./details_commande.php?id=".$row['id_commande']."'\">Détails</button></td>";
+                                echo "<td><button class=\"btn_details\" onclick=\"window.location.href='demande_retour.php?id_commande=".$row['id_commande']."'\">A retourner</button></td>";
+                                echo "</tr>";
                     }
                     echo "</tbody>";
                 echo '</table>';
@@ -77,3 +81,4 @@
     ?>
 </body>
 </html>
+
