@@ -81,11 +81,13 @@
         }
 
         // if an article is on the favorite list and we want to add it to the cart, we delete it from the favorite list
-        if ($dbh->query("SELECT * from alizon._listedesouhait where id_client = ".$id_client." and id_produit = ".$id_produit."",PDO::FETCH_ASSOC)->fetch()){
-            $req3 = $dbh->prepare("DELETE FROM alizon._listedesouhait where id_client = :client and id_produit = :produit");
-            $req3->bindParam(':client', $id_client);
-            $req3->bindParam(':produit', $id_produit);
-            $req3->execute();
+        if(isset($_SESSION['id_client'])) {
+            if ($dbh->query("SELECT * from alizon._ListeDeSouhait where id_client=".$id_client." and id_produit=".$id_produit,PDO::FETCH_ASSOC)->fetch()){
+                $req3 = $dbh->prepare("DELETE FROM alizon._listedesouhait where id_client = :client and id_produit = :produit");
+                $req3->bindParam(':client', $id_client);
+                $req3->bindParam(':produit', $id_produit);
+                $req3->execute();
+            }
         }
 
         ?>
