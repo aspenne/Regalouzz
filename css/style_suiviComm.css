@@ -1,8 +1,3 @@
-body{
-    margin: 0px;
-    background: rgb(160, 230, 240, .20);
-}
-
 main{
     display: flex;
     justify-content: center;
@@ -17,6 +12,7 @@ main div.table_box{
     overflow-y: scroll;
     background-color: #fff;
     box-shadow: 0 10px 100px rgba(0, 0, 0, 0.5);
+    margin: 2vh 0;
 }
 
 main div.table_box table{
@@ -46,8 +42,3 @@ main div.table_box table tr td:nth-child(1){
     text-align: center;
     color: #fff;
 }
-
-
-
-
-
