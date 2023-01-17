@@ -95,6 +95,7 @@ try {
 
     echo '<div class="container">';
     echo '<h2 id="titre_corps"> Nos articles </h2>';
+    include("filtrerPrix.php");
     echo '<div class="row justify-content-center">';
     echo '<form action="detail_produit.php" method="get" id="Detail"></form>';
     foreach($dbh->query('SELECT * from Alizon.Produit where masquer = false order by id_produit', PDO::FETCH_ASSOC) as $row) {
