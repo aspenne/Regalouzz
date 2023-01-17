@@ -25,7 +25,7 @@
         $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             $id_vendeur = $_SESSION['id_vendeur'];
             $produit = $dbh->query("SELECT * FROM Alizon._produit WHERE id_produit =".$_GET['ID'], PDO::FETCH_ASSOC) -> fetch();
-            echo '<h2 id="titre_corps"> Modifier ' . $produit['libelle'] . '</h2>';
+            echo '<h2 id="titre_corps" style="margin: 0 2vw;"> Modifier ' . $produit['libelle'] . '</h2>';
             echo '<main>';
             echo '<form action="modifier_produit_sql.php" method="post" enctype="multipart/form-data" style="width:40%">
                     <input type="hidden" value="'. $_GET['ID'] .'" name="ID">
@@ -50,8 +50,16 @@
                         </div>
                     </div>
                     <div class="form-group mt-2 mb-2">
-                        <label for="imgProduit">Images</label>
-                        <input type="file" class="form-control" name="imgProduit[]" accept="image/jpeg, image/jpg" multiple>
+                        <label for="imgProduit">Image principale</label>
+                        <input type="file" class="form-control" name="imgProduit1" accept="image/jpeg, image/jpg">
+                    </div>
+                    <div class="form-group mt-2 mb-2">
+                        <label for="imgProduit">Seconde image</label>
+                        <input type="file" class="form-control" name="imgProduit2" accept="image/jpeg, image/jpg">
+                    </div>
+                    <div class="form-group mt-2 mb-2">
+                        <label for="imgProduit">Troisième image</label>
+                        <input type="file" class="form-control" name="imgProduit3" accept="image/jpeg, image/jpg">
                     </div>
                     <div class="form-group mt-2 mb-2">
                         <input type="checkbox" name="suppFichier" class="form-check-input" value="oui">
