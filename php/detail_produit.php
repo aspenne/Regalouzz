@@ -1,5 +1,5 @@
 <head>
-    <title>Alizon</title>
+    <title>Produit</title>
     <script src="../bootstrap/js/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -79,8 +79,12 @@
                                 <label for="quantite">Quantité :</label>
                                 <input type="number" id="quantite" name="quantite" min="1" max="100" value="1">
                                 <input type="text" id="id_produit" name="id_produit" value="'.$produit['id_produit'].'" hidden>
-                            </form>
-                            <p><button id="BoutonPanier" type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="document.getElementById(\'panier\').submit();"><i class="fa-solid fa-cart-shopping"></i><br>Ajouter au panier</button></p>';
+                            </form>';
+                            if($produit['quantite_stock'] <= 0) {
+                                echo '<p><button id="BoutonPanier" type="button" class="btn btn-primary" style="width:75%; height:auto;" disabled><i class="fa-solid fa-cart-shopping"></i><br>Ajouter au panier</button></p>';
+                            } else {
+                                echo '<p><button id="BoutonPanier" type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="document.getElementById(\'panier\').submit();"><i class="fa-solid fa-cart-shopping"></i><br>Ajouter au panier</button></p>';
+                            }
                             if(isset($_GET["Panier"])){
             
                             }
@@ -132,5 +136,3 @@
     <!--<script src="../Javascript/ding.js"></script>-->
     <script src="../Javascript/valid_green.js"></script>
   </body>
-
-
