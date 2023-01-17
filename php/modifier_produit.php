@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="../css/foot_head.css">
     <link rel="stylesheet" href="../css/style_body.css">
-    <title>Document</title>
+    <title>Modifier produit</title>
 </head>
 <body>
 <?php 
@@ -25,7 +25,7 @@
         $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             $id_vendeur = $_SESSION['id_vendeur'];
             $produit = $dbh->query("SELECT * FROM Alizon._produit WHERE id_produit =".$_GET['ID'], PDO::FETCH_ASSOC) -> fetch();
-            echo '<h2 id="titre_corps" style="margin: 0 2vw;"> Modifier ' . $produit['libelle'] . '</h2>';
+            echo '<h2 id="titre_corps" style="margin: 1vh 4vw;"> Modifier ' . $produit['libelle'] . '</h2>';
             echo '<main>';
             echo '<form action="modifier_produit_sql.php" method="post" enctype="multipart/form-data" style="width:40%">
                     <input type="hidden" value="'. $_GET['ID'] .'" name="ID">
