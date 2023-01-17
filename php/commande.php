@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../css/style_commande.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/foot_head.css">
+    <link rel="stylesheet" href="../css/style_commande.css">
     <title>Document</title>
 </head>
 <?php 
@@ -570,9 +573,9 @@
                                         echo '<button type="button" id="btnVali" onClick="javascript:document.location.href=\'commande_sql.php\'" >Finaliser la commande et payer</button>';
                                         echo "</div>";
                                     echo "<ul>";
-                                        echo "<li id='valillivre'>Vous devez remplire le champ Adresse de Livraison</li>";
-                                        echo "<li id='valilfact'>Vous devez remplire le champ Adresse de Facturation</li>";
-                                        echo "<li id='valilpaye'>Vous devez remplire le champ Payement par carte banquaire</li>";
+                                        echo "<li id='valillivre'>Vous devez remplir le champ Adresse de Livraison</li>";
+                                        echo "<li id='valilfact'>Vous devez remplir le champ Adresse de Facturation</li>";
+                                        echo "<li id='valilpaye'>Vous devez remplir le champ Payement par carte banquaire</li>";
                                         echo "</br>";
                                     echo "</ul>";
 
