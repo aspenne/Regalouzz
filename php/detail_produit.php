@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="../css/foot_head.css">
 
     <link rel="stylesheet" href="../bootstrap/js/bootstrap.js"/>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
@@ -14,6 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../css/foot_head.css">
 
   </head>
 
@@ -59,18 +60,18 @@
                         <p>'.$produit['descr'].'</p>
                         <h2>'.$produit['prix_ttc'].'€ TTC</h2>
                         <h6>'.$produit['prix_ht'].'€ HT</h6>';
-                        // Partie surveillance des stocks côté client et visiteur (quilèle)
+                        // Partie surveillance des stocks pour client et visiteur
                         echo '<p>' . $produit['seuil_alerte'] . '</p>';
                         if($produit['quantite_stock'] == 0) {
-                            echo '<p id="plus_de_stock">Plus en stock</p>';
+                            echo '<p id="plus_de_stock">Hors stock</p>';
                         } else if($produit['quantite_stock'] <= $produit['seuil_alerte']) {
                             echo '<p id="peu_de_stock">Il reste peu d\'exemplaires</p>';
                         } else if($produit['quantite_stock'] > $produit['seuil_alerte']) {
                             echo '<p id="en_stock">En stock</p>';
                         }
                     echo '</div>';
-                    //fin (quilèle)
                     echo'<div class="align-self-center col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" style="text-align: center;">';
+
                     if(!isset($_SESSION['id_vendeur'])){
                         echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
                             <p><img src="../img/site/panier.png" style="height:100px;width:100px;object-fit: contain;" alt="panier"></p>
@@ -81,24 +82,22 @@
                             </form>
                             <p><button id="BoutonPanier" type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="document.getElementById(\'panier\').submit();"><i class="fa-solid fa-cart-shopping"></i><br>Ajouter au panier</button></p>';
                             if(isset($_GET["Panier"])){
-                                echo'<script>document.getElementById("BoutonPanier").style.backgroundColor="green";
-                                document.getElementById("BoutonPanier").style.borderColor="green";
-                                setTimeout(afterClick, 3000);
-                                function afterClick(){
-                                    document.getElementById("BoutonPanier").style.backgroundColor="#007bff";
-                                    document.getElementById("BoutonPanier").style.borderColor="#007bff";
-                                }</script>';
+            
                             }
                             if(isset($_SESSION['id_client'])){
-                                echo'<p><button type="button" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-heart-circle-plus"></i><br>Ajouter à la liste de souhait</button></p>';
+                                echo '<form method="post" action="ajouter_souhait.php" id="souhait">';
+                                    echo '<input type="text" id="id_produit" name="id_produit" value="'.$produit['id_produit'].'" hidden>';
+                                echo '</form>';
+                                echo'<p><button id="BoutonSouhait" type="button" class="btn btn-primary" style="width:75%; height:auto;" onclick="document.getElementById(\'souhait\').submit();"><i class="fa-solid fa-heart-circle-plus"></i><br>Ajouter à la liste de souhait</button></p>';
                             }
                             
                         echo'</div>';
                     }
+                    /*****Partie vendeur********/
                     elseif($_SESSION['id_vendeur']==$produit['id_vendeur']){
                         echo'<div  style="text-align: center; background-color: #CCCCCC; min-width:150px;width:75%; height:auto; border-radius: 25px;padding: 20px; align-self : center;">
                             <form action="modifier_produit.php" method="get">
-                                <input type=hidden name="id_produit" value="'.$_GET['ID'].'">
+                                <input type=hidden name="ID" value="'.$_GET['ID'].'">
                                 <p><button type="submit" class="btn btn-primary" style="width:75%; height:auto;"><i class="fa-solid fa-pen"></i> <br>Modifier Article</button></p>
                             </form>';
                             // modifier Produit en submit pour pouvoir acceder à l'ID produit
@@ -130,5 +129,8 @@
             die();
         }
     ?>
-    <script src="../Javascript/ding.js"></script>
+    <!--<script src="../Javascript/ding.js"></script>-->
+    <script src="../Javascript/valid_green.js"></script>
   </body>
+
+
