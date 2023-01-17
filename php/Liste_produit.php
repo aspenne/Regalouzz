@@ -116,13 +116,13 @@ try {
                 $_SESSION['id_vendeur'] = $id['id_vendeur'];
                 
             }
-                header('Location: ./liste_produit_vendeur.php');
+                header('Location: ./Liste_produit_vendeur.php');
         }elseif(isset($_GET['admin'])){
             if($_GET['admin'] == 'e3afed0047b08059d0fada10f400c1e5'){
                 $_SESSION =[];
                 $_SESSION['admin'] = true;
             }
-            header('Location: ./liste_produit.php');
+            header('Location: ./Liste_produit.php');
         }else{
             if(isset($_SESSION['admin'])){
                 echo '<div class="container">';
@@ -149,8 +149,8 @@ try {
             }elseif(isset($_SESSION['id_vendeur'])){
                 echo '<form id="filtre">';
                 echo '<h2>Filtres</h2>';
-                echo '<button onclick="window.location.href = \'liste_produit.php\';" type="button">Tous les produits</button>';
-                echo '<button onclick="window.location.href = \'liste_produit_alerte.php\';" type="button">Produits en alerte</button>';
+                echo '<button onclick="window.location.href = \'Liste_produit.php\';" type="button">Tous les produits</button>';
+                echo '<button onclick="window.location.href = \'Liste_produit_alerte.php\';" type="button">Produits en alerte</button>';
                 echo '</form>';
                 echo "<hr class=separation>";
                 echo '<div class="container">';
