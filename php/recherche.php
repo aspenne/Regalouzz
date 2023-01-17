@@ -27,18 +27,31 @@ try {
     $req = "";
     if(isset($_GET["categorie"])){
         if(isset($_GET["recherche"])){
-            $req = "SELECT * FROM Alizon.produit WHERE ID_Categorie = ".$_GET["categorie"]." AND UPPER(libelle) LIKE UPPER('%".$_GET["recherche"]."%') AND masquer = false";
+            $req = "SELECT * FROM Alizon.produit WHERE ID_Categorie = ".$_GET["categorie"]." AND UPPER(libelle) LIKE UPPER('%".$_GET["recherche"]."%') ";
         }
         else{
-            $req = "SELECT * FROM Alizon.produit WHERE ID_Categorie = ".$_GET["categorie"]." AND masquer = false" ;
+            $req = "SELECT * FROM Alizon.produit WHERE ID_Categorie = ".$_GET["categorie"];
         }
+    }
+    else if (isset($_GET['min'], $_GET['max'])) {
+        $min1 = (int) $_GET['min'];
+        $max1 = (int) $_GET['max'];
+        $req = "SELECT * FROM Alizon.produit WHERE prix_ttc BETWEEN ".$min1 ." AND ".$max1;
     }
     else{
         if(isset($_GET["recherche"])){
-            $req = "SELECT * FROM Alizon.produit WHERE UPPER(libelle) LIKE UPPER('%".$_GET["recherche"]."%') AND masquer = false";
+            $req = "SELECT * FROM Alizon.produit WHERE UPPER(libelle) LIKE UPPER('%".$_GET["recherche"]."%') ";
         }
         else{
             header("Location: ./Liste_produit.php");
+        }
+    }
+    if (!isset($_SESSION['id_vendeur']) AND !isset($_SESSION['admin'])){
+        $req = $req . "AND masquer = false";
+    }
+    else {
+        if(isset($_SESSION['id_vendeur'])){
+            $req = $req ." AND id_vendeur = ".$_SESSION['id_vendeur'] .";";  
         }
     }
     $data = $dbh->query($req, PDO::FETCH_ASSOC);
