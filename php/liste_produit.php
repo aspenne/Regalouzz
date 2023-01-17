@@ -15,7 +15,6 @@
     
     <link rel="stylesheet" href="../css/style_prod.css">
     <link rel="stylesheet" href="../css/foot_head.css">
-    <link rel="stylesheet" href="../css/style_vendeur.css">
   
 </head>
 <?php
@@ -29,19 +28,20 @@ echo '<div class=conteneur>';
 
 try {
     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
-    $sql = "SELECT * from Alizon._Produit LIMIT 3";
+    $sql = "SELECT * from Alizon.Produit LIMIT 3";
     $result = $dbh->query($sql);
     $liste_libelle = [];
     $liste_prix = [];   
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $liste_libelle[] = $row["libelle"];
-        $liste_prix [] = $row["prix_ht"];
+        $liste_prix [] = $row["prix_ttc"];
+        $liste_id[] = $row["id_produit"];
     }
 
 
     if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur']) and !isset($_GET["categorie"])){
 /******Carousel *******/
-    echo '<div class="container-fluid col-md-8 col-10">';
+    echo '<div class="container-fluid col-md-8 col-10" style="margin-bottom: 20px;">';
         echo '<div class="row">';
             echo '<article >';
                 echo '<div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">';
@@ -64,7 +64,7 @@ try {
                                     echo '<strong>'.$liste_libelle[$i].'</strong></br>';
                                     echo '<strong>'.$liste_prix[$i].' € </strong>';
                                 echo '</h3>';
-                                echo '<img src="../img/produit/'.($i+1).'/1.jpg" class="d-block w-100" >';
+                                echo '<img src="../img/produit/'.$liste_id[$i].'/1.jpg" class="d-block w-100" >';
                             echo '</figure>';
                         echo '</div>';
                     }
@@ -86,10 +86,8 @@ try {
 
 
 
-
     echo '<div class="container">';
     echo '<h2 id="titre_corps"> Nos articles </h2>';
-    include("filtrerPrix.php");
     echo '<div class="row justify-content-center">';
     echo '<form action="detail_produit.php" method="get" id="Detail"></form>';
     foreach($dbh->query('SELECT * from Alizon.Produit where masquer = false order by id_produit', PDO::FETCH_ASSOC) as $row) {
@@ -118,13 +116,13 @@ try {
                 $_SESSION['id_vendeur'] = $id['id_vendeur'];
                 
             }
-                header('Location: ./Liste_produit_vendeur.php');
+                header('Location: ./liste_produit_vendeur.php');
         }elseif(isset($_GET['admin'])){
             if($_GET['admin'] == 'e3afed0047b08059d0fada10f400c1e5'){
                 $_SESSION =[];
                 $_SESSION['admin'] = true;
             }
-            header('Location: ./Liste_produit.php');
+            header('Location: ./liste_produit.php');
         }else{
             if(isset($_SESSION['admin'])){
                 echo '<div class="container">';
@@ -151,8 +149,8 @@ try {
             }elseif(isset($_SESSION['id_vendeur'])){
                 echo '<form id="filtre">';
                 echo '<h2>Filtres</h2>';
-                echo '<button onclick="window.location.href = \'Liste_produit.php\';" type="button">Tous les produits</button>';
-                echo '<button onclick="window.location.href = \'Liste_produit_alerte.php\';" type="button">Produits en alerte</button>';
+                echo '<button onclick="window.location.href = \'liste_produit.php\';" type="button">Tous les produits</button>';
+                echo '<button onclick="window.location.href = \'liste_produit_alerte.php\';" type="button">Produits en alerte</button>';
                 echo '</form>';
                 echo "<hr class=separation>";
                 echo '<div class="container">';
