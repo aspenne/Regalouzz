@@ -7,7 +7,13 @@
 <meta charset="UTF-8">
 <header>
     <nav>
-        <img src="../img/site/logo.png" onclick="window.location.href='./Liste_produit.php'" alt="logo" class="logo" style="cursor: pointer;">
+        <?php
+        if(!isset($_SESSION['id_vendeur'])) {
+            echo '<img src="../img/site/logo.png" onclick="window.location.href=\'./Liste_produit.php\'" alt="logo" class="logo" style="cursor: pointer;">';
+        } else {
+            echo '<img src="../img/site/logo.png" onclick="window.location.href=\'./Liste_produit_vendeur.php\'" alt="logo" class="logo" style="cursor: pointer;">';
+        }
+        ?>        
         <div class = "search_box">
             <select name="categorie" id="categorie" form="autoCompletion">
                 <option value="0">Toutes les catégories</option>
