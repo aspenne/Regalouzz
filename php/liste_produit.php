@@ -29,12 +29,17 @@ echo '<div class=conteneur>';
 
 try {
     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
-    // foreach($dbh->query('SELECT * from Alizon._Produit', PDO::FETCH_ASSOC) as $row) {
-    //     echo "<pre>";
-    //     print_r($row);
-    //     echo "</pre>";
-    // }
-    if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur']) and !isset($_SESSION["admin"]) and !isset($_GET['admin'])){
+    $sql = "SELECT * from Alizon._Produit LIMIT 3";
+    $result = $dbh->query($sql);
+    $liste_libelle = [];
+    $liste_prix = [];   
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $liste_libelle[] = $row["libelle"];
+        $liste_prix [] = $row["prix_ht"];
+    }
+
+
+    if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur']) and !isset($_GET["categorie"])){
 /******Carousel *******/
     echo '<div class="container-fluid col-md-8 col-10">';
         echo '<div class="row">';
@@ -45,37 +50,25 @@ try {
                         echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>';
                         echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>';
                     echo '</div>';
+
                     echo '<div class="carousel-inner">';
-                        echo '<div class="carousel-item active">';
+                    for ($i=0; $i < 3; $i++){
+                        if ($i == 0){
+                            echo '<div class="carousel-item active">';
+                        }
+                        else{
+                            echo '<div class="carousel-item">';
+                        }
                             echo'<figure id="carrou">';
                                 echo '<h3 class="container ">';
-                                    echo '<strong>Petit biscuit</strong></br>';
-                                    echo '<strong>25€</strong>';
+                                    echo '<strong>'.$liste_libelle[$i].'</strong></br>';
+                                    echo '<strong>'.$liste_prix[$i].' € </strong>';
                                 echo '</h3>';
-                                echo '<img src="../img/produit/1/1.jpg" class="d-block w-100" >';
+                                echo '<img src="../img/produit/'.($i+1).'/1.jpg" class="d-block w-100" >';
                             echo '</figure>';
                         echo '</div>';
-
-                        echo '<div class="carousel-item">';
-                            echo'<figure id="carrou">';
-                                echo '<h3 class="container ">';
-                                    echo '<strong>Kouign ammann</strong></br>';
-                                    echo '<strong>35€</strong>';
-                                echo '</h3>';
-                                echo '<img src="../img/produit/2/1.jpg" class="d-block w-100" >';
-                            echo '</figure>';
-                        echo '</div>';
-
-                        echo '<div class="carousel-item">';
-                            echo'<figure id="carrou">';
-                                echo '<h3 class="container">';
-                                    echo '<strong>Crêpes</strong></br>';
-                                    echo '<strong>5€</strong>';
-                                echo '</h3>';
-                                echo '<img src="../img/produit/3/1.jpg" class="d-block w-100" >';
-                            echo '</figure>';
-                        echo '</div>';
-
+                    }
+                    
                         echo '<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">';
                             echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
                             echo '<span class="visually-hidden">Previous</span>';
@@ -90,6 +83,7 @@ try {
         echo '</div>';
     echo '</div>';
     /**************Fin Carousel ********************* */
+
 
 
 
