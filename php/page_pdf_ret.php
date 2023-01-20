@@ -15,11 +15,7 @@
     ?>
 <body>
     <main>
-<<<<<<< HEAD
         <h2 id="h2_form"> Votre demande de retour a bien été prise en compte </h2>
-=======
-        <h2 id="h2_form"> Votre demande de retour à bien été prise en compte </h2>
->>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
         <p id="consignes"> Votre étiquette de retour se télécharge automatiquement <br>
         Si ce n'est pas le cas, veuillez cliquer sur le lien si dessous <br>
         Le vendeur reviendra vers vous sous peu </p>
