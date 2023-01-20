@@ -6,7 +6,7 @@ SELECT num, rue, ville, code_postal, pays FROM alizon._adresse WHERE id_client =
 
 insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (10,'rue de la paix','Lannion','22700','France',6);
 insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (15,'rue de metz','Metz','59000','France',6);
-insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (1,'Quartier','Jean-Macé','94000','France',6);
+insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (1,'Quartier','Jean-Macï¿½','94000','France',6);
 
 insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (10,'rue de la paix','Lannion','22700','France',7);
 insert into Alizon._Adresse(num,rue,ville,code_postal,pays,ID_Client) values (15,'rue de metz','Metz','59000','France',7);

@@ -88,7 +88,15 @@ CREATE TABLE Alizon._Commande(
   AdresseLivr   int     not null,
   date_commande date    not null,
   prix_total    float   not null,
-  frais_port    float   not null
+  frais_port    float   not null,
+  valBon        int      null
+);
+
+CREATE TABLE Alizon._Bon(
+  ID_Bon        serial  constraint bon_pk primary key,
+  ID_Client     int     not null,
+  code          varchar(10) not null,
+  valeur        float   not null  
 );
 
 CREATE TABLE Alizon._ReassortVendeur(
@@ -106,6 +114,27 @@ CREATE TABLE Alizon._DetailCommande(
   quantite    int     not null,
   prix_TTC     float   not null,
   constraint detail_commande_pk primary key (ID_Commande, ID_Produit)
+);
+
+CREATE TABLE Alizon._Retour(
+  ID_Commande int     not null,
+  ID_Client int not null,
+  ID_Produit  int not null  ,
+  quantite    int  not null  ,
+  raison varchar(100) not null,
+  date_ret varchar(100) not null,
+  heure varchar(100) not null,
+  constraint retour_pk primary key (ID_Commande, ID_Produit, date_ret, heure)
+);
+
+CREATE TABLE Alizon._BonTemp(
+  ID_Bon        int  ,
+  ID_Client     int     not null,
+  code          varchar(10) not null,
+  valeur        float   not null,
+  date_bon varchar(20) not null,
+  heure_bon varchar(20) not null,
+  constraint bonTemp_pk primary key (code)
 );
 
 -- Contraintes Avis
@@ -215,7 +244,7 @@ CREATE TABLE Alizon._DetailCommande(
 --Creation des vues
 
 CREATE OR REPLACE VIEW Alizon.Produit AS
-  Select id_produit,id_categorie,libelle,descr,sponsorise,masquer,quantite_stock,prix_ht,prix_ht+prix_ht*taux/100 as prix_ttc,nom_vendeur,id_vendeur from (Alizon._Produit as P natural join Alizon._taxe as T natural join Alizon._vendeur as V);
+  Select id_produit,id_categorie,libelle,descr,sponsorise,masquer,quantite_stock,prix_ht,prix_ht+prix_ht*taux/100 as prix_ttc,seuil_alerte,nom_vendeur,id_vendeur from (Alizon._Produit as P natural join Alizon._taxe as T natural join Alizon._vendeur as V);
 
 CREATE OR REPLACE VIEW Alizon.Commande AS
   Select * from (Alizon.Produit natural join Alizon._detailcommande natural join Alizon._commande) as CP natural join Alizon._client as C;
