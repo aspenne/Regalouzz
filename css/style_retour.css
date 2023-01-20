@@ -1,0 +1,144 @@
+body{
+    background : rgb(160, 230, 240, .20);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main{
+    margin-bottom : 20px;
+    margin-left : 20px;
+    margin-right : 20px;
+}
+
+#form_retour{
+    margin : 20px;
+    padding : 20px;
+    width: 500px;
+    height: auto;
+    background-color: #ECECE2;
+    border-radius: 12px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+#h2_form{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#consignes {
+    /*font-size: 1.3em;*/
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#checkBtn{
+    background-color : #27A8E0;
+    padding: 7px 20px;
+    border-color: #27A8E0;
+    border-radius: 12px;
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    text-decoration: none;
+
+}
+
+#boutton_ret {
+    background-color : #27A8E0;
+    padding: 7px 20px;
+    border-color: #27A8E0;
+    border-radius: 12px;
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: 20px;
+
+}
+
+#download-link {
+    color : black ;
+    margin:0px auto;
+    width:200px;
+    display:block;
+}
+
+li{
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+#quantity{
+    padding-left: 10px;
+    background-color: #939591;
+    width: 40px;
+    height: 25px;
+    border-radius: 10px;
+    border : 20px;
+}
+
+#prod_ret {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.checks{
+    margin-right: 10px;
+}
+
+#place_iban{
+    padding : 20px;
+}
+
+#iban {
+    border-radius: 12px;
+}
+#info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    width: auto;
+    height: auto;
+    background-color: #b1b1a6;
+    border-radius: 12px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#val_retour{
+    background-color : #27A8E0;
+    border-color: #27A8E0;
+    height: auto;
+    width: auto;
+    padding: 7px 20px;
+    border-radius: 12px;
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    text-decoration: none;
+
+}
+
+#test{
+    margin-left : auto;
+    margin-right : auto;
+    padding : 20px;
+    width: 500px;
+    height: auto;
+    background-color: #ECECE2;
+    border-radius: 12px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 550px) {
+    #test{
+        width: 400px;
+    }
+}

@@ -1,0 +1,46 @@
+body{
+    background : rgb(160, 230, 240, .20);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main{
+    margin-bottom : 20px;
+    margin-left : 20px;
+    margin-right : 20px;
+}
+
+ul {
+    width: auto;
+    height: auto;
+}
+
+#prof {
+    background : #afafa5;
+    padding : 10px;
+    border-radius: 12px;
+    margin-top : 20px;
+    margin-right : 20px;
+    list-style: none;
+    text-align: center;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+    width: auto;
+}
+
+#validate-button{
+    background-color : #27A8E0;
+    padding: 7px 20px;
+    border-color: #27A8E0;
+    border-radius: 12px;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+#h2_ar{
+    text-align: center;
+}
