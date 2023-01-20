@@ -133,7 +133,7 @@
             die();
         }
     ?>
-    <!--<script src="../Javascript/ding.js"></script>-->
+    <script src="../Javascript/ding.js"></script>
     <script src="../Javascript/valid_green.js"></script>
   </body>
 
