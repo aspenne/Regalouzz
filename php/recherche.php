@@ -4,9 +4,6 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="../css/style_prod.css">
-    <link rel="stylesheet" href="../css/foot_head.css">
-
     <link rel="stylesheet" href="../bootstrap/js/bootstrap.js"/>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -16,6 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="../css/style_prod.css">
+    <link rel="stylesheet" href="../css/foot_head.css">
   </head>
 <?php
 include('id.php');
@@ -27,18 +26,31 @@ try {
     $req = "";
     if(isset($_GET["categorie"])){
         if(isset($_GET["recherche"])){
-            $req = "SELECT * FROM Alizon.produit WHERE ID_Categorie = ".$_GET["categorie"]." AND UPPER(libelle) LIKE UPPER('%".$_GET["recherche"]."%') AND masquer = false";
+            $req = "SELECT * FROM Alizon.produit WHERE ID_Categorie = ".$_GET["categorie"]." AND UPPER(libelle) LIKE UPPER('%".$_GET["recherche"]."%') ";
         }
         else{
-            $req = "SELECT * FROM Alizon.produit WHERE ID_Categorie = ".$_GET["categorie"]." AND masquer = false" ;
+            $req = "SELECT * FROM Alizon.produit WHERE ID_Categorie = ".$_GET["categorie"];
         }
+    }
+    else if (isset($_GET['min'], $_GET['max'])) {
+        $min1 = (int) $_GET['min'];
+        $max1 = (int) $_GET['max'];
+        $req = "SELECT * FROM Alizon.produit WHERE prix_ttc BETWEEN ".$min1 ." AND ".$max1;
     }
     else{
         if(isset($_GET["recherche"])){
-            $req = "SELECT * FROM Alizon.produit WHERE UPPER(libelle) LIKE UPPER('%".$_GET["recherche"]."%') AND masquer = false";
+            $req = "SELECT * FROM Alizon.produit WHERE UPPER(libelle) LIKE UPPER('%".$_GET["recherche"]."%') ";
         }
         else{
             header("Location: ./Liste_produit.php");
+        }
+    }
+    if (!isset($_SESSION['id_vendeur']) AND !isset($_SESSION['admin'])){
+        $req = $req . "AND masquer = false";
+    }
+    else {
+        if(isset($_SESSION['id_vendeur'])){
+            $req = $req ." AND id_vendeur = ".$_SESSION['id_vendeur'] .";";  
         }
     }
     $data = $dbh->query($req, PDO::FETCH_ASSOC);
