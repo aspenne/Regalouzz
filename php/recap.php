@@ -38,6 +38,16 @@ try {
     $data_adresse_livraison = $dbh->query("SELECT * from Alizon._adresse natural join alizon._commande  WHERE adresselivr = id_adresse and id_client='".$_SESSION["id_client"]."'", PDO::FETCH_ASSOC)->fetch();
     $data_adresse_facturation = $dbh->query("SELECT * from Alizon._adresse natural join alizon._commande  WHERE adressefact = id_adresse and id_client='".$_SESSION["id_client"]."'", PDO::FETCH_ASSOC)->fetch();
     $data_client = $dbh->query("SELECT * FROM alizon._client  WHERE id_client='".$_SESSION["id_client"]."'", PDO::FETCH_ASSOC)->fetch();
+    if(!isset($_GET['id_commande'])){
+    $stmt6 = $dbh->prepare("SELECT id_commande from Alizon.commande  where id_client = ".$_SESSION["id_client"]." order by id_commande DESC FETCH FIRST 1 ROWS ONLY;");
+        $stmt6->execute();
+        $res_id_commande = $stmt6->fetch(PDO::FETCH_ASSOC);
+
+        $_SESSION["id_commande"] = $res_id_commande["id_commande"];
+    }
+    else{
+        $_SESSION["id_commande"] = $_GET['id_commande'];
+    }
 
     echo "<div class='info'>";
     echo "<h3> Vos coordonnées </h3>";
@@ -66,7 +76,7 @@ try {
     echo "</div>";
 
 
-    $stmt = $dbh->prepare("SELECT libelle,prix_ttc,quantite_stock,quantite,id_client,id_produit, prix_ht FROM alizon.commande WHERE id_client = ".$_SESSION["id_client"]." and id_commande = ".$_GET["id"]."");
+    $stmt = $dbh->prepare("SELECT libelle,prix_ttc,quantite_stock,quantite,id_client,id_produit, prix_ht FROM alizon.produit NATURAL JOIN alizon._panier WHERE id_client = ".$_SESSION["id_client"]."");
     $stmt->execute();
     $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $total = 0;
@@ -93,12 +103,19 @@ try {
 
     <div class='col-2'>
         Prix total TTC
-    </div>
+    </div>";
+    if(isset($_SESSION['reduction'])){
+        echo "<div class='col-2'>
+            Réduction
+        </div>";
+    }
+    
+echo"</div>
 
-</div>
 <hr class='sep'>";
 
     foreach ($res as $prod){
+
         $total += $prod["prix_ttc"] * $prod["quantite"];
         $total_ht += $prod["prix_ht"] * $prod["quantite"];
         $t = $prod["prix_ttc"] * $prod["quantite"];
@@ -122,9 +139,14 @@ try {
 
         <div class='col-2'>
             ".$t." €
-        </div>
+        </div>";
+        if(isset($_SESSION['reduction'])){
+            echo "<div class='col-2'>";
+                echo "- ".$_SESSION['reduction']." €";
+            echo"</div>";
+        }
 
-    </div>
+    echo"</div>
     <hr class='sep'>";
     }
 
@@ -142,7 +164,21 @@ try {
 
     <div class='col-3'>
         $total € TTC
-    </div>
+    </div>";
+    if(isset($_SESSION['reduction'])){
+        $rest = $total - $_SESSION['reduction'];
+        echo "<div class='col-2'>
+            Reste a payer : $rest
+        </div>";
+    }
+
+echo"</div>
+</div>";
+
+//bouton facture
+echo "<div class='row' id='art'>
+<div class='col-4'>
+    <a href='facture.php?id=".$_SESSION["id_commande"]."' class='btn btn-primary'>Facture</a>
 </div>
 </div>";
 
@@ -151,6 +187,9 @@ catch (PDOException $e) {
     print "Erreur !: " . $e->getMessage() . "<br/>";
     die();
 }
+$dbh->exec("Delete from alizon._panier where id_client = ".$_SESSION['id_client']."");
+
+
 ?>
 </div>
 </main>
