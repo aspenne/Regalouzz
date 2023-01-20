@@ -12,10 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="../css/foot_head.css">
-<<<<<<< HEAD
-=======
-    <link rel="stylesheet" href="../css/style_body.css">
->>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
     <title>Modifier produit</title>
 </head>
 <body>
