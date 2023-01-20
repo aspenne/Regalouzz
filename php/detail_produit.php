@@ -61,11 +61,7 @@
                         <h2>'.$produit['prix_ttc'].'€ TTC</h2>
                         <h6>'.$produit['prix_ht'].'€ HT</h6>';
                         // Partie surveillance des stocks pour client et visiteur
-<<<<<<< HEAD
                         
-=======
-                        echo '<p>' . $produit['seuil_alerte'] . '</p>';
->>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
                         if($produit['quantite_stock'] == 0) {
                             echo '<p id="plus_de_stock">Hors stock</p>';
                         } else if($produit['quantite_stock'] <= $produit['seuil_alerte']) {

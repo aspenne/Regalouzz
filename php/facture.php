@@ -8,11 +8,7 @@ include('id.php');
 try {
     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-<<<<<<< HEAD
     $id_commande = $_SESSION['id_commande'];
-=======
-    $id_commande = $_GET['id'];
->>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
     $data_adresse_facturation = $dbh->query("SELECT * from Alizon._adresse natural join alizon._commande  WHERE adressefact = id_adresse and id_client='".$_SESSION["id_client"]."'", PDO::FETCH_ASSOC)->fetch();
     $data_client = $dbh->query("SELECT * FROM alizon._client  WHERE id_client='".$_SESSION["id_client"]."'", PDO::FETCH_ASSOC)->fetch();
 
@@ -210,17 +206,12 @@ $header = array('Quantite', 'Libelle', 'Prix Unit. HT  '.EURO, 'Montant HT  '.EU
 //$pdf->BasicTable($header, $res);
 $pdf->FancyTable($header, $res);
 
-<<<<<<< HEAD
-=======
-$pdf->Output("mon_pdf.pdf", "F");
->>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
 
 
 // Confirmation par mail
     // Contenu du mail : 
     // Récupérez le contenu du PDF
 
-<<<<<<< HEAD
 $pdf->Output("mon_pdf.pdf", "F");
 
 
@@ -228,8 +219,6 @@ $pdf->Output("mon_pdf.pdf", "F");
     // Contenu du mail : 
     // Récupérez le contenu du PDF
 
-=======
->>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
      //-----------------------------------------------
      //DECLARE LES VARIABLES
      //-----------------------------------------------

@@ -105,7 +105,6 @@ class PDF extends FPDF {
             $this->Ln();
 
         }
-<<<<<<< HEAD
         if(isset($_SESSION["reduction"])){
         $this->Ln();
         $this->SetFont('Arial','I', 12);
@@ -115,9 +114,6 @@ class PDF extends FPDF {
         $this->Cell(40,8,$_SESSION["reduction"],1);
         $this->Ln();}
 
-=======
-        
->>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
         $this->Ln();
         $this->SetFont('Arial','I', 12);
         $this->Cell(80,8,' ','',0,'L',0);
@@ -177,15 +173,9 @@ $header = array('Quantite', 'Libelle', 'Prix Unit. HT  '.EURO, 'Montant HT  '.EU
 //$pdf->BasicTable($header, $res);
 $pdf->FancyTable($header, $res);
 
-<<<<<<< HEAD
 
 $pdf->Output();
 
 unset($_SESSION["reduction"]);
-=======
-$pdf->Output();
-
-
->>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
 
 ?>
