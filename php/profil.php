@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Alizon</title>
+    <title>Page Profil</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../bootstrap/js/jquery-3.5.1.min.js"></script>
-    <link rel="stylesheet" href="../css/style_profil.css">
-    <link rel="stylesheet" href="../css/foot_head.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Profil</title>
+    
+    <link rel="stylesheet" href="../css/style_profil.css">
+    <link rel="stylesheet" href="../css/foot_head.css">
 
 </head>
 <?php include("head.php");?>
@@ -32,23 +32,22 @@
         die();
     }
     ?>
-<!--
-    <div class="nav_prof">
-        <div class="dropdown">
-            <button class="dropbtn">Votre profil 
+
+<div class="nav_prof">
+    <div class="dropdown">
+        <button class="dropbtn">Votre profil 
             <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#identite">Identité</a>
-                <a href="#ad">Adresse</a>
-                <a href="#info">Info personnelles </a>
-                <a href="#">Mot de passe </a>
-            </div>
-        </div> 
-        <a href="#">Paramètres</P></a>
-        <a href="#">Signalements</a>
-    </div>
--->
+        </button>
+        <div class="dropdown-content">
+            <a href="#identite">Identité</a>
+            <a href="#ad">Adresse</a>
+            <a href="#info">Info personnelles </a>
+            <a href="#mdp">Mot de passe </a>
+        </div>
+    </div> 
+    <a id='comm'href="suiviComm.php">Vos commandes</a>
+</div>
+
     <main>
     <div class='prof'>
         <div class="container">
@@ -67,12 +66,36 @@
         </div>
     </div>
 
+    <div class ='prof'>
+        <div class="container">
+            <div class="row justify-content-center">
+                <?php
+                
+                $stmt = $dbh->prepare("SELECT * FROM alizon._bon WHERE id_client='".$_SESSION["id_client"]."'");
+                $stmt->execute();
+                $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                if($res) {
+                    echo "<legend id='bon'>Vos bons :</legend>";
+
+                    $i = 0; 
+                    foreach($dbh->query("SELECT * FROM alizon._bon  WHERE id_client='".$_SESSION["id_client"]."'", PDO::FETCH_ASSOC) as $row){
+                        $i++;
+                        echo "<p> Bon " . $i . " : ". $row["code"] . " : " . $row["valeur"] . "€";
+                    } 
+                }
+            ?>
+            </div>
+        </div>
+    </div>
+
+
     <hr class='sep'>
 
     <div class ='prof'>
         <div class="container">
             <div class="row justify-content-center">
-                <legend id="info">Vos adresse :</legend>
+                <legend id="ad">Vos adresse :</legend>
                 <p> 
                     <button type="submit" onclick="window.location.href = 'page_adr.php'" class="button" id="mdp_button">Voir vos adresses</button>
                 </p>
@@ -101,7 +124,7 @@
     <div class ='prof'>
         <div class="container">
             <div class="row justify-content-center">
-                <legend id="info">Mot de passe :</legend>
+                <legend id="mdp">Mot de passe :</legend>
                 <p> 
                     <button type="submit" onclick="window.location.href = 'page_mdp.php'" class="button" id="mdp_button">Modifier mot de passe</button>
                 </p>
