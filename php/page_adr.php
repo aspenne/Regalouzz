@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Adresse</title>
-        <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/style.css">
         <script src="../Bootstrap/js/bootstrap.min.js"></script> 
         <link rel="stylesheet" href="../css/style_profil.css">
