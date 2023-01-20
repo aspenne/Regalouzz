@@ -10,6 +10,15 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        main {
+            display: flex;
+            justify-content: center;
+            margin: 0px;
+            padding: 0px;
+            align-items: center;
+        }
+    </style>
     <?php
     include("head.php");
     if(!isset($_SESSION['admin']) or $_SESSION['admin'] != TRUE){
