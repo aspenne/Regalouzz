@@ -7,14 +7,13 @@
 <meta charset="UTF-8">
 <header>
     <nav>
-    <?php
+        <?php
         if(!isset($_SESSION['id_vendeur'])) {
             echo '<img src="../img/site/logo.png" onclick="window.location.href=\'./Liste_produit.php\'" alt="logo" class="logo" style="cursor: pointer;">';
         } else {
             echo '<img src="../img/site/logo.png" onclick="window.location.href=\'./Liste_produit_vendeur.php\'" alt="logo" class="logo" style="cursor: pointer;">';
         }
-        ?>
-        <img src="../img/site/logo.png" onclick="window.location.href='./Liste_produit.php'" alt="logo" class="logo" style="cursor: pointer;">
+        ?>        
         <div class = "search_box">
             <select name="categorie" id="categorie" form="autoCompletion">
                 <option value="0">Toutes les catégories</option>
@@ -26,16 +25,21 @@
                 }
 
                 $nb_panier = 0;
+                $nb_souhait = 0;
 
                 if(isset($_SESSION["id_client"])){
                     $stmt = $dbh->prepare("SELECT count(*)  FROM alizon._panier WHERE id_client = ".$_SESSION["id_client"]."");
                     $stmt->execute();
                     $res = $stmt->fetchColumn();
+                    $stmt2 = $dbh->prepare("SELECT count(*)  FROM alizon._listedesouhait WHERE id_client = ".$_SESSION["id_client"]."");
+                    $stmt2->execute();
+                    $res2 = $stmt2->fetchColumn();
                 }
                 ?>
             </select>
             <!--  Mise en place de la requete SQL pour récupérer le nom de l'ensemble des produits dans la BDD -->
             <?php
+                include("../php/id.php");
                 $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
                 $data = $dbh->query("SELECT * FROM Alizon.Produit", PDO::FETCH_ASSOC);
                 $dataTab = [];
@@ -58,6 +62,7 @@
             <?php 
                 if(isset($_SESSION['id_client'])){
                     $nb_panier = $res;
+                    $nb_souhait = $res2;
                     echo'<a href="./profil.php" class="button">Compte <i class="fa-solid fa-user"></i></a>';
                     echo'<a href="./panier.php" class="button" id="button_panier">
                             Panier 
@@ -71,6 +76,7 @@
                         </a>';
                     echo'<a href="./deconnexion.php" class="button">Deconnexion <i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>';
                 }elseif(isset($_SESSION['id_vendeur'])){
+                    echo'<a href="./retour_comm_vendeur.php" class="button">Retours <i class="fa-solid fa-user"></i></a>';
                     echo'<a href="./import.php" class="button">Importer des produits <i class="fa-solid fa-upload"></i></a>';
                     echo'<a href="./commande_vendeur.php" class="button">Les Commandes <i class="fa-solid fa-receipt"></i></a>';
                     echo'<a href="./historique_reassort.php" class="button">Historique <i class="fa-solid fa-clipboard-list"></i></a>';
