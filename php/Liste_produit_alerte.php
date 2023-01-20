@@ -145,7 +145,7 @@ try {
                         }
                     }
                     closedir($dossier);
-                    if($row['quantite_stock'] <= 10) {
+                    if($row['quantite_stock'] <= $row['seuil_alerte']) {
                         echo '<div id ="article" class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3" ><button id="btn" name="ID" type="submit" form="Detail" value="'.$row['id_produit'].'" class="alert_prd h-100 btn btn-outline-primary"><img id ="images" src="'.$nom_dossier.$chaine[0].'" class="rounded img-fluid"> <p>'.$row['libelle'].'</p> <p>⚠️ En stock : ' . $row['quantite_stock'] . ' ⚠️</p> <p id="prix"> '.$row['prix_ttc'].'€</p></button></div>';
                     }
 
