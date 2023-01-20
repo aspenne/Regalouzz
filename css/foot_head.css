@@ -8,7 +8,7 @@
 header {
     margin : 0;
     padding : 0;
-    box-sizing : border-box;
+    box-sizing : border-box !important;
     font-family: sans-serif;
 }
 
@@ -61,6 +61,7 @@ span.notification {
     justify-content: center;
     border: 4px solid #333;
     border-radius: 50%;
+    box-sizing : border-box !important;
 }
 
 span.notification:hover{
@@ -229,6 +230,11 @@ header .topnav {
     }
   }
 
+  /*************************Body**************************/
+
+  body {
+    background-color: rgb(160, 230, 240, .20);;
+}
 
   /*************************Footer**************************/
 
@@ -274,7 +280,7 @@ footer a:link {
 
 @media screen and (max-width: 1000px) {
     footer {
-        display : block;
+        display : block;    
     }
 
     footer img{
@@ -331,14 +337,16 @@ footer a:link {
     
     #plus_de_stock {
         color : red;
+        font-weight: bold;
     }
         
     #peu_de_stock {
         color : orange;
+        font-weight: bold;
     }
     
 
     #en_stock {
         color: #00747C;
+        font-weight: bold;
     }
-    
