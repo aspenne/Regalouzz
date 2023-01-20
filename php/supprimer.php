@@ -13,7 +13,7 @@
     }
     else {
         $tab_cookies = unserialize($_COOKIE['panier']);
-        unset($tab_cookies[$_GET['idproduit']]);
+        unset($tab_cookies[$_GET['id_produit']]);
         if(empty($tab_cookies)){
             echo'true';
             setcookie('panier',serialize($tab_cookies),time()-3600);
