@@ -11,7 +11,7 @@
     }
     else {
         $tab_cookies = unserialize($_COOKIE['panier']);
-        $tab_cookies[$_GET['idproduit']] = $_GET['quantite'];
+        $tab_cookies[$_GET['id_produit']] = $_GET['quantite'];
         setcookie('panier', serialize($tab_cookies), time()+3600*24*30);
         header("location:panier.php");
     }
