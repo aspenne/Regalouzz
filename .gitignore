@@ -39,6 +39,7 @@ id.php
 # image files #
 
 /produit
+id.php
 
 *.jpg
 *.jpeg
