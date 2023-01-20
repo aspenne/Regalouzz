@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/foot_head.css">
-    <link rel="stylesheet" href="../css/style_panier.css">
-    
-    
     
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../bootstrap/js/bootstrap.js"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/foot_head.css">
+    <link rel="stylesheet" href="../css/style_panier.css">
     <title>Document</title>
 </head>
 <body>
@@ -105,7 +106,7 @@
                 else{
                     if(isset($_COOKIE["panier"]) and $_COOKIE["panier"] != ""){
                         $tab_cookies = unserialize($_COOKIE['panier']); 
-                        echo'<h1><span>Votre</span> panier : </h1>';
+                        echo'<h2><span>Votre</span> panier </h2>';
                         echo "<div class=produits_prix>";
                             echo "<div class=produits>";
                         $prixTotalTTC = 0;
@@ -180,8 +181,8 @@
                     }
                     else{
                         echo'<div style="text-align: center;">';
-                        echo '<h1> Votre panier : </h1>
-                        <p>Vous n\'avez pas d\'article</p>';
+                        echo '<h2 class="vide"> Votre panier : </h2>
+                        <p style="margin: 4vh 0;">Vous n\'avez pas d\'article</p>';
                         echo'</div>';
                     }
                 }
@@ -226,6 +227,6 @@
             }
             ?>
     </main>
-    <?php include("./footer.php"); ?>
+    <?php include("footer.php"); ?>
 </body>
 </html>
