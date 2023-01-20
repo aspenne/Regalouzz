@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <article>
+=======
+
+>>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
 <div id="filter-icon"></div>
 <form id="filter-form" action="./Liste_produit.php" method="get" style="display: none;">
   <label for="min">Prix minimum:</label><br>
@@ -7,7 +11,11 @@
   <input type="text" id="max" name="max"><br><br>
 </form>
 <input id="filter-input" type="submit" value="Filtrer" class="submit_button"  onclick="rechercher();">
+<<<<<<< HEAD
 </article>
+=======
+
+>>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
 
 <style> 
 
@@ -21,8 +29,11 @@
 
 #filter-icon:hover {
   background-color : rgb(39, 168, 224);
+<<<<<<< HEAD
   cursor: pointer;
 
+=======
+>>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
 }
 
 .submit_button {
@@ -36,7 +47,10 @@
     border: 0px;
     border-radius: 20px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc28415794a8bea1ab44f313455ef3a2046f9dc9
 </style>
 
 <script>

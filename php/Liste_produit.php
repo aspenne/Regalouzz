@@ -15,7 +15,6 @@
     
     <link rel="stylesheet" href="../css/style_prod.css">
     <link rel="stylesheet" href="../css/foot_head.css">
-    <link rel="stylesheet" href="../css/style_vendeur.css">
   
 </head>
 <?php
@@ -41,7 +40,7 @@ try {
 
     if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur']) and !isset($_SESSION["admin"]) and !isset($_GET['admin'])){
 /******Carousel *******/
-    echo '<div class="container-fluid col-md-8 col-10">';
+    echo '<div class="container-fluid col-md-8 col-10" style="margin-bottom: 20px;">';
         echo '<div class="row">';
             echo '<article >';
                 echo '<div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">';

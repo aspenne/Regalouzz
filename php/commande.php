@@ -99,15 +99,15 @@
                         else if(isset($_SESSION['numRue'])){
                             echo "<form id=\"adr_livr\" action=\"commande.php\" method=\"get\">";
                                 echo "<div class=ligne1>";
-                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"" . $_SESSION["numRue"] . "\"required></label> ";
-                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_SESSION["codePost"] . "\" name=\"codePost\"required></label> ";
+                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"" . $_GET["numRue"] . "\"required></label> ";
+                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_GET["codePost"] . "\" name=\"codePost\"required></label> ";
                                 echo "</div>";
-                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr"] . "\" name=\"adr\"required></label> ";
+                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_GET["adr"] . "\" name=\"adr\"required></label> ";
                                 echo "<div class=ligne2>";
-                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $_SESSION["ville"] . "\" name=\"ville\"required></label> ";
+                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $_GET["ville"] . "\" name=\"ville\"required></label> ";
                                 echo "</div>";
                                 echo "<div class=ligne2>";
-                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays"] . "\" name=\"pays\"required></label> ";
+                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_GET["pays"] . "\" name=\"pays\"required></label> ";
                                     echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                 echo "</div>";
                             echo "</form>"; 
@@ -144,6 +144,7 @@
                                     echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                 echo "</div>";
                             echo "</form>";
+                            header('Location : commande.php');
                         }
                         echo "</article>";
 
@@ -169,16 +170,17 @@
                             echo "<article class=champs>";
                             echo "<form id=\"adr_fact\" action=\"\" method=\"get\">";
                                 echo "<div class=ligne1>";
-                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"". $_SESSION['numRue2'] ."\"required></label> ";
-                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"text\" value=\"". $_SESSION['codePost2'] ."\" name=\"codePost2\"required></label> ";
+                                    echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"". $_GET['numRue2'] ."\"required></label> ";
+                                    echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"text\" value=\"". $_GET['codePost2'] ."\" name=\"codePost2\"required></label> ";
                                 echo "</div>";
-                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"". $_SESSION['adr2'] ."\" name=\"adr2\"required></label> ";
-                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"". $_SESSION['ville2'] . "\" name=\"ville2\"required></label> ";                            
+                                echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"". $_GET['adr2'] ."\" name=\"adr2\"required></label> ";
+                                echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"". $_GET['ville2'] . "\" name=\"ville2\"required></label> ";                            
                                 echo "<div class=ligne2>";
-                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"". $_SESSION['pays2'] ."\" name=\"pays2\"required></label> ";
+                                    echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"". $_GET['pays2'] ."\" name=\"pays2\"required></label> ";
                                     echo "<input class=\"valid_btn\" id=\"adrFact\" type=\"submit\" value=\"Valider\"\">";
                                 echo "</div>";
                             echo "</form>";
+                            header('Location : commande.php');
                         }
                         else{
                             echo "<article class=champs>";
@@ -194,6 +196,7 @@
                                     echo "<input class=\"valid_btn\" id=\"adrFact\" type=\"submit\" value=\"Valider\"\">";
                                 echo "</div>";
                             echo "</form>";
+                            header('Location : commande.php');
                         }
                         
                         echo "</article>";
@@ -244,7 +247,7 @@
                                         echo "<div class=ligne1>";
                                             echo "<label>";
                                             echo "<p>Code carte bleu</p>";
-                                            echo "<input pattern='[0-9]{16}'  class = 'numCa' id=\"numCa\" type=\"text\" name=\"numCa\"  value=\"". $_SESSION['numCa'] ."\"required> ";
+                                            echo "<input pattern='[0-9]{16}'  class = 'numCa' id=\"numCa\" type=\"text\" name=\"numCa\"  value=\"". $_POST['numCa'] ."\"required> ";
                                             echo "<ul>";
                                                 echo "<li id = 'tailleCrypto'>Erreur : Donnez un numéro de carte de 16 chiffres</li>";
                                                 echo "<li id = 'valiCarte'>Erreur : donnez un numéro de carte valide </li>";
@@ -272,6 +275,7 @@
                                         echo "</form>";
                                 echo "</article>";
                         echo "</section>";
+                        header('Location : commande.php');
                     }
                     else{
                         echo "<section id=modePaiement class=adresses>";
@@ -308,6 +312,7 @@
                                         echo "</form>";
                                 echo "</article>";
                         echo "</section>";
+                        header('Location : commande.php');
                     }
                     
             } else {
@@ -334,20 +339,19 @@
                             else if(isset($_SESSION['numRue'])){
                                 echo "<form id=\"adr_livr\" action=\"commande.php\" method=\"get\">";
                                     echo "<div class=ligne1>";
-                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"" . $_SESSION["numRue"] . "\"required></label> ";
-                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_SESSION["codePost"] . "\" name=\"codePost\"required></label> ";
+                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue\" value=\"" . $_GET["numRue"] . "\"required></label> ";
+                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_GET["codePost"] . "\" name=\"codePost\"required></label> ";
                                     echo "</div>";
 
-                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr"] . "\" name=\"adr\"required></label> ";
+                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_GET["adr"] . "\" name=\"adr\"required></label> ";
                                     echo "<div class=ligne2>";
                                     echo "</div>";
-                                    echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $_SESSION["ville"] . "\" name=\"ville\"required></label> ";
+                                    echo "<label>Ville&nbsp; : <input id=\"adrLivr_v\" type=\"text\" value=\"" . $_GET["ville"] . "\" name=\"ville\"required></label> ";
                                     echo "<div class=ligne2>";
-                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays"] . "\" name=\"pays\"required></label> ";
+                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_GET["pays"] . "\" name=\"pays\"required></label> ";
                                         echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                     echo "</div>";
                                 echo "</form>"; 
-
                             }
                             else if($res2){
                             foreach ($res2 as $row2) {
@@ -379,7 +383,6 @@
                                         echo "<input class=\"valid_btn\" id=\"adrLivr\" type=\"submit\" value=\"Valider\"\">";
                                     echo "</div>";                            
                                 echo "</form>";
-
                             }
                             echo "</article>";
 
@@ -407,13 +410,13 @@
                                 echo "<article class=champs>";
                                 echo "<form id=\"adr_livr\" action=\"commande.php\" method=\"get\">";
                                     echo "<div class=ligne1>";
-                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"" . $_SESSION["numRue2"] . "\"required></label> ";
-                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_SESSION["codePost2"] . "\" name=\"codePost2\"required></label> ";
+                                        echo "<label>Numéro de rue : <input id=\"adrLivr_ndr\" type=\"text\" name=\"numRue2\" value=\"" . $_GET["numRue2"] . "\"required></label> ";
+                                        echo "<label class=cdp >Code postal :  <input id=\"adrLivr_cdp\" type=\"\" value=\"" . $_GET["codePost2"] . "\" name=\"codePost2\"required></label> ";
                                     echo "</div>";
-                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_SESSION["adr2"] . "\" name=\"adr2\"required></label> ";
-                                    echo "<label>Ville&nbsp; : <input id=\"adrFact\" type=\"text\" value=\"" . $_SESSION["ville2"] . "\" name=\"ville2\"required></label> ";
+                                    echo "<label>Adresse (Rue, Avenue, etc.) : <input id=\"adrLivr_rae\" type=\"text\" value=\"" . $_GET["adr2"] . "\" name=\"adr2\"required></label> ";
+                                    echo "<label>Ville&nbsp; : <input id=\"adrFact\" type=\"text\" value=\"" . $_GET["ville2"] . "\" name=\"ville2\"required></label> ";
                                     echo "<div class=ligne2>";
-                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_SESSION["pays2"] . "\" name=\"pays2\"required></label> ";
+                                        echo "<label>Pays : <input id=\"adrLivr_p\" type=\"text\" value=\"" . $_GET["pays2"] . "\" name=\"pays2\"required></label> ";
                                         echo "<input class=\"valid_btn\" id=\"adrFact\" type=\"submit\" value=\"Valider\"\">";
                                     echo "</div>";
                                 echo "</form>"; 
@@ -490,7 +493,7 @@
                                             echo "<div class=ligne1>";
                                                 echo "<label>";
                                                 echo "<p>Code carte bleu</p>";
-                                                echo "<input pattern='[0-9]{16}' class = 'numCa' id=\"numCa\" type=\"text\" name=\"numCa\"  value=\"". $_SESSION['numCa'] ."\"required> ";
+                                                echo "<input pattern='[0-9]{16}' class = 'numCa' id=\"numCa\" type=\"text\" name=\"numCa\"  value=\"". $_POST['numCa'] ."\"required> ";
                                                 echo "<ul>";
                                                     echo "<li id = 'tailleCrypto'>Erreur : Donnez un numéro de carte de 16 chiffres</li>";
                                                     echo "<li id = 'valiCarte'>Erreur : donnez un numéro de carte valide </li>";
@@ -565,7 +568,7 @@
 
             if(isset($_POST['promo'])){ 
                 echo "<section id=modePaiement class=adresses>";
-                    echo'<h1><span>Réduction appliqué de '. $_SESSION['reduction'] . ' €</h1></br>';
+                    echo'<h1><span>Réduction appliqué de '. $_POST['promo'] . ' €</h1></br>';
                 echo "</section>";
             }
             else{
