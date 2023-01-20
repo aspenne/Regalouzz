@@ -29,11 +29,16 @@ echo '<div class=conteneur>';
 
 try {
     $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
-    // foreach($dbh->query('SELECT * from Alizon._Produit', PDO::FETCH_ASSOC) as $row) {
-    //     echo "<pre>";
-    //     print_r($row);
-    //     echo "</pre>";
-    // }
+    $sql = "SELECT * from Alizon.produit ORDER BY id_produit";
+    $result = $dbh->query($sql);
+    $liste_libelle = [];
+    $liste_prix = [];   
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $liste_libelle[] = $row["libelle"];
+        $liste_prix [] = $row["prix_ttc"];
+    }
+
+
     if(!isset($_GET['vendeur']) and !isset($_SESSION['id_vendeur']) and !isset($_SESSION["admin"]) and !isset($_GET['admin'])){
 /******Carousel *******/
     echo '<div class="container-fluid col-md-8 col-10">';
@@ -45,37 +50,25 @@ try {
                         echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>';
                         echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>';
                     echo '</div>';
+
                     echo '<div class="carousel-inner">';
-                        echo '<div class="carousel-item active">';
+                    for ($i=0; $i < 3; $i++){
+                        if ($i == 0){
+                            echo '<div class="carousel-item active">';
+                        }
+                        else{
+                            echo '<div class="carousel-item">';
+                        }
                             echo'<figure id="carrou">';
                                 echo '<h3 class="container ">';
-                                    echo '<strong>Petit biscuit</strong></br>';
-                                    echo '<strong>25€</strong>';
+                                    echo '<strong>'.$liste_libelle[$i].'</strong></br>';
+                                    echo '<strong>'.$liste_prix[$i].' € </strong>';
                                 echo '</h3>';
-                                echo '<img src="../img/produit/1/1.jpg" class="d-block w-100" >';
+                                echo '<img src="../img/produit/'.($i+1).'/1.jpg" class="d-block w-100" >';
                             echo '</figure>';
                         echo '</div>';
-
-                        echo '<div class="carousel-item">';
-                            echo'<figure id="carrou">';
-                                echo '<h3 class="container ">';
-                                    echo '<strong>Kouign ammann</strong></br>';
-                                    echo '<strong>35€</strong>';
-                                echo '</h3>';
-                                echo '<img src="../img/produit/2/1.jpg" class="d-block w-100" >';
-                            echo '</figure>';
-                        echo '</div>';
-
-                        echo '<div class="carousel-item">';
-                            echo'<figure id="carrou">';
-                                echo '<h3 class="container">';
-                                    echo '<strong>Crêpes</strong></br>';
-                                    echo '<strong>5€</strong>';
-                                echo '</h3>';
-                                echo '<img src="../img/produit/3/1.jpg" class="d-block w-100" >';
-                            echo '</figure>';
-                        echo '</div>';
-
+                    }
+                    
                         echo '<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">';
                             echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
                             echo '<span class="visually-hidden">Previous</span>';
@@ -93,8 +86,10 @@ try {
 
 
 
+
     echo '<div class="container">';
     echo '<h2 id="titre_corps"> Nos articles </h2>';
+    include("filtrerPrix.php");
     echo '<div class="row justify-content-center">';
     echo '<form action="detail_produit.php" method="get" id="Detail"></form>';
     foreach($dbh->query('SELECT * from Alizon.Produit where masquer = false order by id_produit', PDO::FETCH_ASSOC) as $row) {
